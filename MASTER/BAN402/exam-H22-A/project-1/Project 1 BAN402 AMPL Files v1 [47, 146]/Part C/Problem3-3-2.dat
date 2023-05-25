@@ -1,0 +1,51 @@
+# Set the parameters of the model
+set Region := R1, R2;
+set Port := P1, P2, P01, P02;
+set Market := K1, K2, K3, K4, K5, K6, K7, K8, K9, K10;
+
+param n :=				# Number of apples that can be aquired per week
+R1	125
+R2	175
+;
+
+param d :=				# Demand of the markets
+K1	24
+K2	30
+K3	40
+K4	35
+K5	15
+K6	52
+K7	42
+K8	12
+K9	20
+K10	40
+;
+
+param c:				# Cost of shipping from a region to a port
+	P1	P2	P01	P02	:=
+R1	10	13	0	0
+R2	15	12	0	0
+;
+
+param t:				# Shipping costs from either region or port to market
+	K1	K2	K3	K4	K5	K6	K7	K8	K9	K10	:=
+P01	78	108	216	120	210	144	252	252	126	30
+P02	108	96	108	36	108	180	144	150	162	72
+P1	12	12	28	56	56	28	120	116	24	32
+P2	112	68	20	32	28	80	36	28	128	112
+;
+
+param u	:=
+K1 	0.1
+K2 	0.1
+K3 	0.1
+K4 	0.1
+K5 	0.1
+K6 	0.1
+K7 	0.1
+K8 	0.1
+K9 	0.1
+K10 0.1
+;
+
+

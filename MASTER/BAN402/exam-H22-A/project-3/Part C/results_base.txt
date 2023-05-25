@@ -1,0 +1,22 @@
+Problem stats: 
+  Data filename: hour.dat
+  # Block bids (supply): 0
+  Avg # supply bids / hour: 20.00
+  Avg # demand bids / hour: 20.00
+
+Without block bids:
+  Linearized social surplus = 252503.98
+  Step function social surplus = 230149.70
+hour     Price    Volume        PS        PD         s         d
+   1     47.39    682.00     46.00     53.70    203.00     88.00
+   2     69.53   1358.00     68.40     80.20     53.00    272.00
+   3     64.57   1223.00     64.10     74.50     12.00    127.00
+   4     62.35   1229.00     61.50     77.50     70.00    164.00
+   5     63.90   1498.00     63.70     69.70    665.00    243.00
+
+Where 
+
+  Price: The intersection of the linearized step functions.
+  Volume: The total trade volume.
+  PS / PD: The price of the highest / lowest accepted hourly bids for supply / demand.
+  s / d: The quantities for the accepted limiting hourly bids.

@@ -1,0 +1,32 @@
+
+reset;
+model Bike.mod;
+data Bike.dat;
+option solver cplex;
+
+solve;
+
+option display_width 110;
+
+display x;
+display r;
+display y; 
+
+print "Racks opened:";
+display g;
+
+
+print "Number of racks opened:";
+display sum{i in I} g[i];
+
+print "Potential customers assigned to a rack:";
+display sum{i in I, n in N} x[i,n];
+
+print "Potential customers assigned to each rack:";
+display {i in I} sum{n in N} x[i,n];
+
+display cost;
+
+#display {n in N} o[n];
+
+#display {n in N} o[n];

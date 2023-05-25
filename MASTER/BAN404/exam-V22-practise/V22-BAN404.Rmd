@@ -1,0 +1,630 @@
+---
+title: "EXAM V22 BAN404"
+author: "Candidate 69"
+date: "2023-05-09"
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+```{r, message = FALSE}
+# Loading libraries relevant for the exam
+library(ISLR)
+library(stargazer)
+```
+
+# Task 1
+First of all, we load in the required data set which will be used for this task. In this case, the data set is called `OJ` and is gathered from the `ISLR` package.
+
+```{r}
+data(OJ, package = "ISLR")
+```
+
+## a)
+First of all, we will determine which variables are not fit for the analysis. I will use some inference gathered from the `?OJ` function in R, which describes the data set. This will form the basis of my reasoning.
+
+I will assume that the week a purchase has been made does not form a causal relationship with which juice is bought. It is hard to determine whether or not there are any structural diffrences between the stores, but in order to remove any possibilities of multicolinearity, only the STORE variable will be kept from the variables showing stores.
+
+```{r}
+var_remove <- c("WeekofPurchase", "Store7", "StoreID")    # Defining which columns should be removed
+OJ <- OJ[, !names(OJ) %in% var_remove]
+rm(var_remove)                                          # Deleting the redundant list from memory
+```
+
+Next, I will reprogram some of the classes of the variables.
+
+```{r}
+data.frame(sapply(OJ,class))
+```
+
+From what I can gather, the `StoreID`, `SpecialCH` and `SpecialMM` should be reprogrammed as factors. The rest of the variables look right.
+
+```{r}
+col_factor <- c("STORE", "SpecialCH", "SpecialMM")
+
+OJ[, col_factor] <- lapply(OJ[, col_factor], factor)
+rm(col_factor)
+```
+
+For all the tasks expect **f)**, the variable `LoyalCH` will be assumed to be unknown. I will therefore create two distinct data sets, one with the variable known and the other it will be unknown. X will mark the data which is unknown, and Z will mark the data where the Loyalty is known.
+
+```{r}
+# Unknown Data set
+xdata <- OJ[, !names(OJ) %in% c("LoyalCH")]
+
+# The data set which "LoyalCH" is known is stored in zdata
+zdata <- OJ
+```
+
+Now, we will use cross validation in order to perform the rest of the tasks.
+
+```{r}
+{
+# Setting the seed
+set.seed(8655)
+
+# Apply a 50/50 cross validation technique
+n <- nrow(xdata)
+ntrain <- floor(n/2)
+ind <- sample(1:n, ntrain)
+
+xtrain <- xdata[ind,]
+xtest <- xdata[-ind,]
+}
+```
+
+## b)
+In order to get a grasp of the data, I will present some measures of the central tendencies of the various variables. I will use the xdata data frame in order to do this initial analysis.
+
+```{r}
+stargazer(xdata[xdata$Purchase == "CH", ], type = "text", align=T, digits=4, no.space=T)
+```
+The variables that I found promising:
+- PriceDiff
+- SpecialCH
+- SpecialMM
+- STORE
+
+## c) 
+Using the variables which were found interesting in the last task, I will create a logistic regression
+in order to try correctly classify which juice was bought at each purchase. As this is a classification
+problem, the logistic regression method is well suited, as it assign's a value between 0 and 1 for each
+observation based on the explanatory variables.
+
+```{r}
+# The Regression Model
+logfit1 <- glm(Purchase~PriceDiff+SpecialCH+SpecialMM+STORE, data = xtrain, family = "binomial")
+summary(logfit1)
+```
+The Special-variables seems to be not significant, which leads me to create a new regression with
+those removed:
+
+```{r}
+# The Regression Model
+logfit2 <- glm(Purchase~PriceDiff+STORE, data = xtrain, family = "binomial")
+```
+
+
+With the model fitted, it is good measure to test the results. I will make use of test accuracy and 
+a confusion matrix.
+
+```{r}
+# The Prediction on the test set
+logpred <- predict(logfit2, newdata = xtest, type = "response")
+
+# The Specified Threshold
+th <- 0.5
+
+predth <- logpred>th
+
+# Confusion Matrix and accuracy
+confMatrix <- table(predth, xtest$Purchase)
+accuracy <- sum(diag(confMatrix))/sum(confMatrix)
+
+# Displaying the Matrix
+confMatrix
+
+# Displaying the Accuracy
+paste0("The accuracy of the model: ", round(accuracy * 100, 3), "%")
+```
+
+Comparing this to the "baseline" prediction, which is the accuracy of the model if
+it predicts the most common answer to all new observations:
+
+```{r}
+# Total number of observations for each occurence
+obs <- table(xtest$Purchase)
+
+# Measuring the baseline accuracy
+base_acc <- obs[[1]]/(obs[[1]] + obs[[2]])
+paste0("The baseline accuracy of the model: ", round(base_acc * 100, 3), "%")
+```
+```{r, include = FALSE}
+rm(obs)
+rm(base_acc)
+```
+
+Comparing the model accuracy with the baseline accuracy, it shows some improvement, although it
+is not perfect in predicting which juice a given purchase included, although it is highly probable
+that is does explain some of the tendencies.
+
+
+## d)
+In order to fit a classification tree to the data, I will make use of the same
+training and testing set established in the previous task. In order to extract inference
+from the decision tree, I will make a plot of it, explain how it can be used to make
+informed decisions, and make use of the accuracy and confusion matrix measures used in
+the previous task.
+
+```{r}
+library(tree)
+
+purtree <- tree(Purchase~., data=xtrain)
+plot(purtree)
+text(purtree, digits=3)
+```
+
+*How to interpret a branch of the tree:*
+A decision tree is a type of supervised learning algorithm that is mostly used for classification problems. It is made up of branch and leaf nodes. Branch nodes perform a logical check on the new data, which based on the output of TRUE/FALSE is sent further down the tree. If the logical check returns TRUE, the observation goes down the left side of the branch. When the observation reaches a leaf-node, the value of the leaf assigns a value to the new observation.
+
+Confusion Matrix for the decision tree:
+```{r}
+# The Prediction on the test set
+treepred <- predict(purtree, newdata = xtest)
+
+# The Specified Threshold
+th <- 0.5
+
+treepredth <- data.frame(treepred>th)
+treepredth <- ifelse(treepredth$CH == TRUE, "CD", "MM")
+
+# Confusion Matrix and accuracy
+confMatrix <- table(treepredth, xtest$Purchase)
+accuracy <- sum(diag(confMatrix))/sum(confMatrix)
+
+# Displaying the Matrix
+confMatrix
+
+# Displaying the Accuracy
+paste0("The accuracy of the model: ", round(accuracy * 100, 3), "%")
+```
+
+
+## e)
+In this task we will try to maximize the threshold of predictions, in order to get the highest accuracy possible. 
+I will use the decision tree as the basis for this operation.
+
+```{r}
+{
+# Setting the seed
+set.seed(4598)
+
+# Apply a 50/50 cross validation technique
+n <- nrow(xdata)
+ntrain <- floor(n/2)
+ind <- sample(1:n, ntrain)
+
+xtrain <- xdata[ind,]
+xtest <- xdata[-ind,]
+}
+
+purtree <- tree(Purchase~., data=xtrain)
+treepred <- predict(purtree, newdata = xtest)
+
+
+# Create a vector of threshold values to test
+thresholds <- seq(0.1, 0.9, by = 0.1)
+
+# Create an empty vector to store the accuracy scores
+accuracy_scores <- numeric(length(thresholds))
+
+# Loop through each threshold value and calculate the accuracy score
+for (i in seq_along(thresholds)) {
+  # Calculate the predicted values using the current threshold
+  treepredth <- data.frame(treepred>thresholds[i])
+  treepredth <- ifelse(treepredth$CH == TRUE, "CD", "MM")
+  
+  # Calculate the confusion matrix and accuracy score
+  confMatrix <- table(treepredth, xtest$Purchase)
+  accuracy_scores[i] <- sum(diag(confMatrix))/sum(confMatrix)
+}
+
+# Find the threshold value that gives the highest accuracy score
+best_threshold <- thresholds[which.max(accuracy_scores)]
+
+# Displaying the best threshold
+paste0("The best threshold for this decision tree: ", best_threshold)
+```
+
+## f)
+In this part of the task, I will use the data set denoted as `zdata` which contains the `LoyalCH` variable.
+This variable will be added to my analysis from the previous tasks in order to determine if this is a good predictor of
+`Purchase`.
+
+In order to get a grasp of the values, We must first understand what it means. `LoyalCH` is a numeric variable which 
+on a scale from 0-1 measures how loyal a customer is to the *CH* brand. if the value is 1, they are perfectly loyal, and if the value if
+0, they are perfectly disloyal. This is important to remember when interpreting the output of the analysis.
+
+### Augmenting the Logistic Regression
+```{r}
+# Setting the seed
+set.seed(8655)
+
+# Apply a 50/50 cross validation technique
+n <- nrow(zdata)
+ntrain <- floor(n/2)
+ind <- sample(1:n, ntrain)
+
+ztrain <- zdata[ind,]
+ztest <- zdata[-ind,]
+
+logfit2 <- glm(Purchase~PriceDiff+STORE+LoyalCH, data = ztrain, family = "binomial")
+summary(logfit2)
+```
+
+According to this summary, the `LoyalCH` variable is a good predictor of the `Purchase` variable.
+In addition to this, the `STORE` variable is not now deemed significant in this context.
+
+Next, I will make a confusion matrix based on these results, whilst also removing the `STORE` variable from the regression.
+
+```{r}
+logfit3 <- glm(Purchase~PriceDiff+LoyalCH, data = ztrain, family = "binomial")
+
+# The Prediction on the test set
+logpred3 <- predict(logfit3, newdata = ztest, type = "response")
+
+# The Specified Threshold
+th <- 0.5
+
+predth <- logpred3>th
+
+# Confusion Matrix and accuracy
+confMatrix <- table(predth, ztest$Purchase)
+accuracy <- sum(diag(confMatrix))/sum(confMatrix)
+
+# Displaying the Matrix
+confMatrix
+
+# Displaying the Accuracy
+paste0("The accuracy of the model: ", round(accuracy * 100, 3), "%")
+```
+
+This new model is much more accurate than the previous models!
+
+### Augmenting the decision tree classifying model
+```{r}
+# Setting the seed
+set.seed(4598)
+
+# Apply a 50/50 cross validation technique
+n <- nrow(zdata)
+ntrain <- floor(n/2)
+ind <- sample(1:n, ntrain)
+
+ztrain <- zdata[ind,]
+ztest <- zdata[-ind,]
+
+# Fitting the tree with the complete data set
+purtree <- tree(Purchase~., data=ztrain)
+
+# The Prediction on the test set
+treepred <- predict(purtree, newdata = ztest)
+
+# The Specified Threshold
+th <- 0.4
+
+treepredth <- data.frame(treepred>th)
+treepredth <- ifelse(treepredth$CH == TRUE, "CD", "MM")
+
+# Confusion Matrix and accuracy
+confMatrix <- table(treepredth, ztest$Purchase)
+accuracy <- sum(diag(confMatrix))/sum(confMatrix)
+
+# Displaying the Matrix
+confMatrix
+
+# Displaying the Accuracy
+paste0("The accuracy of the model: ", round(accuracy * 100, 3), "%")
+```
+
+The model is now more accurate than before as well! I can plot the new decision tree in order to
+see how it might have changed.
+
+```{r}
+plot(purtree)
+text(purtree, digits=3)
+```
+
+As is evident from the plotted tree, the `LoyalCH` variable is very important and significant when predicting
+using the decision tree classifier.
+
+
+# Task 2
+In this part of the exam I will make use of the `Computers` data set from the `Ecdat` package. I will predict the variable `price` using
+the data contained in the data set.
+
+First of all, I will load the data and clean the working memory which contains the data from the previous task.
+```{r}
+# Removing leftover data
+rm(list = ls())
+
+# Loading in the data
+data(Computers, package = "Ecdat")
+xdata <- Computers
+```
+
+
+## a)
+First of all, we will determine if the variables has to be re-coded as factors.
+
+```{r}
+unique_count <- function(df){apply(df, 2, function(x) length(unique(x)))}
+len <- unique_count(xdata)
+len
+```
+The variables which has less than 5 unique observations could be recoded as factors. This is done like this:
+```{r}
+for(i in 1:length(len)) if(len[i]<=6) xdata[,i]=as.factor(xdata[,i])
+```
+This re-coded the `screen` variable as a factor variable, as it only had 3 unique observations.
+
+Then, we are able to remove variables which cannot be used in the analysis. I will make use of the `?Computers` function in order to
+get a better understanding of variables in the data set. From this we can assume that the number of listings is not relevant for the analysis. The other variables might prove useful later.
+
+```{r}
+var_remove <- c("ads")                          # Defining which columns should be removed
+#xdata <- xdata[, !names(xdata) %in% var_remove]
+rm(var_remove)                                    # Deleting the redundant list from memory
+```
+
+With the variables that are going to be used established, we can split the data into a training and test set
+based on a 50/50 cross validation technique.
+
+```{r}
+# Set the seed
+set.seed(2652)
+
+# Splitting the data 50/50 into a training and test set
+n <- nrow(xdata)
+ntrain <- floor(n/2)
+ind <- sample(1:n, ntrain)
+
+train <- xdata[ind,]
+test <- xdata[-ind,]
+```
+
+
+## b)
+In this task I will use descriptive statistics in order to find some promising predictors of the price. 
+
+```{r}
+library(knitr)
+library(kableExtra)
+
+kable(summary(train)) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F)
+```
+
+It is also useful to show the price plotted against each variable, in order to look for signs of correlation.
+```{r}
+plot(price~., data = train)
+```
+
+From the outputted plots, the relationship between `price` and the variables `cd`, `hd`, `ram` and `screen` looks like 
+the ones which could be promising predictors, as there is a change in the central tendancy of the price 
+based on some of the factors described. 
+
+## c)
+Now I can run a linear regression on all explanatory variables. After this I will make use of 
+appropriate performance measures of the prediction.
+
+```{r}
+fit1 <- lm(price~., data = train)
+summary(fit1)
+```
+
+First of all, the summary of the regression shows that all explanatory variables are significant in the analysis.
+This is not an outragious statement as the computer market is very decentralized in the sense that many different
+companies make up a small part of a given computer, where the products they are selling are priced consistently.
+There might be just a few companies which control the production of RAM and CPUs (speed) which might explain why
+there is a consitant change in price when such components are "upgraded" in the spec sheet.
+
+In order to get a better understanding of the regression, I will first measure the testMSE of this models predictions.
+
+```{r}
+pred1 <- predict(fit1, newdata = test, type = "response")
+
+testMSE <- mean((test$price - pred1)^2)
+```
+
+When there are many explanatory variables, models are prone to overfitting. I will therefore use a sub-setting method
+which might make it clear as to how many variables are needed in order to accurately predict the price of a computer.
+
+```{r}
+library(leaps)
+
+fitsub <- regsubsets(price~., data = train)
+fitsub.sum <- summary(fitsub)
+fitsub.sum$outmat
+```
+These stars show which variable is included in each model, where the algorythm chooses the
+variables which produces the lowest RSS first. RAM, trend and speed looks like the three variables
+which the model has chosen first. We can also create a graph to look at the change in RSS for each iteration
+of the subsetting.
+
+```{r}
+plot(fitsub.sum$rss, type = "l")
+```
+By looking at these results, one can see that including just the first four variables which has been determined by
+the the subsetting method.
+
+
+The testMSE of this model:
+```{r}
+fit2 <- lm(price~ram+trend+speed+premium, data = train)
+pred2 <- predict(fit2, newdata = test, type = "response")
+
+testMSE2 <- mean((test$price - pred2)^2)
+
+# Comparing the testMSE
+testMSE
+testMSE2
+```
+
+## d)
+In this task, I will do a log-transformation to the price variable in order to see if this would produce better results. 
+I will make use of the testMSE measurements in order to interpret wheter or not this augmentation creates a better fit.
+
+```{r}
+fit3 <- lm(log(price)~., data = train)
+summary(fit3)
+```
+From the summary, we can see that the $R^2$ is around 1 % higher than in the base regression.
+
+In the case of log(price), the interpretation of the coefficients is slightly different. For example, if you have a coefficient of 0.5 for a predictor variable, then you can say that a one-unit increase in that predictor variable is associated with a **50% increase** in the expected value of price.
+
+We can predict the price from here, and compare the predictions using testMSE.
+```{r}
+logpred3 <- predict(fit3, newdata = test, type = "response")
+pred3 <- exp(logpred3)
+
+testMSE3 <- mean((test$price - pred3)^2)
+
+paste0("The testMSE of the base regression:            ", round(testMSE, 2))
+paste0("The testMSE of the log transformed regression: ", round(testMSE3, 3))
+```
+
+There is no significant change in the prediction power of log-transforming the price variable.
+
+## e)
+This task will be broken up into two parts. First of all, a GAM model will be fitted to the data, and
+the results will be plotted and evaluated. The second part of the task will use this information, combined
+with general inference to lay out reasoning behind now allowing all variables to take on a non-linear
+relationship with price.
+
+```{r}
+library(gam)
+
+gamfit <- gam(price~speed+s(hd, 4)+ram+screen+cd+multi+premium+s(ads, 4)+s(trend, 4), 
+              data = train)
+{
+par(mfrow = c(3,3))
+plot.Gam(gamfit, col="red")
+}
+```
+
+One reason to not allow for some variables to have a non linear relationship with price is if the variable is a factor variable, as 
+this represents a state variable, in which the observation can be in a state or not, which is not a suited for non-linear 
+relationships. 
+
+The testMSE of this model can be calculated like this
+```{r}
+predgam <- predict.Gam(gamfit, newdata = test)
+
+testMSEgam <- mean((test$price - predgam)^2)
+testMSEgam
+```
+
+Next, I will analyze whether there is evidence of a non-linear relationship with the response. In the figures above, 
+we find some evidence of ads having a non-linear relationship with price. We test this by creating three GAM models: 
+one without trend, one with trend as linear, and one with trend as non-linear. Then we compare them using an ANOVA test.
+
+```{r}
+gamfit1 <- gam(price~speed+s(hd, 4)+ram+screen+cd+multi+premium+s(ads, 4), 
+              data = train)
+gamfit2 <- gam(price~speed+s(hd, 4)+ram+screen+cd+multi+premium+s(ads, 4)+trend, 
+              data = train)
+gamfit3 <- gam(price~speed+s(hd, 4)+ram+screen+cd+multi+premium+s(ads, 4)+s(trend, 4), 
+              data = train)
+
+
+anova(gamfit1, gamfit2, gamfit3, test = "F")
+```
+
+From this output, all models are significant. Although model 2 has the lowest p-value and the highest F-statistic. 
+From this we can assume that the gamfit2 model is the best, with trend as linear.
+
+
+## f)
+Backfitting is a simple iterative procedure used to fit a generalized additive model (GAM), which is a type of non-parametric regression model that can capture nonlinear relationships between predictors and outcome variables1. A GAM has the form:
+$$y_i = f_1(x_{i1})+f_2(x_{i2}) + ... +f_p(x_{ip})+\epsilon_i$$
+where $y_i$ is the outcome variable, $x_{ij}$ are the predictor variables, $f_j$ are smooth functions of a single predictor, and $\epsilon_i$ is the error term.
+
+The backfitting algorithm works by initializing the function estimates and then updating each one in turn by fitting the residuals of all the others using a smoothing operator, such as a cubic spline or a local polynomial regression1. The algorithm stops when the function estimates converge to a solution that minimizes the expected squared error.
+
+Backfitting can be used to fit a GAM with ordinary least square regression when the outcome variable is continuous and normally distributed. In this case, the smoothing operator can be chosen to be a linear smoother that minimizes the sum of squared errors1. However, backfitting can also be extended to fit a GAM with other types of regression models, such as logistic or Poisson regression, by using a local quasilikelihood approach.
+
+
+## g)
+Bagging is short for bootstrap aggregation. In this task we will make use of this method to predict price in the Computers data set.
+We start by making a simple decision tree.
+
+```{r}
+library(tree)
+
+simple.tree <- tree(price~., data=train)
+
+{
+plot(simple.tree)
+text(simple.tree, digits=3, cex = 0.7)
+}
+```
+The testMSE for this simple tree is:
+```{r}
+simple.pred <- predict(simple.tree, newdata = test)
+msesimp <- mean((test$price - simple.pred)^2)
+msesimp
+```
+
+
+
+
+Bagged tree with paralellization
+```{r}
+library(randomForest)
+library(doParallel)
+
+# Establishing parallel computation
+cores <- parallel::detectCores()
+cluster <- makeCluster(min(cores, 8))
+registerDoParallel(cluster)
+
+# The bagged decision tree model
+bag.tree <- randomForest(price~., data=train, mtry=9, ntree=100)
+bag.pred <- predict(bag.tree, newdata=test)
+mse.bag=mean((test$price-bag.pred)^2)
+
+# Stopping the paralellization
+stopCluster(cluster)
+
+# Displaying the testMSE
+mse.bag
+```
+
+Using the bagged tress, the testMSE went down to 1/3 of what it was with a simple decision tree.
+
+Variable importance
+```{r}
+varImpPlot(bag.tree)
+```
+The varImpPlot function in R shows the variable importance of each predictor in a random forest model. The importance can be measured by two criteria: Mean Decrease Accuracy and Mean Decrease Gini. The former is the average decrease in prediction accuracy when a variable is permuted in the out-of-bag samples, while the latter is the average decrease in node impurity when a variable is used for splitting. A higher value of either criterion means that the variable is more important for the model performance. In this case, “ram”, “hd”, “trend” and “screen” have the highest values of both criteria, which means that they are the most influential predictors in the model
+
+## h)
+Bagging is an ensemble learning method that is commonly used to reduce variance within a noisy dataset. In bagging, a random sample of data in a training set is selected with replacement—meaning that the individual data points can be chosen more than once. The idea behind bagging is that combining the predictions of many models trained on different subsets of the data will lead to better overall performance than using any single model alone. Bagging can be used with any type of model, but it is particularly effective with decision trees, which tend to have high variance. By training many decision trees on different subsets of the data and averaging their predictions, bagging can help to reduce overfitting and improve the accuracy of predictions
+
+*Simple:* In bagging, bootstrap samples (a draw, with replacement, of the same size as
+the original sample) are use to fit a model, e.g., a regression tree. A prediction is done by the model
+for each bootstrap sample and the final prediction is computed by averaging all of them.
+
+
+
+
+
+
+
+

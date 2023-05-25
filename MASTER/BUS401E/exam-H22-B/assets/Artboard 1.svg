@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.89 540">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: none;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-3 {
+        stroke: #231f20;
+      }
+
+      .cls-5, .cls-6, .cls-7, .cls-8 {
+        fill: #231f20;
+        font-family: Arial-BoldMT, Arial;
+        font-weight: 700;
+      }
+
+      .cls-5, .cls-8 {
+        font-size: 37.5px;
+      }
+
+      .cls-2 {
+        stroke: #1c75bc;
+      }
+
+      .cls-6 {
+        font-size: 12px;
+      }
+
+      .cls-7 {
+        font-size: 18px;
+      }
+
+      .cls-3 {
+        stroke-dasharray: 0 0 12 12;
+      }
+
+      .cls-8 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-9 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-4 {
+        stroke: #ed1c24;
+        stroke-width: 2px;
+      }
+
+      .cls-10 {
+        fill: #1c75bc;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1" data-name="Layer 1">
+    <line class="cls-1" x1="72" y1="459" x2="792" y2="459"/>
+    <line class="cls-1" x1="72" y1="27" x2="72" y2="459"/>
+    <text class="cls-6" transform="translate(135 477)"><tspan x="0" y="0">0,1</tspan></text>
+    <text class="cls-6" transform="translate(45 387)"><tspan x="0" y="0">0,5</tspan></text>
+    <text class="cls-6" transform="translate(45 315)"><tspan x="0" y="0">1</tspan></text>
+    <text class="cls-6" transform="translate(45 243)"><tspan x="0" y="0">1,5</tspan></text>
+    <text class="cls-6" transform="translate(45 171)"><tspan x="0" y="0">2</tspan></text>
+    <text class="cls-6" transform="translate(45 99)"><tspan x="0" y="0">2,5</tspan></text>
+    <text class="cls-6" transform="translate(45 27)"><tspan x="0" y="0">3</tspan></text>
+    <text class="cls-6" transform="translate(54 477)"><tspan x="0" y="0">0</tspan></text>
+    <text class="cls-6" transform="translate(207 477)"><tspan x="0" y="0">0,2</tspan></text>
+    <text class="cls-6" transform="translate(279 477)"><tspan x="0" y="0">0,3</tspan></text>
+    <text class="cls-6" transform="translate(351 477)"><tspan x="0" y="0">0,4</tspan></text>
+    <text class="cls-6" transform="translate(423 477)"><tspan x="0" y="0">0,5</tspan></text>
+    <text class="cls-7" transform="translate(284.76 513)"><tspan x="0" y="0">Accumulated customer revenue</tspan></text>
+    <text class="cls-7" transform="translate(27 401.18) rotate(-90)"><tspan x="0" y="0">Accumulated customer results</tspan></text>
+    <text class="cls-6" transform="translate(495 477)"><tspan x="0" y="0">0,6</tspan></text>
+    <text class="cls-6" transform="translate(567 477)"><tspan x="0" y="0">0,7</tspan></text>
+    <text class="cls-6" transform="translate(378 441)"><tspan x="0" y="0">VF</tspan><tspan class="cls-9" x="15.33" y="0">P</tspan><tspan x="23.12" y="0" xml:space="preserve"> = (1 - 0,6) = 0,4</tspan></text>
+    <text class="cls-6" transform="translate(639 477)"><tspan x="0" y="0">0,8</tspan></text>
+    <text class="cls-6" transform="translate(711 477)"><tspan x="0" y="0">0,9</tspan></text>
+    <text class="cls-6" transform="translate(783 477)"><tspan x="0" y="0">0,10</tspan></text>
+    <line class="cls-4" x1="792" y1="315" x2="72" y2="459"/>
+    <g>
+      <line class="cls-1" x1="504" y1="459" x2="504" y2="453"/>
+      <line class="cls-3" x1="504" y1="441" x2="504" y2="39.15"/>
+      <line class="cls-1" x1="504" y1="33.16" x2="504" y2="27.16"/>
+    </g>
+  </g>
+  <g id="Layer_3" data-name="Layer 3">
+    <path class="cls-2" d="M72,459S306,99,504,99s288,216,288,216"/>
+    <text class="cls-5" transform="translate(621 423)"><tspan x="0" y="0">B</tspan></text>
+    <text class="cls-8" transform="translate(549 261)"><tspan x="0" y="0">A</tspan></text>
+  </g>
+  <g id="Layer_2" data-name="Layer 2">
+    <circle class="cls-10" cx="504" cy="99" r="2.76"/>
+  </g>
+</svg>

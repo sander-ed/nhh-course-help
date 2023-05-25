@@ -1,0 +1,16 @@
+set FACI := F1, F2, F3;
+set POLU := P1, P2;
+
+# Cost of processing one ton of fish at facility f
+param c := F1 30, F2 20, F3 40;
+
+# Tons of pollutant p reduced per ton of fish at facility f
+param r:
+		P1			P2 :=
+F1		0.10		0.45
+F2		0.20		0.25
+F3		0.40		0.30;
+
+
+# Pollution reduction target
+param m := P1 25, P2 35;

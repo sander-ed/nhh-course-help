@@ -1,0 +1,14 @@
+# This .run file covers task 4
+reset;
+model Problem1.mod;
+data Problem1_v2.dat;
+option solver cplex;
+option presolve 0;
+option cplex_options 'sensitivity';
+solve;
+display z, x;
+
+display Reduction, Reduction.down, Reduction.current, Reduction.up;
+
+display {i in POLU} sum {j in FACI} x[j] * r[j,i];
+

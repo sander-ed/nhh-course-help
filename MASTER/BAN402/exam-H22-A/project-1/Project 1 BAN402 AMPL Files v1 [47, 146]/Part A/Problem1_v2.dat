@@ -1,0 +1,12 @@
+set FACI := F1, F2, F3;
+set POLU := P1, P2;
+
+param c := F1 20, F2 20, F3 40;
+
+param r:
+		P1			P2 :=
+F1		0.10		0.45
+F2		0.20		0.25
+F3		0.40		0.30;
+
+param m := P1 25, P2 35;

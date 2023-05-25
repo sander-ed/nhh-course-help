@@ -1,0 +1,96 @@
+# This .run file contains the answers to Part B, Task 1 & 2
+
+# Task 1 -------------------------------------------------
+# Resetting AMPL
+reset;
+
+# Designating the input in the form of a .mod and .dat file
+model Problem2.mod;
+data Problem2.dat;
+
+# Choosing the cplex solver
+option solver cplex;
+
+# Solving the model
+solve;
+
+# Displaying the results
+display total_profit;
+display X;
+display Y;
+
+# Task 2 (Scenario 1) -------------------------------------
+# Resetting AMPL
+reset;
+
+# Designating the input in the form of a .mod and .dat file
+model Problem2.mod;
+data Problem2Sc1.dat;
+
+# Choosing the cplex solver
+option solver cplex;
+
+# Solving the model
+solve;
+
+# Displaying the results
+display total_profit;
+display X;
+display Y;
+
+# Task 2 (Scenario 2) -------------------------------------
+# Resetting AMPL
+reset;
+
+# Designating the input in the form of a .mod and .dat file
+model Problem2.mod;
+data Problem2Sc2.dat;
+
+# Choosing the cplex solver
+option solver cplex;
+
+# Solving the model
+solve;
+
+# Displaying the results
+display total_profit;
+display X;
+display Y;
+
+# Task 2 (Scenario 3) -------------------------------------
+# Resetting AMPL
+reset;
+
+# Designating the input in the form of a .mod and .dat file
+model Problem2.mod;
+data Problem2Sc3.dat;
+
+# Choosing the cplex solver
+option solver cplex;
+
+# Solving the model
+solve;
+
+# Displaying the results
+display total_profit;
+display X;
+display Y;
+
+# Task 2 (Scenario 4) -------------------------------------
+# Resetting AMPL
+reset;
+
+# Designating the input in the form of a .mod and .dat file
+model Problem2.mod;
+data Problem2Sc4.dat;
+
+# Choosing the cplex solver
+option solver cplex;
+
+# Solving the model
+solve;
+
+# Displaying the results
+display total_profit;
+display X;
+display Y;

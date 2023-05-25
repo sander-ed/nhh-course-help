@@ -1,0 +1,52 @@
+#----- SETS -----
+set Teams := 
+DRAM
+HOVI
+READ
+SOLB
+STAB
+ULLE
+NTNU
+;
+
+set Days := 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22;
+set Tuesdays := 1,3,5,7,9,11,13,15,17,19,21;
+set Weekends := 2,4,6,8,10,12,14,16,18,20,22;
+set NoGames := 12,14; #within Days; #days in which no matches (NYE, VM...)
+;
+
+
+#{Teams,Days} default 0; #1 if stadium of team i is unavailable to play home on day k
+let HomeUnav["NTNU",1]:=1;
+let HomeUnav["NTNU",2]:=1;
+let HomeUnav["NTNU",3]:=1;
+let HomeUnav["NTNU",5]:=1;
+let HomeUnav["NTNU",6]:=1;
+let HomeUnav["NTNU",7]:=1;
+let HomeUnav["NTNU",9]:=1;
+let HomeUnav["NTNU",15]:=1;
+let HomeUnav["NTNU",17]:=1;
+let HomeUnav["NTNU",19]:=1;
+let HomeUnav["NTNU",21]:=1;
+
+let HomeUnav["DRAM",2]:=1;
+let HomeUnav["DRAM",6]:=1;
+
+let HomeUnav["HOVI",4]:=1;
+let HomeUnav["HOVI",10]:=1;
+
+let HomeUnav["READ",8]:=1;
+let HomeUnav["READ",16]:=1;
+
+let HomeUnav["SOLB",18]:=1;
+
+let HomeUnav["STAB",19]:=1;
+let HomeUnav["STAB",18]:=1;
+let HomeUnav["STAB",20]:=1;
+
+let HomeUnav["ULLE",21]:=1;
+let HomeUnav["ULLE",20]:=1;
+
+
+
+

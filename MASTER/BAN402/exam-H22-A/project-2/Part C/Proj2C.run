@@ -1,0 +1,25 @@
+reset;
+model ProjC2.mod;						# Loading model 
+data Proj2C.dat;						# Loading data set
+option solver cplex;					# Choosing solver
+option cplex_options 'mipdisplay=4';
+option show_stats 1;
+
+solve;
+# (a) Optimal profit
+display total_profit;
+
+# (b) Selected running modes and used capacity
+display RM;
+display z;
+
+# (c) Inventory of crude, components and final products last time period
+display IO;
+display IC;
+display IP;
+
+
+
+
+
+

@@ -1,0 +1,142 @@
+
+# Task 1 -------------------------------------------------
+# Minimizing
+# Resetting AMPL
+reset;
+
+printf "PartD.mod";
+
+# Designating the input in the form of a .mod and .dat file
+model PartD.mod;
+data PartD.dat;
+
+# Choosing the solver
+option solver gurobi;
+
+# Solving the model
+solve;
+
+option display_width 200;
+
+# Displaying the results
+display total_cost;
+
+
+printf "\n";
+printf ((sum {d in D, h in H} (x[d,h]*p[d,h])) / (sum {dd in D, hh in H} x[dd,hh])*1000);
+printf " €/MWh on average";
+printf "\n";
+
+display x;
+display y;
+display b;
+
+
+# Maximizing
+# Resetting AMPL
+reset;
+
+printf "PartDmax.mod";
+
+# Designating the input in the form of a .mod and .dat file
+model PartDmax.mod;
+data PartD.dat;
+
+# Choosing the solver
+option solver gurobi;
+
+# Solving the model
+solve;
+
+option display_width 200;
+
+# Displaying the results
+display total_cost;
+
+
+printf "\n";
+printf ((sum {d in D, h in H} (x[d,h]*p[d,h])) / (sum {dd in D, hh in H} x[dd,hh])*1000);
+printf " €/MWh on average";
+printf "\n";
+
+display x;
+display y;
+display b;
+
+
+
+# Task 2 -------------------------------------------------
+# Minimizing
+# Resetting AMPL
+reset;
+
+printf "PartD2.mod";
+
+# Designating the input in the form of a .mod and .dat file
+model PartD2.mod;
+data PartD2.dat;
+
+# Choosing the solver
+option solver gurobi;
+
+# Solving the model
+solve;
+
+option display_width 200;
+
+# Displaying the results
+display total_cost;
+
+
+printf "\n";
+printf ((sum {d in D, h in H} (x[d,h]*p[d,h])) / (sum {dd in D, hh in H} x[dd,hh])*1000);
+printf " €/MWh on average";
+printf "\n";
+
+display x;
+display y;
+display b;
+display j;
+display s;
+
+
+# Task 3 -------------------------------------------------
+# Minimizing
+# Resetting AMPL
+reset;
+
+printf "PartD3.mod";
+
+# Designating the input in the form of a .mod and .dat file
+model PartD3.mod;
+data PartD3.dat;
+
+# Choosing the solver
+option solver gurobi;
+
+# Solving the model
+solve;
+
+option display_width 200;
+
+# Displaying the results
+display total_cost;
+
+
+printf "\n";
+printf ((sum {d in D, h in H} (x[d,h]*p[d,h])) / (sum {dd in D, hh in H} x[dd,hh])*1000);
+printf " €/MWh on average";
+printf "\n";
+
+display x;
+display y;
+display b;
+display j;
+display s;
+display f;
+
+
+
+
+
+

@@ -1,0 +1,575 @@
+---
+title: "Ban420 home exam, fall 2022, Candidate no 73"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = F)
+```
+
+# Inflation, output and the AD-AS model
+
+## Problem 1
+
+```{r, eval=T, error=TRUE, message=TRUE}
+
+# Packages
+#First of all we need to load some common packages that will be used in order 
+# to solve the problems at hand. Other packages that will be installed to solve 
+# specific tasks will be pasted in their own sections
+
+# Primary Packages
+
+  library(tidyverse)
+
+# Additional packages
+
+  library(assertthat)
+  library(magrittr)
+  library(ggthemes)
+
+# This problem consists of creating function in order to solve some equations 
+# about the AS-AD model of the economy
+
+# Defining Functions ----
+# We define the Interest Rate first, because we need it in the following equations
+
+  nominal_interest_rate <- function(pi, m, pibar, rbar) {
+    R_t <- (m*(pi - pibar))+rbar
+    return(R_t)
+  }
+  
+# When the interest rate function is complete, we can create functions for the 
+# aggregate demand and supply
+
+# Function to define the the output gap by demand
+
+  y_demand <- function(pi, a, b, rbar, m, pibar) {
+    R_t <- (nominal_interest_rate(pi=pi,
+                           m=m,
+                           pibar=pibar,
+                           rbar=rbar))
+    y <- a - (b*(R_t - rbar))
+    return(y)
+  }
+  
+# Function to define the output gap by supply
+
+  y_supply <- function(pi, pi_lag, nu, o) {
+    y <- (pi - pi_lag - o) / nu
+    return(y)
+  }
+  
+# When the functions are defined we can use the tests supplied to us by the 
+# assignment in order to check the validity of the functions. If the output of 
+# the tests results in TRUE, then one can assume that the functions have the 
+# desired functionality
+
+```
+
+```{r, eval=T, error=TRUE, message=FALSE}
+library(assertthat)
+
+# Tests for assignment 1. Leave this code chunk *unchanged* and 
+# ensure you run the tests *after* the chunk with you answer to 
+# assignment 1. 
+
+assert_that(
+  nominal_interest_rate(pi=.0, m=1, pibar=.02, rbar=.02) <
+    nominal_interest_rate(pi=.02, m=1, pibar=.02, rbar=.02),
+  msg = "Interest rate isn't falling with lowered inflation"
+)
+
+
+assert_that(
+  y_demand(pi=.02,a=0,b=.5,rbar=0.02,m=1,pibar=.02) < 
+    y_demand(pi=.0,a=0,b=.5,rbar=0.02,m=1,pibar=.02),
+  msg = "Demand curve isn't decreasing with higher prices"
+)
+
+assert_that(
+  y_supply(pi=.00,pi_lag=.02, nu=.8, o=0) < 
+    y_supply(pi=.02,pi_lag=.02, nu=.8, o=0),
+  msg = "Supply isn't increasing with higher inflation"
+)
+
+assert_that(
+  nominal_interest_rate(pi=.1, m=2, pibar=.02, rbar=.02)==.18,
+  msg="Interest rate function returns wrong values"
+  )
+
+assert_that(
+  abs(y_demand(pi=1,a=10,b=10,rbar=0.02,m=1,pibar=.02)-.2)<.0001,
+  msg="Demand function returns wrong values"
+)
+
+assert_that(
+  abs(y_supply(pi=-.01,pi_lag=.05, nu=.3, o=.1)+0.5333)<0.001,
+  msg="Supply function returns wrong values"
+)
+
+```
+## Problem 2
+
+```{r, eval=T, error=TRUE, message=TRUE}
+#This problem requires that we create a plot based on the functions we created 
+# in the last problem, and use it to formulate a diagram of the AS/AD model.
+
+# I will use data frames in order to store the output from the functions from 
+# the last task and plot them using ggplot2.
+
+# Problem 2.1
+# First of all, we need to define the variables as presented in the task 
+# description. We store these values in variables in order to ease the process 
+# of using them in equations later in the task.
+
+  a <- 0
+  b <- 0.5
+  m <- 1
+  nu <- 0.8
+  pibar <- 0.02
+  rbar <- 0.02
+  o <- 0
+  pi_lag <- pibar
+  
+# As the figure is based on the inflation in the economy, we can store a 
+# sequence of values for pi in a data frame in order to simulate different 
+# figures for inflation in the economy. The we use the specified functions from 
+# Problem 1 in order to calculate the output gap from demand and supply in the economy.
+
+  y_output <- 
+    tibble(                                                        # Create a data frame
+      pi = seq(-0.5, 0.5, by = .005),                              # Simulate pi values
+      demand_outputgap = y_demand(pi, a, b, rbar, m, pibar),       # Calculate output gap (demand)
+      supply_outputgap = y_supply(pi, pi_lag, nu, o)               # Calculate output gap (supply)
+    )
+  
+# Plot of problem 2.1
+  plot.2.1 <- y_output %>% 
+    ggplot() +
+    
+    # Lines
+    geom_line(aes(x = demand_outputgap, y = pi, col = "Aggregate Demand")) +
+    geom_line(aes(x = supply_outputgap, y = pi, col = "Aggregate Supply")) +
+    guides(size="none") +
+  
+    # Correct legend and labels
+    labs(x = "Output gap",
+         y = "Inflation",
+         title = "AS/AD Model",
+         subtitle = "With set parameters defined in the task",
+         colour = "") +
+
+    # Visual improvements
+    theme_clean() +
+    theme(legend.position = "bottom")
+
+  plot.2.1
+  
+# Problem 2.2
+#To solve the next task I have chosen to redefine the `y_output`data frame, 
+# and add values in order to simulate the demand and supply shocks that follow 
+# this task. First of all i added two new variables to the script, `a_2` and `o_2`. 
+  
+  a_2 <- 0.1      # A change representing a demand shock
+  o_2 <- 0.1      # A change representing a supply shock
+  
+# With these new values to represent a shock in the economy I will plot the 
+# following effects in a diagram similat to the one stored in `plot.2.1`.
+  
+  y_output <- 
+    tibble(
+      pi = seq(-0.5, 0.5, by = .005),
+      demand_outputgap = y_demand(pi, a, b, rbar, m, pibar),
+      supply_outputgap = y_supply(pi, pi_lag, nu, o),
+      demand_shock = y_demand(pi, a_2, b, rbar, m, pibar),
+      supply_shock = y_supply(pi, pi_lag, nu, o_2)
+      )
+
+# After we have appended these new calculations we can use the existing framework 
+# in order to add the new lined. First of all we can plot the demand shock to 
+# the diagram. The shocks will be represented by dashed lines in the diagrams.
+  
+plot.2.2 <- y_output %>% 
+    ggplot() +
+    
+    # Lines
+    geom_line(aes(x = demand_outputgap, y = pi, col = "Aggregate Demand")) +
+    geom_line(aes(x = supply_outputgap, y = pi, col = "Aggregate Supply")) +
+    geom_line(aes(x = demand_shock, y = pi, col = "Aggregate Demand"), linetype = "dashed") +  # Demand Shock
+    guides(size="none") +
+    
+    # Correct legend and labels
+    labs(x = "Output gap",
+         y = "Inflation",
+         title = "AS/AD Model",
+         subtitle = "With set parameters defined in the task",
+         colour = "") +
+    
+    # Visual improvements
+    theme_clean() +
+    theme(legend.position = "bottom")
+
+plot.2.2
+
+# Problem 2.3
+# With this new framework we can easily append the supply shock to the same 
+# diagram in order to compare and contrast the two and their effects on the 
+# model as a whole. 
+
+plot.2.3 <- 
+    plot.2.2 +
+    geom_line(aes(x = supply_shock, y = pi, col = "Aggregate Supply"), linetype = "dashed")
+
+plot.2.3
+
+# Problem 2.4
+# In this problem we have to change the value of m in order to change how 
+# monetary policy affects the economy. We start this new diagram by defining a 
+# new variable, `m_2` which will represent this change in monetary policy.
+
+  m_2 <- 2
+  
+# Then we can create a new framework in order to visualize the changes in 
+# the m value in the model.
+  
+  y_output_mr <- 
+    tibble(
+      pi = seq(-0.5, 0.5, by = .005),
+      demand_outputgap = y_demand(pi, a, b, rbar, m, pibar),
+      supply_outputgap = y_supply(pi, pi_lag, nu, o),
+      demand_shock = y_demand(pi, a_2, b, rbar, m_2, pibar),
+      supply_shock = y_supply(pi, pi_lag, nu, o_2)
+    )
+  
+# And for the last time we can utilize the framework for the diagram we created 
+# for the previous tasks and use it in order to create a diagram showing the 
+# changes the new m value applies to the model.
+
+  plot.2.4 <- y_output_mr %>% 
+    ggplot() +
+    
+    # Lines
+    geom_line(aes(x = demand_outputgap, y = pi, col = "Aggregate Demand")) +
+    geom_line(aes(x = supply_outputgap, y = pi, col = "Aggregate Supply")) +
+    geom_line(aes(x = demand_shock, y = pi, col = "Aggregate Demand"), linetype = "dashed") +  # Demand Shock
+    geom_line(aes(x = supply_shock, y = pi, col = "Aggregate Supply"), linetype = "dashed") +  # Supply shock
+    guides(size="none") +
+    
+    # Correct legend and labels
+    labs(x = "Output gap",
+         y = "Inflation",
+         title = "AS/AD Model",
+         subtitle = "With set parameters defined in the task",
+         colour = "") +
+    
+    # Visual improvements
+    theme_clean() +
+    theme(legend.position = "bottom")
+
+plot.2.4
+
+# Brief comment on the changes in m
+# The changes in monetary policy from the perspective of the output gap
+# makes it so the aggregate demand is more responsive to changes
+# in the inflation. This is in line with the concept of a higher
+# monetary policy.
+
+```
+
+
+## Problem 3
+
+```{r, eval=T, error=TRUE, message=TRUE}
+
+# In order to solve this problem we need to define a couple of new functions 
+# that will help us to calculate the output gap equilibrium and this inflation 
+# in the economy in time = t. The function for the nominal interest rate R_t 
+# is already defined in the `nominal_interest_rate`-function.
+
+# Function for the output gap  
+  output_gap <- function(a, b, m, nu, o, pi, pi_lag) {
+    y <- (1/(1+(b*m*nu))) * (a - (b*m)*(pi_lag + o - pi))
+    return(y)
+  }
+  
+# Function for inflation
+  inflation_t <- function(pi_lag, nu, y, o) {
+    pi <- (pi_lag + (nu * y) + o)
+    return(pi)
+  }
+
+# I have also chosen to create a simple naming function in order to properly 
+# name the output of the function I have created to create the plots.
+
+  type_shock <- function(type) {
+    if(type == "o") {
+      return("supply")
+    } else {
+      return("demand")} 
+  }
+
+# This function will change it's value based on wheter the shock is a 
+# demand or supply shock.
+
+# I have chosen to use the defined variables from Problem 2 as a framework for 
+# the economy in the status quo of the economy `(t=0)`. The calculations are 
+# also done within the framework of a large function. In hindsight it would 
+# probably be more practical to split some of the the functions functionality 
+# in to smaller functions, but alas here we are.
+
+  simulate_shock <- function(shock_value, shock_variable, m) {            # Create a data frame that will 
+    sim_economy <- tibble(                                                # store the inputs and 
+      t = c(0:10),                                                        # outputs of the simulation
+      a = 0,
+      b = 0.5,
+      m = m,
+      nu = 0.8,
+      o = 0,
+      pibar = 0.02,
+      rbar = 0.02,
+      pi_lag = NA,
+      R_t = NA,
+      pi = NA,
+      y = NA,
+    )
+    
+    # Setup for the shock simulation
+    # These lines sets the stage by defining the "staus quo" in t=0
+    sim_economy$pi_lag[1] <- sim_economy$pibar[1]
+    sim_economy$pi[1] <- sim_economy$pibar[1]
+    sim_economy[[2, shock_variable]] <- shock_value                        # This line sets the shock
+                                                                           # in t=1
+    sim_economy$R_t[1] <- nominal_interest_rate(pi = sim_economy$pi[1],
+                                                m = sim_economy$m[1],
+                                                pibar = sim_economy$pibar[1],
+                                                rbar = sim_economy$rbar[1])
+    sim_economy$y[1] <- output_gap(a = sim_economy$pi[1],
+                                   b = sim_economy$b[1],
+                                   m = sim_economy$m[1],
+                                   nu = sim_economy$nu[1],
+                                   o = sim_economy$o[1],
+                                   pi = sim_economy$pi[1],
+                                   pi_lag = sim_economy$pi_lag[1])
+    
+    
+    # Simulation of the economy
+    for(i in 2:nrow(sim_economy)) {
+      sim_economy$pi_lag[i] <- sim_economy$pi[i-1]                          # Calculating pi lag
+      
+      sim_economy$y[i] <- output_gap(sim_economy$a[i],                      # Calculating Output Gap
+                                     sim_economy$b[i],
+                                     sim_economy$m[i],
+                                     sim_economy$nu[i],
+                                     sim_economy$o[i],
+                                     sim_economy$pibar[i], 
+                                     sim_economy$pi_lag[i])
+      
+      sim_economy$pi[i] <- inflation_t(sim_economy$pi_lag[i],               # Calculation pi
+                                       sim_economy$nu[i],
+                                       sim_economy$y[i],
+                                       sim_economy$o[i])
+      
+      sim_economy$R_t[i] <- nominal_interest_rate(sim_economy$pi[i],        # Calculating R_t
+                                                  sim_economy$m[i],
+                                                  sim_economy$pibar[i],
+                                                  sim_economy$rbar[i])
+    }
+    
+    # Plotting the results
+    plot.sim.econ <- 
+      sim_economy %>% 
+      ggplot() +
+      geom_line(aes(x = t, y = y, col = "Output Gap"))+
+      geom_line(aes(x = t, y = pi, col = "Inflation"))+
+      geom_line(aes(x = t, y = R_t, col = "Interest rate")) +
+      
+      # Labels
+      labs(x = "T",
+           y = "",
+           colour = "",
+           title = paste("Dynamic response to a", type_shock(shock_variable), "shock")) +
+      
+      # Changing the look of the plot
+      theme_clean() +
+      theme(legend.position = "bottom")
+    
+    return(plot.sim.econ)
+  }
+  
+# With the function defined, we can use it in order to see different scenarios
+# where m is equal to 1 and 2, and where there is a supply and demand shock
+# with a shock value equal to 0.1
+  
+  simulate_shock(0.1, "a", 1)
+  simulate_shock(0.1, "o", 1)
+  simulate_shock(0.1, "a", 2)
+  simulate_shock(0.1, "o", 2)
+
+
+
+```
+
+
+## Problem 4
+
+```{r, eval=T, error=TRUE, message=TRUE}
+
+# In order to solve this problem we can create two new functions
+# in order to determine the new y and R_t values with the
+# specified formulas
+  
+  # The 'new' R_t
+  nominal_interest_rate_optimal <- function(rbar, a, b, nu, lambda, pi_lag, pibar, o) {
+    oR_t <- rbar + (a/b) + ((nu/(b*(lambda + (nu^2))))*(pi_lag - pibar + o))
+    return(oR_t)
+  }
+  
+  # The 'new' y
+  output_gap_optimal <- function(nu, b, lambda, pibar, pi_lag, o) {
+    oY <- (nu/(b*(lambda + (nu^2))))*(pibar - pi_lag - o)
+    return(oY)
+  }
+  
+# Then, we can use these formulas in a similar way to the last problem
+# to simulate how the nominal interest rate and output gap will be
+# affected by which model is in use
+  
+  sim_economy_optimal <- tibble(
+    t = c(0:10),
+    a = 0,
+    b = 0.5,
+    m = 2,
+    nu = 0.8,
+    o = 0,
+    pibar = 0.02,
+    rbar = 0.02,
+    lambda = 1,
+    pi_lag = NA,
+    R_t = NA,
+    oR_t = NA,
+    pi = NA,
+    y = NA,
+    oY = NA,
+  )
+
+# Then we need to modify this data frame in order to insert the
+# values that appear in the the status quo reference frame (t=0)
+
+  sim_economy_optimal$pi_lag[1] <- sim_economy_optimal$pibar[1] # Defines the first pi_lag as targeted pi (pibar)
+  sim_economy_optimal$pi[1] <- sim_economy_optimal$pibar[1]     # Sets the first pi as targeted pi
+  sim_economy_optimal[[2, "o"]] <- 0.1                          # This line sets the shock
+                                                                # in t=1
+  sim_economy_optimal$R_t[1] <- nominal_interest_rate(pi = sim_economy_optimal$pi[1], # Set R_t in t=0
+                                              m = sim_economy_optimal$m[1],
+                                              pibar = sim_economy_optimal$pibar[1],
+                                              rbar = sim_economy_optimal$rbar[1])
+  
+  sim_economy_optimal$y[1] <- output_gap(a = sim_economy_optimal$pi[1], # Set y in t=0
+                                 b = sim_economy_optimal$b[1],
+                                 m = sim_economy_optimal$m[1],
+                                 nu = sim_economy_optimal$nu[1],
+                                 o = sim_economy_optimal$o[1],
+                                 pi = sim_economy_optimal$pi[1],
+                                 pi_lag = sim_economy_optimal$pi_lag[1])
+  
+  sim_economy_optimal[[1, "oR_t"]] <-                           # Set optimal R_t
+    nominal_interest_rate_optimal(rbar = sim_economy_optimal[[1, "rbar"]],
+                                  a = sim_economy_optimal[[1, "a"]],
+                                  b = sim_economy_optimal[[1, "b"]],
+                                  nu = sim_economy_optimal[[1, "nu"]],
+                                  lambda = sim_economy_optimal[[1, "lambda"]],
+                                  pi_lag = sim_economy_optimal[[1, "pi_lag"]],
+                                  pibar = sim_economy_optimal[[1, "pibar"]],
+                                  o = sim_economy_optimal[[1, "o"]])
+  
+  sim_economy_optimal[[1, "oY"]] <- 
+    output_gap_optimal(nu = sim_economy_optimal[[1, "nu"]],
+                       b = sim_economy_optimal[[1, "b"]],
+                       lambda = sim_economy_optimal[[1, "lambda"]],
+                       pibar = sim_economy_optimal[[1, "pibar"]],
+                       pi_lag = sim_economy_optimal[[1, "pi_lag"]],
+                       o = sim_economy_optimal[[1, "o"]])
+  
+# Then we can recycle some code from Problem 3 and use it to simulate
+# both the formulas response from (2) and also the optimal formulas
+  
+  for(i in 2:nrow(sim_economy_optimal)) {
+    sim_economy_optimal$pi_lag[i] <- sim_economy_optimal$pi[i-1]                      # Calculating pi lag
+    
+    sim_economy_optimal$y[i] <- output_gap(sim_economy_optimal$a[i],                  # Calculating Output Gap
+                                   sim_economy_optimal$b[i],
+                                   sim_economy_optimal$m[i],
+                                   sim_economy_optimal$nu[i],
+                                   sim_economy_optimal$o[i],
+                                   sim_economy_optimal$pibar[i], 
+                                   sim_economy_optimal$pi_lag[i])
+    
+    sim_economy_optimal$pi[i] <- inflation_t(sim_economy_optimal$pi_lag[i],           # Calculation pi
+                                     sim_economy_optimal$nu[i],
+                                     sim_economy_optimal$y[i],
+                                     sim_economy_optimal$o[i])
+    
+    sim_economy_optimal$R_t[i] <- nominal_interest_rate(sim_economy_optimal$pi[i],    # Calculating R_t
+                                                sim_economy_optimal$m[i],
+                                                sim_economy_optimal$pibar[i],
+                                                sim_economy_optimal$rbar[i])
+    
+    sim_economy_optimal[[i, "oR_t"]] <-                                  # Simulate optimal R_t
+      nominal_interest_rate_optimal(rbar = sim_economy_optimal[[i, "rbar"]],
+                                    a = sim_economy_optimal[[i, "a"]],
+                                    b = sim_economy_optimal[[i, "b"]],
+                                    nu = sim_economy_optimal[[i, "nu"]],
+                                    lambda = sim_economy_optimal[[i, "lambda"]],
+                                    pi_lag = sim_economy_optimal[[i, "pi_lag"]],
+                                    pibar = sim_economy_optimal[[i, "pibar"]],
+                                    o = sim_economy_optimal[[i, "o"]]) 
+    
+    sim_economy_optimal[[i, "oY"]] <-                                    # Simulate optimal oY
+      output_gap_optimal(nu = sim_economy_optimal[[i, "nu"]],
+                         b = sim_economy_optimal[[i, "b"]],
+                         lambda = sim_economy_optimal[[i, "lambda"]],
+                         pibar = sim_economy_optimal[[i, "pibar"]],
+                         pi_lag = sim_economy_optimal[[i, "pi_lag"]],
+                         o = sim_economy_optimal[[i, "o"]])
+      
+  }
+  
+  plot.sim.opt.econ <- 
+    sim_economy_optimal %>% 
+    ggplot() +
+    
+    geom_line(aes(x = t, y = y, col = "Output gap (Non-optimal)")) +
+    geom_line(aes(x = t, y = oY, col = "Output gap (Optimal)")) +
+    geom_line(aes(x = t, y = R_t, col = "Nominal Interest Rate (Non-optimal")) +
+    geom_line(aes(x = t, y = oR_t, col = "Nominal Interest Rate (Optimal")) +
+    
+    labs(x = "T",
+         y = "",
+         colour = "",
+         title = "Comparing optimal monetary response to a simplification",
+         subtitle = "Positive supply shock") +
+    
+    # Changing the look of the plot
+    theme_classic() +
+    theme(legend.position = "bottom")
+  
+  plot.sim.opt.econ
+
+# Brief comment
+# As one can see from the generated plot, the simple monetary rule gives
+# a result similar to that of the optimal one. This implies that even though
+# it is not as accurate, one can infer meaningful information from using them
+# on the economy, although it might not be perfect for accurate 
+# interest rate and inflation targeting.
+
+```
+
+
+#### Session info
+
+Leave this part unchanged. The cell below prints which packages and versions were used for creating the html-file. 
+
+```{r, eval=T}
+sessionInfo()
+```

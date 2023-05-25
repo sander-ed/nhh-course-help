@@ -1,0 +1,18 @@
+# This .run file covers task 1-3
+reset;
+model Problem1.mod;
+data Problem1.dat;
+option solver cplex;
+option presolve 0;								# Some extra options to allow for
+option cplex_options 'sensitivity';				# shadow price calculations
+solve;
+
+# This displays the objective value (z) and the optimal solution for x
+display z, x;
+
+# Displaying shadow price, lower bound, RHS, upper bound and slack
+display Reduction, Reduction.down, Reduction.current, Reduction.up, Reduction.slack;
+
+# This displays the tons of redused pollutant for each P
+display {i in POLU} sum {j in FACI} x[j] * r[j,i];
+

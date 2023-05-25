@@ -1,0 +1,38 @@
+reset;
+
+model mod_bandyF1stF2.mod;
+data data_bandy.dat;
+option solver gurobi;
+option gurobi_options 'outlev=1';
+#option solver cplex;
+#option cplex_options 'mipdisplay=4';
+option show_stats 1;
+solve;
+display fobj, x > fixture.txt;
+display w,y > fixture.txt;
+
+####################### Expanded view schedule
+
+param line symbolic;
+param flagTue;
+for {k in Days}{		
+ for{i in Teams}{
+  for{j in Teams:j<>i}{
+     if(x[i,j,k] = 1) then{     
+     let flagTue := 0;
+      for{k2 in Tuesdays}{
+      	if(k2=k) then{
+	   let line:= k & " tirsdag " & i & " vs " & j;
+	   print line > list_MATCHES.txt;
+	   let flagTue := 1;
+	  }#if	
+	}#k2
+	if(flagTue=0) then{
+	   let line:= k & " weekend " & i & " vs " & j;
+	   print line > list_MATCHES.txt;
+	}#if     
+      }#if x            
+  }#i
+ }#j
+}#k
+

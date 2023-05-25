@@ -1,0 +1,217 @@
+set I := CrA, CrB; # crude oils
+set B := lowqc, distilA, distilB, naphtha1, naphtha2; #components
+set P := premium, regular, distilF, super; #final products
+
+set J := CDU1,CDU2; 	#CDU: Crude Distilling Units
+set D := D1, D2; 	#depots
+set K := K1, K2, K3, K4, K5, K6, K7, K8, K9, K10; #markets
+set M := Shutdown,LowMode,HighMode; #running modes
+set T := 0, 1, 2, 3, 4, 5, 6, 7, 8 , 9, 10, 11, 12; #time periods (days)
+
+param Ccrude  # cost of one unit of crude i (30% increase in price from original model)
+	:1		2		3		4		5		6		7		8		9		10		11		12:=
+CrA	70.5	70.5	70.5	70.5	70.5	70.5	73.5	73.5	73.5	73.5	73.5	73.5
+CrB	67.5	67.5	67.5	67.5	67.5	67.5	69		69		69		69		69		69
+;
+
+param R := # amount of component b obtained from refining one unit of crude i in CDU j at running mode m
+[*,*,*,Shutdown] : CDU1 CDU2 :=
+CrA lowqc 		0	 0
+CrA distilA 	0	 0
+CrA distilB 	0	 0
+CrA naphtha1	0	 0
+CrA naphtha2	0	 0
+CrB lowqc 		0	 0
+CrB distilA 	0	 0
+CrB distilB 	0	 0
+CrB naphtha1	0	 0
+CrB naphtha2	0	 0
+[*,*,*,LowMode] : CDU1 	CDU2 :=
+CrA lowqc 		0.1		0.15
+CrA distilA 	0.15	0.25
+CrA distilB 	0.25	0.1
+CrA naphtha1	0.25	0.3
+CrA naphtha2	0.25	0.2
+CrB lowqc 		0.05	0.14
+CrB distilA 	0.15	0.25
+CrB distilB 	0.24	0.16
+CrB naphtha1	0.31	0.1
+CrB naphtha2	0.25	0.35
+[*,*,*,HighMode] : CDU1 CDU2 :=
+CrA lowqc 		0.05	0.05
+CrA distilA 	0.1		0.25
+CrA distilB 	0.25	0.1
+CrA naphtha1	0.2		0.3
+CrA naphtha2	0.4		0.3
+CrB lowqc 		0.04	0.04
+CrB distilA 	0.2		0.1
+CrB distilB 	0.16	0.16
+CrB naphtha1	0.4		0.1
+CrB naphtha2	0.2		0.6
+; 
+
+param N : 	premium 	regular 	distilF 	super := # amount of component b needed in recipe for one unit of product p
+lowqc 		0			0			0			0
+distilA 	0			0.2			0.4			0
+distilB 	0.1			0			0.6			0
+naphtha1	0.4			0.5			0			0.4
+naphtha2 	0.5			0.3			0			0.6
+;
+	     
+param S := # sales price of product p
+premium 576
+regular 525
+distilF 500
+super   550
+;
+ 
+param Cref := #cost of refining one unit of crude i in CDU j at running mode m
+[*,*,Shutdown] : CDU1  CDU2 :=
+CrA 		0 	0
+CrB 		0	0
+[*,*,LowMode] :	CDU1  CDU2 :=
+CrA 		65 	48
+CrB 		65	48
+[*,*,HighMode] : CDU1  CDU2 :=
+CrA 		75 	53
+CrB 		75	53
+;
+
+param Cap := #capacity of CDU j (max amount of total crudes it can process per period) at running mode m
+CDU1 Shutdown 0
+CDU2 Shutdown 0
+CDU1 LowMode  1050
+CDU2 LowMode  1000
+CDU1 HighMode 950
+CDU2 HighMode 900
+;
+
+param Cprod := #cost of producing one unit of product p at the mixer facility
+premium 35
+regular 30
+distilF 25
+super   30
+;
+
+param Ctra1 := 5; #cost of transporting one unit of any component b from the refining to the blending department
+param Ctra2 := #cost of transporting one unit of any product p to depot d
+D1 10
+D2 12
+;
+
+param Ctra3 : 
+	K1  K2  K3  K4  K5  K6  K7  K8	K9  K10:= #cost of transporting one unit of any product p from depot d to market k
+D1	10  12  14  17  20  20  24  26  28  30
+D2	22  20  23  18  16  13  10  11  9   7
+;
+
+param Cinvi := 2; #cost of storing one unit of any crude i at the refinery
+param Cinvb := 4; #cost of storing one unit of any component b at the tanks
+param Cinvp := #cost of storing one unit of any product p at depot d 
+D1 3
+D2 3
+; 
+
+param delta := # demand for product p in market k in period t
+[premium,*,*]:	0	1	2	3	4	5	6	7	8	9	10	11	12	:=
+	K1	0	0	56	57	51	91	89	66	75	65	60	61	62	
+	K2	0	0	9	5	0	2	10	10	4	0	6	13	2	
+	K3	0	0	13	10	2	5	11	12	1	9	1	4	9	
+	K4	0	0	82	88	82	124	132	103	104	95	97	94	97	
+	K5	0	0	29	26	42	44	51	43	40	29	32	40	29	
+	K6	0	0	7	9	0	9	2	5	0	7	10	3	11	
+	K7	0	0	53	54	56	66	61	61	65	48	57	57	54	
+	K8	0	0	23	11	14	26	21	18	21	10	10	20	6	
+	K9	0	0	26	30	31	53	41	44	43	28	35	40	38	
+	K10	0	0	35	32	30	36	44	35	34	30	36	35	35																
+[regular,*,*]:	0	1	2	3	4	5	6	7	8	9	10	11	12	:=
+	K1	0	0	36	41	40	50	58	43	46	36	30	44	24	
+	K2	0	0	81	81	88	91	81	93	87	73	74	83	71	
+	K3	0	0	34	66	65	84	80	71	66	56	60	70	53	
+	K4	0	0	50	58	60	62	51	53	58	45	52	51	47	
+	K5	0	0	111	112	120	126	121	115	113	114	106	109	102	
+	K6	0	0	72	65	91	92	87	88	88	65	66	78	72	
+	K7	0	0	38	31	40	52	67	47	55	43	37	39	28	
+	K8	0	0	46	44	51	42	51	50	51	39	31	37	36	
+	K9	0	0	57	69	65	72	72	69	62	64	53	61	57	
+	K10	0	0	68	63	72	81	73	73	73	56	55	65	51																
+[distilF,*,*]:	0	1	2	3	4	5	6	7	8	9	10	11	12	:=
+	K1	0	0	21	26	20	26	27	16	16	13	15	12	9	
+	K2	0	0	20	17	15	14	19	23	16	1	8	17	9	
+	K3	0	0	23	25	32	28	23	21	33	13	15	22	16	
+	K4	0	0	34	23	23	29	35	35	28	20	14	26	20	
+	K5	0	0	14	17	12	23	14	20	16	11	7	17	8	
+	K6	0	0	5	5	2	6	4	10	0	0	9	0	13	
+	K7	0	0	11	5	13	1	1	9	0	13	7	7	11	
+	K8	0	0	7	10	3	8	11	10	10	0	8	4	13	
+	K9	0	0	12	12	23	11	16	14	15	14	3	10	14	
+	K10	0	0	19	9	11	11	22	10	13	6	6	11	2																
+[super,*,*]:	0	1	2	3	4	5	6	7	8	9	10	11	12	:=
+	K1	0	0	26	33	15	14	17	20	28	7	12	17	2	
+	K2	0	0	2	11	7	9	9	3	12	13	6	4	0	
+	K3	0	0	24	15	24	22	22	24	19	6	16	10	5	
+	K4	0	0	16	26	21	18	22	20	15	14	12	20	7	
+	K5	0	0	18	13	20	15	17	13	20	0	7	5	0	
+	K6	0	0	45	43	43	50	46	43	52	35	42	40	34	
+	K7	0	0	0	6	8	3	1	1	8	10	3	0	6	
+	K8	0	0	25	27	31	39	36	24	34	17	20	25	13	
+	K9	0	0	22	14	19	24	23	21	19	9	15	13	13	
+	K10	0	0	15	15	27	29	25	25	25	15	10	11	17	
+;
+
+param Cmode:= #fixed cost of operating CDU j at running mode m per period
+CDU1 Shutdown 0
+CDU1 LowMode  800
+CDU1 HighMode 1200
+CDU2 Shutdown 0
+CDU2 LowMode  950
+CDU2 HighMode 1350
+;
+
+param Cchange:= #cost of changing running mode at a CDU
+600
+;
+
+param Izero: #Initial values of inventory quantities of each product at each depot
+			D1	D2	:=
+premium		200	200		
+regular		480	550		
+distilF		128	197		
+super		300	235	
+;	
+
+
+param Ifinal: #Final values of inventory quantities of each product at each depot
+			D1	D2 :=
+premium		25	25
+regular		50	50
+distilF		20	30
+super		15	25
+;
+
+param Initmode:=	# Initial mode CDU is running on
+CDU1 Shutdown 1
+CDU2 Shutdown 1
+CDU1 LowMode  0
+CDU2 LowMode  0
+CDU1 HighMode 0
+CDU2 HighMode 0
+;
+
+param Slowqc:=
+110
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

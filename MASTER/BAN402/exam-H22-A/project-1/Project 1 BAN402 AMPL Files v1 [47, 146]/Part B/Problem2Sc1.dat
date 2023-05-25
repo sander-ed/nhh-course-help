@@ -1,0 +1,87 @@
+# Set the parameters of the model
+set Gasoline := G1, G2, G3, G4, G5;
+set Crude := C1, C2, C3, C4;
+set Quality := Octane, Sulphur;
+set Market := M1, M2, M3;
+
+# Aquisition and production of the gasoline ----
+
+param purB := 			# Cost of puchasing a barrel of crude oil
+C1	45
+C2	40
+C3	55
+C4	50
+;
+
+param cost := 			# Production cost of a barrel og finished product
+G1		6
+G2		6
+G3		5
+G4		7
+G5		8
+;
+
+
+param order := 		# The maximum amount of crude oil that can be aquired
+C1 25000
+C2 15000
+C3 1800
+C4 3200
+;
+
+
+# Supervision ----
+
+param hours := 		# The supervision needed to produce a barrel of gasoline
+G1		0.01
+G2		0.01
+G3		0.01
+G4		0.02
+G5		0.02
+;
+
+param maxhours := 520; 		#12*40+2*20
+
+# Markets ----
+
+param demand:		# Minimun amount of gasoline to each market
+	M1		M2		M3		:=
+G1	2700	2500	5000
+G2	3000	2000	4250
+G3	1500	1000	3000
+G4	2000	2000	4000
+G5	1000	1000	2000
+;
+
+param price: 	# The price that can be aquired in each market
+	M1 	M2 	M3	:= 
+G1	78	75	80
+G2	75	80	85
+G3	75	85	90
+G4	85	90	95
+G5	90	92	95
+;
+
+
+# Attribute contents of crude oils
+param attribute:
+	Octane	Sulphur :=
+C1	94		0.01
+C2	90		0.02
+C3	98		0.001
+C4	96		0.003
+;
+
+# The limits of contents of attributes in gasoline mixes. Min for octane and max for sulphur
+param attributelimit:
+	Octane	Sulphur :=
+G1 	88 		0.02
+G2 	90 		0.015
+G3	92 		0.012
+G4 	94 		0.008
+G5 	96 		0.005
+;
+
+
+
+
