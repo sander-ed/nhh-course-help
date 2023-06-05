@@ -1,3 +1,7 @@
-## This is a test
+## Choosing courses for BAN master
 
-Hello this is a markdown test
+Sections:
+
+- Summary
+- Criteria
+- Individual Reviews
