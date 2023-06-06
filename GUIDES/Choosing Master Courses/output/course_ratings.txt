@@ -1,0 +1,4 @@
+| Course   | Learning Outcome                               | Coursework Amount                         | Difficulty                                     | Hours Spent                                 | Lecture Quality                           |
+|:---------|:-----------------------------------------------|:------------------------------------------|:-----------------------------------------------|:--------------------------------------------|:------------------------------------------|
+| BAN400   | <span style = "color:#bf0000">Very High</span> | <span style = "color:#e87910">High</span> | <span style = "color:#e87910">High</span>      | <span style = "color:#1d9908">Medium</span> | <span style = "color:#5ae342">Low</span>  |
+| BAN402   | <span style = "color:#e87910">High</span>      | <span style = "color:#e87910">High</span> | <span style = "color:#bf0000">Very High</span> | <span style = "color:#e87910">High</span>   | <span style = "color:#e87910">High</span> |
