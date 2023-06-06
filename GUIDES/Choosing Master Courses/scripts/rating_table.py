@@ -46,23 +46,23 @@ rate_course('BAN402',
 # Span function
 def span_func(rating):
     if (rating == 1):
-        amount = "Low"
+        amount = "LOW"
         color_code = "#5ae342"
     elif (rating == 2):
-        amount = "Medium"
+        amount = "MEDIUM"
         color_code = "#1d9908"
     elif (rating == 3):
-        amount = "High"
+        amount = "HIGH"
         color_code = "#e87910"
     elif (rating == 4):
-        amount = "Very High"
+        amount = "VERY HIGH"
         color_code = "#bf0000"
     else:
         amount = "Invalid"
         color_code = "#8c8c8c"
 
-    string = f'<span style = "color:{color_code}">{amount}</span>'
-    return (string)
+    s = f'$${{\\color{{{color_code}}}{amount}}}$$'
+    return (s)
 
 
 # Apply the function to each column
