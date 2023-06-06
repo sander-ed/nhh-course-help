@@ -56,9 +56,9 @@ def span_func(rating):
         color_code = "#e87910"
     elif (rating == 4):
         amount = "VERY HIGH"
-        color_code = "#bf0000"
+        color_code = "#e01010"
     else:
-        amount = "Invalid"
+        amount = "invalid"
         color_code = "#8c8c8c"
 
     s = f'$${{\\color{{{color_code}}}{amount}}}$$'

@@ -25,5 +25,5 @@ This scale will be used to grade the various aspects of each course. The scores 
 
 | Course | Learning Outcome               | Coursework Amount         | Difficulty                     | Hours Spent                 | Lecture Quality           |
 | :----- | :----------------------------- | :------------------------ | :----------------------------- | :-------------------------- | :------------------------ |
-| BAN400 | $${\color{#bf0000}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$ | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$ | $${\color{#5ae342}LOW}$$  |
-| BAN402 | $${\color{#e87910}HIGH}$$      | $${\color{#e87910}HIGH}$$ | $${\color{#bf0000}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$   | $${\color{#e87910}HIGH}$$ |
+| BAN400 | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$ | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$ | $${\color{#5ae342}LOW}$$  |
+| BAN402 | $${\color{#e87910}HIGH}$$      | $${\color{#e87910}HIGH}$$ | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$   | $${\color{#e87910}HIGH}$$ |
