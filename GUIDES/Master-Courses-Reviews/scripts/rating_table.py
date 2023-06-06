@@ -73,7 +73,7 @@ for col in course_ratings.columns[1:]:
 markdown_table = course_ratings.to_markdown(index=False)
 
 # The name of the file
-filename = 'GUIDES/Choosing Master Courses/output/course_ratings.txt'
+filename = 'GUIDES/Master-Courses-Reviews/output/course_ratings.txt'
 
 # Open the file in write mode
 with open(filename, 'w', encoding="utf-8") as file:
