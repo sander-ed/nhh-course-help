@@ -1,6 +1,6 @@
 # Choosing courses for BAN master
 
-Choosing courses for the Business Analytics major at NHH can be a difficult task,
+Choosing courses for the Business Analytics major at NHH can be a difficult task, which I personally experienced in August of
 
 **Category Scores**
 
@@ -11,13 +11,13 @@ This scale will be used to grade the various aspects of each course. The scores 
 
 ## Course Ratings
 
-| Course | Learning Outcome               | Coursework Amount         | Difficulty                     | Hours Spent                 | Lecture Quality             | Review Score        |
-| :----- | :----------------------------- | :------------------------ | :----------------------------- | :-------------------------- | :-------------------------- | :------------------ |
-| BAN400 | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$ | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$ | $${\color{#5ae342}LOW}$$    | $${\textbf{8/10}}$$ |
-| BAN402 | $${\color{#e87910}HIGH}$$      | $${\color{#e87910}HIGH}$$ | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$   | $${\color{#e87910}HIGH}$$   | $${\textbf{7/10}}$$ |
-| BAN432 | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$ | $${\textbf{5/10}}$$ |
+| Course | Learning Outcome               | Coursework Amount         | Difficulty                     | Required Code Knowledge     | Lecture Quality             | Group Exam         | Review Score        |
+| :----- | :----------------------------- | :------------------------ | :----------------------------- | :-------------------------- | :-------------------------- | :----------------- | :------------------ |
+| BAN400 | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$ | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$ | $${\color{#5ae342}LOW}$$    | $${\textbf{Yes}}$$ | $${\textbf{8/10}}$$ |
+| BAN402 | $${\color{#e87910}HIGH}$$      | $${\color{#e87910}HIGH}$$ | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$   | $${\color{#e87910}HIGH}$$   | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
+| BAN432 | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$ | $${\textbf{Yes}}$$ | $${\textbf{5/10}}$$ |
 
-This layout is inspired by Marit Helenes [masterfagsguide](https://marithelene.org/2020/08/09/den-store-masterfag-guiden-del-1/), which is a great rescource for choosing BUS and FIE courses.
+This layout is inspired by Marit Helenes masterfagsguide ([Part I](https://marithelene.org/2020/08/09/den-store-masterfag-guiden-del-1/), [Part II](https://marithelene.org/2020/08/17/den-store-masterfag-guiden-del-2/), [Part III](https://marithelene.org/2021/01/25/den-store-masterfag-guiden-del-3/)), which is a great rescource for choosing BUS and FIE courses.
 
 Sections:
 
