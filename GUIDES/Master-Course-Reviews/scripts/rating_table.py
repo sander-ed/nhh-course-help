@@ -95,7 +95,7 @@ course_ratings["Review Score"] = course_ratings["Review Score"].apply(
 markdown_table = course_ratings.to_markdown(index=False)
 
 # The name of the file
-filename = 'GUIDES/Master-Courses-Reviews/output/course_ratings.txt'
+filename = 'GUIDES/Master-Course-Reviews/output/course_ratings.txt'
 
 # Open the file in write mode
 with open(filename, 'w', encoding="utf-8") as file:
