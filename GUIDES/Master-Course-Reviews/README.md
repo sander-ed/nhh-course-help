@@ -17,6 +17,8 @@ This scale will be used to grade the various aspects of each course. The scores 
 | BAN402 | $${\color{#e87910}HIGH}$$      | $${\color{#e87910}HIGH}$$ | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$   | $${\color{#e87910}HIGH}$$   | $${\textbf{7/10}}$$ |
 | BAN432 | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$ | $${\textbf{5/10}}$$ |
 
+This layout is inspired by Marit Helenes [masterfagsguide](https://marithelene.org/2020/08/09/den-store-masterfag-guiden-del-1/), which is a great rescource for choosing BUS and FIE courses.
+
 Sections:
 
 - Summary
