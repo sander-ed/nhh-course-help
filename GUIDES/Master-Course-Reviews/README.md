@@ -1,6 +1,8 @@
 # Choosing courses for BAN master
 
-Choosing courses for the Business Analytics major at NHH can be a difficult task, which I personally experienced in August of
+Choosing courses for the Business Analytics major at NHH can be a difficult task, which I personally experienced in August of 2022. As I knew very few people who had taken BAN as a major before I chose it as my major, I had a lot of questions which was left unanswered before the first lectures of BAN420. This **GUIDES** section of the GitHub-page is therefore dedicated to reviewing the corses I have taken, and explaining the various ins-and-outs of the courses which might make it easier to choose the ones that fit you, and making it easier to choose this techincal, but extremely fulfilling and useful major at NHH.
+
+The courses I have taken at the masters level at NHH are the following:
 
 **Category Scores**
 
