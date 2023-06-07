@@ -4,17 +4,18 @@ courses = ["BAN400", "BAN402", "BUS401E", "BAN432",
            "BAN403", "BAN404", "STR459", "BAN438"]
 
 course_ratings = pd.DataFrame(columns=['Course', 'Learning Outcome',
-                              'Coursework Amount', 'Difficulty', 'Hours Spent', 'Lecture Quality', 'Review Score'])
+                              'Coursework Amount', 'Difficulty', 'Required Code Knowledge', 'Lecture Quality', 'Group Exam', 'Review Score'])
 
 
-def rate_course(course, learning_outcome, coursework_amount, difficulty, hours_spent, lecture_quality, review):
+def rate_course(course, learning_outcome, coursework_amount, difficulty, code_skill, lecture_quality, group_exam, review):
     # Create a new row with the course information and rating
     new_row = pd.DataFrame({'Course': [course],
                             'Learning Outcome': [learning_outcome],
                             'Coursework Amount': [coursework_amount],
                             'Difficulty': [difficulty],
-                            'Hours Spent': [hours_spent],
+                            'Required Code Knowledge': [code_skill],
                             'Lecture Quality': [lecture_quality],
+                            'Group Exam': [group_exam],
                             'Review Score': [review]})
 
     # Append the new row to the course_ratings data frame
@@ -30,24 +31,27 @@ rate_course('BAN400',
             learning_outcome=4,
             coursework_amount=3,
             difficulty=3,
-            hours_spent=2,
+            code_skill=2,
             lecture_quality=1,
+            group_exam = "No",
             review=8)
 
 rate_course('BAN402',
             learning_outcome=3,
             coursework_amount=3,
             difficulty=4,
-            hours_spent=3,
+            code_skill=3,
             lecture_quality=3,
+            group_exam = "Yes",
             review=7)
 
 rate_course('BAN432',
             learning_outcome=4,
             coursework_amount=3,
             difficulty=2,
-            hours_spent=2,
+            code_skill=2,
             lecture_quality=2,
+            group_exam = "Yes",
             review=5)
 
 
@@ -83,6 +87,11 @@ def review_rating(review_score):
 
     return (formatted_s)
 
+def group_exam_func(group_exam):
+    s = f"{group_exam}"
+    formatted_s = f'$${{\\textbf{{{s}}}}}$$'
+    return (formatted_s)
+
 
 # Apply the function to each column
 for col in course_ratings.columns[1:6]:
@@ -90,6 +99,9 @@ for col in course_ratings.columns[1:6]:
 
 course_ratings["Review Score"] = course_ratings["Review Score"].apply(
     review_rating)
+
+course_ratings["Group Exam"] = course_ratings["Group Exam"].apply(
+    group_exam_func)
 
 # Convert DataFrame to markdown
 markdown_table = course_ratings.to_markdown(index=False)
