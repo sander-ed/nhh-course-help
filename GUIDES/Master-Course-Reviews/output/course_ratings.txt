@@ -2,4 +2,4 @@
 |:---------|:-------------------------------|:-------------------------------|:-------------------------------|:----------------------------|:-------------------------------|:-------------------|:--------------------|
 | BAN400   | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$    | $${\color{#5ae342}LOW}$$    | $${\color{#e01010}VERY HIGH}$$ | $${\textbf{No}}$$  | $${\textbf{9/10}}$$ |
 | BAN402   | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
-| BAN432   | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{5/10}}$$ |
+| BAN432   | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
