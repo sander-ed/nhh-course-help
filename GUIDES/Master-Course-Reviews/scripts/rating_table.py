@@ -54,6 +54,15 @@ rate_course('BAN432',
             group_exam = "Yes",
             review=7)
 
+rate_course('BUS401E',
+            learning_outcome=3,
+            coursework_amount=1,
+            difficulty=3,
+            code_skill=1,
+            lecture_quality=4,
+            group_exam = "No",
+            review=8)
+
 
 # :-------------------------------
 # Converting to markdown formatting
