@@ -75,7 +75,7 @@ Having had many courses at NHH, I can honestly not reccomend this course enough.
 
 ### **BAN400 Grade Distribution Fall 2022**
 
-![BAN400 Grade Distribution](assets\images\ban400-grade-dist.jpg)
+![BAN400 Grade Distribution](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Master-Course-Reviews/assets/images/ban400-grade-dist.jpg)
 
 ---
 
