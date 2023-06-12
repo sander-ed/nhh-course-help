@@ -31,7 +31,7 @@ The courses I have taken at the masters level at NHH are the following:
 | :----- | :----------------------------- | :----------------------------- | :----------------------------- | :-------------------------- | :----------------------------- | :----------------- | :------------------ |
 | BAN400 | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$    | $${\color{#5ae342}LOW}$$    | $${\color{#e01010}VERY HIGH}$$ | $${\textbf{No}}$$  | $${\textbf{9/10}}$$ |
 | BAN402 | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
-| BAN432 | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{5/10}}$$ |
+| BAN432 | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
 
 This layout is inspired by Marit Helenes masterfagsguide ([Part I](https://marithelene.org/2020/08/09/den-store-masterfag-guiden-del-1/), [Part II](https://marithelene.org/2020/08/17/den-store-masterfag-guiden-del-2/), [Part III](https://marithelene.org/2021/01/25/den-store-masterfag-guiden-del-3/)), which is a great rescource for choosing BUS and FIE courses.
 
@@ -150,6 +150,48 @@ BAN432 is a course which aims to give the student a good understanding of how to
 
 ### Learning Outcomes
 
-**Rating:**
+**Rating:** ${\color{#e87910}HIGH}$
+
+This goal of this course is to be able to analyze a large set of text in the form using many tools which is present in nearly all BAN courses at NHH. This was the course where I learned descriptive statistics, web-scraping, API usage, tokenization and many other useful tools. Despite the specific focus of the course being text analysis, which may not be directly applicable to other subjects, I found the knowledge and skills I gained in using the R programming language particularly beneficial. This expertise significantly contributed to my performance in advanced courses, specifically BAN400 and subsequent BAN404.
+
+### Coursework Amount
+
+**Rating:** ${\color{#bf0000}VERY HIGH}$
+
+In order to be able to take the exam, there was siz individual assignments, one per week for from around week 3 of the semester. At the end of the course, you also needed to hand in two group assignments. The individual assignments took around 2-3 hours to complete each, whilst the group assignments were much larger in scope. My group was not able to hand in more than 50% of the first group assignment as there was so many other mandatory assignments in other courses at the same time. We did manage to hand them in with around 2-3 days work however. The exam also lasted one week, which was quite heavy after having already having completed BAN402. All in all, I rate the coursework amount to Very High, as it felt like a lot when combining it with BAN400 and BAN402. It is not as bad as BAN402 however, but more demanding than BAN400.
+
+### Difficulty
+
+**Rating:** ${\color{#1d9908}MEDIUM}$
+
+Not particularly demanding when it comes to the difficulty of the course material, as most of the course consists of many small introductions to several fields within textual analysis. The main concept which is delved into a bit further than an introduction is sentiment anlsysi, which was very interesting and the basis of our exam. Although it proved a bit challanging, I would denote is as very difficult, which lead to the medium rating.
+
+### Required Code Knowledge
+
+**Rating:** ${\color{#1d9908}MEDIUM}$
+
+The required code knowledge is still quite low, as most of the core concepts of R is fleshed out in the first lecture. I would classify this course as quite challanging if you are completely new to R and programming, but if you take it at the same time as BAN400 they form a king of symbiosis, as working on one course leads to better skills in the other. I would highly reccomend taking this course at the same time as BAN400 as a form of 15 ECTS introduction to R and its applications, with a focus on textual analysis.
+
+### Lecture Quality
+
+**Rating:** ${\color{#1d9908}MEDIUM}$
+
+The lectures was not bad, although they were nothing to write home about. I found it useful to attend most of them, but I stopped at around the halfway mark, and I found that it did not affect my proficiency at the mandatory tasks. One thing to note is that at least one person on a exam group should have attended most of the lectures, as there were a few things which were only explained in the lectures, and not in the lecture slides or documentation which was relevant for the exam!
+
+### Exam
+
+**Group Exam:** Yes
+
+The exam consisted of a teo parts, which were to be completed in 7 days. The groups had 3-4 people in them. The first and main part of the exam was to write a report based on a set of tasks, with quite specific requirements for completion. The second part consisted of making a presentation which were to be presented orally the week after the exam.
+
+### Review Summary
+
+**Review Score:** ${\textbf{7/10}}$
+
+Overall, the course was useful in my progress as a programmer and made we quite skilled in analyzing both textual and general purpose data. I would reccomend to take this course if you are interested in honing your programming skills, as the weekly projects in both this course and BAN400 made working in R a weekly activity, which I believe is the main reason of my A grade in both courses.
+
+### **BAN432 Grade Distribution Fall 2022**
+
+![BAN402 Grade Distribution](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Master-Course-Reviews/assets/images/ban432-grade-dist.jpg)
 
 ---
