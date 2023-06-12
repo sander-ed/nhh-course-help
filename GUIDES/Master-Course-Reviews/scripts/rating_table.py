@@ -38,21 +38,21 @@ rate_course('BAN400',
 
 rate_course('BAN402',
             learning_outcome=3,
-            coursework_amount=3,
+            coursework_amount=4,
             difficulty=4,
-            code_skill=3,
-            lecture_quality=3,
+            code_skill=2,
+            lecture_quality=2,
             group_exam = "Yes",
             review=7)
 
 rate_course('BAN432',
-            learning_outcome=4,
-            coursework_amount=3,
+            learning_outcome=3,
+            coursework_amount=4,
             difficulty=2,
             code_skill=2,
             lecture_quality=2,
             group_exam = "Yes",
-            review=5)
+            review=7)
 
 
 # :-------------------------------
