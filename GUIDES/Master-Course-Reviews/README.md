@@ -209,3 +209,47 @@ This course is based around a fairly simple business decision of: _What price sh
 By dividing the approach of this questions into several modules, you are taken on a journey which will try to explain how business decisions can impact the revenue, cost and profit of a company, and in turn how the price can impact business decisions.
 
 ### Learning Outcomes
+
+**Rating:** ${\color{#e87910}HIGH}$
+
+Although this course is both considered a mandatory course for BUS profile and a possible elective course in the BAN profile, it leanes heavily on the BUS aspects of the course. I believe this should be considered a positive if chosen by a BAN major. I learned a lot about strategic pricing, capital costs, human impact on costs and price theory in this course, which inspired me to create a new capital costs model for the NHH student accociation (NHHS) when aquiring new equipment inteded for long term use, which can be found [here](https://github.com/sander-ed/nhh-course-help/blob/main/MASTER/BUS401E/nhhs-capital-cost/Velferd%20knytet%20til%20store%20engangsinvesteringer%20i%20NHHS.pdf)! (Norwegian). All in all, the course was very useful in furthering my understanding of an important aspect of many business decisions.
+
+### Coursework Amount
+
+**Rating:** ${\color{#5ae342}LOW}$
+
+I have rated the coursework amount to Low, as the course approval only consisted of one mandatory group assignment at the end of the semester. Although it was not a small assignment, it is by far the lowest amount of work needed to get course approval in my BAN major thus far.
+
+### Difficulty
+
+**Rating:** ${\color{#e87910}HIGH}$
+
+As this course is mostly theoretical, the difficulty could get quite high at some points. The pricing analys lectures from _[Kenneth Fjell](https://www.nhh.no/en/employees/faculty/kenneth-fjell/)_ was really challenging at first, which by their own could put this difficulty tier into Very High. On the other hand, there were many sections of the course which I would consider on the easier side, which combined leads me to rate this course as High difficulty.
+
+### Required Code Knowledge
+
+Not applicable, as no programming is used in this course (Although some excel expecience is very useful in some sections of the course)
+
+### Lecture Quality
+
+**Rating:** ${\color{#bf0000}VERY HIGH}$
+
+I have not taken a course at NHH with such an inspiring professor as _[Joel Berge](https://www.nhh.no/en/employees/faculty/joel-berge/)_. As the course curriculum and foundation is based upon the Norwegian version of this course **BUS401N**, and is created by my favorite bachelor professor _[Trond Bjørnenak](https://www.nhh.no/en/employees/faculty/trond-bjornenak/)_, I knew that atleast the course material would be good going into the course. The amount of joy put into the lectures by Joel, with ice cream in the first and last lectures, active learning sessions which he "forced" us to talk to the person beside us, a cultural curriculum which involved playing songs in the breaks between lectures from artists ranging from Kendrick Lamar, The Beatles and Boy Pablo any many more fantastic initatives I was stunned at the amount of fun I had in these lectures. At the same time, he was able to convey a lot of ideas and perspectives around the lecture material which really made me realize some of the deeper though procceses behind the at times dry theory presented in the lectures. I can not praise these lectures enough, and I felt like Joel really cared about teaching us this curriculum. Although the exam grading might seem strict, I have no bad feeling towards this course as I felt that the perspectives gained from attending these lectures weighed up for my somewhat weak motivation to actually really learn this curriculum.
+
+### Exam
+
+**Group Exam:** No
+
+The exam is very similar in structure to the BED-courses at the NHH bachelor, with a certain set of tasks which vary little from year to year. I found the form of the exam to be kind of difficult to re-adapt to after having had a lot of group and report based exams.
+
+### Review Summary
+
+**Review Score:** ${\textbf{8/10}}$
+
+This course has its flaws, but because of the widening of my perspective on business decisions, whilst also having top quality lectures, I would recommend this course to pretty much any NHH masters student which is interested in learning more about how businesses "think" and how this is conveyed in the prices of their products.
+
+### **BUS401E Grade Distribution Fall 2022**
+
+![BUS401E Grade Distribution](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Master-Course-Reviews/assets/images/bus401e-grade-dist.jpg)
+
+---
