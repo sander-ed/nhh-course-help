@@ -1,0 +1,22 @@
+.card-image {
+    height: 12rem;
+    object-fit: cover;
+    object-position: center; /* adjust as needed */
+}
+
+.overlay {
+    background-color: rgba(83, 139, 237, 0.7);
+}
+
+.standard-font {
+    font-family: Helvetica, sans-serif;
+    text-align: left;
+    font-size: 150%;
+}
+
+.custom-class {
+    background-color: <desired-color>;
+    width: 100%;
+    text-align: center;
+    justify-content: center
+}

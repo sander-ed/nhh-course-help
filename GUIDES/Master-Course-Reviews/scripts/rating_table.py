@@ -30,11 +30,11 @@ def rate_course(course, learning_outcome, coursework_amount, difficulty, code_sk
 rate_course('BAN400',
             learning_outcome=4,
             coursework_amount=3,
-            difficulty=3,
-            code_skill=2,
-            lecture_quality=1,
+            difficulty=2,
+            code_skill=1,
+            lecture_quality=4,
             group_exam = "No",
-            review=8)
+            review=9)
 
 rate_course('BAN402',
             learning_outcome=3,
