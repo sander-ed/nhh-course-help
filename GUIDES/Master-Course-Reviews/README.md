@@ -33,6 +33,8 @@ The courses I have taken at the masters level at NHH are the following:
 | BAN402  | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
 | BAN432  | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
 | BUS401E | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$       | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$    | $${\color{#e01010}VERY HIGH}$$ | $${\textbf{No}}$$  | $${\textbf{8/10}}$$ |
+| BAN404  | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$       | $${\color{#e87910}HIGH}$$      | $${\color{#e87910}HIGH}$$   | $${\color{#5ae342}LOW}$$       | $${\textbf{No}}$$  | $${\textbf{4/10}}$$ |
+| BAN438  | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$    | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$ | $${\color{#e87910}HIGH}$$      | $${\textbf{No}}$$  | $${\textbf{6/10}}$$ |
 
 This layout is inspired by Marit Helenes masterfagsguide ([Part I](https://marithelene.org/2020/08/09/den-store-masterfag-guiden-del-1/), [Part II](https://marithelene.org/2020/08/17/den-store-masterfag-guiden-del-2/), [Part III](https://marithelene.org/2021/01/25/den-store-masterfag-guiden-del-3/)), which is a great rescource for choosing BUS and FIE courses.
 
@@ -197,7 +199,7 @@ Overall, the course was useful in my progress as a programmer and made we quite 
 
 ---
 
-## **[BAN401E](https://www.nhh.no/en/courses/strategic-profitability-analysis/) - Strategic Profitability Analysis**
+## **[BUS401E](https://www.nhh.no/en/courses/strategic-profitability-analysis/) - Strategic Profitability Analysis**
 
 This course is based around a fairly simple business decision of: _What price should we take for this item or service?_. The course is divided into the three parts:
 
@@ -253,3 +255,59 @@ This course has its flaws, but because of the widening of my perspective on busi
 ![BUS401E Grade Distribution](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Master-Course-Reviews/assets/images/bus401e-grade-dist.jpg)
 
 ---
+
+## **[BAN404](https://www.nhh.no/en/courses/predictive-analytics-with-r/) - Predictive Analytics with R**
+
+This course aims to give the students a thorough understanding around some of the most common tools used in real world data science thorugh various applications in R. The curriculum includes bootstrapping, classification models, KNN, Splines, GAM models, Decision and Regression Trees, boosting and bagging, SVM and unsupervised learning. With such an array of topics, this course is bound to be interesting right?
+
+### Learning Outcome
+
+**Result:** ${\color{#e87910}HIGH}$
+
+I have put this as high, because the course actually contains a large amount of useful information if you plan to work within data science. How much you actually learn depends heavily on how you approach the exam, which was the main source of my learning. The book (although liked by many of my co-students) was not very good in my opinion, and both the book and lectures made little to no effort to actually convey these topics in an interesting way. At the same time there are no depth in your understanding of these topics, and you need no ability to combine the these topics with eachother to create meaningful analysis. In summary, it was my interest in these topics which made me want to learn more than just the surface level curriculum, not the course itself.
+
+### Coursework Amount
+
+**Rating:** ${\color{#5ae342}LOW}$
+
+In order to get course approval you needed to hand in one group assignment in the middle of the semester. I put in very little effort in this, as it had a due date in the middle of the NHH Symposium, in which I was a group leader. I stopped going to the lectures at around the halfway point as well, so in summary I spent very little time during the semester on this course, which was made possible by the low amount of mandatory work needed to get course approval.
+
+### Difficulty
+
+**Rating:** ${\color{#e87910}HIGH}$
+
+This rating is hard to place for me, as the lectures relied heavily on mathemathical expressions, which made it seem more complicated than it actually was. As soon as I started working on the previous exams, the tasks became very easy very fast. Once I had a solid grasp on how to actually apply these concepts, the mathemathical formulations made sense to me. All in all however, as both the book and lectures relies to heavily on the math theory behind all the presented concepts, I believe that the difficulty is rightfully placed at Hard.
+
+### Required Code Knowledge
+
+**Rating:** ${\color{#e87910}HIGH}$
+
+The code used to answer the tasks in the course is based on an the [ISLR](https://www.statlearning.com/) book's approach to R code. One of my largest gripes with this course is that students who previously took BAN400 and BAN432, for example, must "unlearn" key libraries such as dplyr, magrittr, and ggplot in favor of the base R functions. This creates a poor learning environment, in my opinion, as bad habits are formed when taking this course. An example of this is that no pipes are used in this course, which is a significant part of how students learned to code in BAN400, BAN420, and BAN432. I understand that in order to comply with the ISLR book, the style of code must be somewhat consistent. However, given that this is a mandatory course in the BAN profile, I believe it is possible to create an easier transition between the previously named courses and this course. Considering this, I would rate the required code knowledge as high, as starting from scratch in this course may lead you to develop a lot of bad habits in the long run.
+
+### Lecture Quality
+
+**Rating:** ${\color{#5ae342}LOW}$
+
+The lectures are very important if you want to grasp most of the concepts, but if you are not willing to spend 2-3 hours before each lecture giving yourself a head start with the curriculum for the given lecture, you might as well not attend, as I didn't understand anything when attending these lectures without preparation. I might be an outlier in this case, but to me, the lectures provided me with zero information going into the exam preparation period.
+
+### Exam
+
+**Group Exam:** No
+
+The exam was an 8-hour individual home exam, with two tasks consisting of many smaller tasks. We were assigned to analyze a dataset containing churn data from an insurance company. I really liked the exam, as it was sufficiently challenging while also providing interesting use-cases for the topics covered in the course. The exam was a clear highlight of the course.
+
+### Review Summary
+
+**Review Score:** ${\textbf{4/10}}$
+
+Although I warmed up to the course in the last three weeks before my exam, I did not feel like the course fit in with the otherwise high quality courses in the BAN profile. It is not a bad course by any means, and you learn a lot of useful tools which are heavily used in data science. On the other hand, I feel that this course is a major waste of potential of what could be the most interesting course in the BAN major. I hope this is changed down the line, but at the moment I would not reccomend anyone other than BAN majors to take this course.
+
+### **BAN404 Grade Distribution Spring 2023**
+
+![BAN404 Grade Distribution](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Master-Course-Reviews/assets/images/ban404-grade-dist.jpg)
+
+---
+
+## **[BAN438](https://www.nhh.no/en/courses/application-development-in-python/) - Application Development in Python**
+
+This course
