@@ -27,11 +27,12 @@ The courses I have taken at the masters level at NHH are the following:
 
 ## Course Ratings
 
-| Course | Learning Outcome               | Coursework Amount              | Difficulty                     | Required Code Knowledge     | Lecture Quality                | Group Exam         | Review Score        |
-| :----- | :----------------------------- | :----------------------------- | :----------------------------- | :-------------------------- | :----------------------------- | :----------------- | :------------------ |
-| BAN400 | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$    | $${\color{#5ae342}LOW}$$    | $${\color{#e01010}VERY HIGH}$$ | $${\textbf{No}}$$  | $${\textbf{9/10}}$$ |
-| BAN402 | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
-| BAN432 | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
+| Course  | Learning Outcome               | Coursework Amount              | Difficulty                     | Required Code Knowledge     | Lecture Quality                | Group Exam         | Review Score        |
+| :------ | :----------------------------- | :----------------------------- | :----------------------------- | :-------------------------- | :----------------------------- | :----------------- | :------------------ |
+| BAN400  | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$    | $${\color{#5ae342}LOW}$$    | $${\color{#e01010}VERY HIGH}$$ | $${\textbf{No}}$$  | $${\textbf{9/10}}$$ |
+| BAN402  | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
+| BAN432  | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
+| BUS401E | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$       | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$    | $${\color{#e01010}VERY HIGH}$$ | $${\textbf{No}}$$  | $${\textbf{8/10}}$$ |
 
 This layout is inspired by Marit Helenes masterfagsguide ([Part I](https://marithelene.org/2020/08/09/den-store-masterfag-guiden-del-1/), [Part II](https://marithelene.org/2020/08/17/den-store-masterfag-guiden-del-2/), [Part III](https://marithelene.org/2021/01/25/den-store-masterfag-guiden-del-3/)), which is a great rescource for choosing BUS and FIE courses.
 
@@ -195,3 +196,16 @@ Overall, the course was useful in my progress as a programmer and made we quite 
 ![BAN402 Grade Distribution](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Master-Course-Reviews/assets/images/ban432-grade-dist.jpg)
 
 ---
+
+## **[BAN401E](https://www.nhh.no/en/courses/strategic-profitability-analysis/) - Strategic Profitability Analysis**
+
+This course is based around a fairly simple business decision of: _What price should we take for this item or service?_. The course is divided into the three parts:
+
+- Strategic Analysis (Profit)
+- Costing Analysis (Cost)
+- Pricing Analysis (Revenue)
+- The Human Factor
+
+By dividing the approach of this questions into several modules, you are taken on a journey which will try to explain how business decisions can impact the revenue, cost and profit of a company, and in turn how the price can impact business decisions.
+
+### Learning Outcomes
