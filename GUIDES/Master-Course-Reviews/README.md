@@ -35,6 +35,7 @@ The courses I have taken at the masters level at NHH are the following:
 | BUS401E | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$       | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$    | $${\color{#e01010}VERY HIGH}$$ | $${\textbf{No}}$$  | $${\textbf{8/10}}$$ |
 | BAN404  | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$       | $${\color{#e87910}HIGH}$$      | $${\color{#e87910}HIGH}$$   | $${\color{#5ae342}LOW}$$       | $${\textbf{No}}$$  | $${\textbf{4/10}}$$ |
 | BAN438  | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$    | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$ | $${\color{#e87910}HIGH}$$      | $${\textbf{No}}$$  | $${\textbf{6/10}}$$ |
+| STR459  | $${\color{#1d9908}MEDIUM}$$    | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#e87910}HIGH}$$      | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
 
 This layout is inspired by Marit Helenes masterfagsguide ([Part I](https://marithelene.org/2020/08/09/den-store-masterfag-guiden-del-1/), [Part II](https://marithelene.org/2020/08/17/den-store-masterfag-guiden-del-2/), [Part III](https://marithelene.org/2021/01/25/den-store-masterfag-guiden-del-3/)), which is a great rescource for choosing BUS and FIE courses.
 
@@ -82,6 +83,10 @@ The lectures in this course really are the gold standard of lectures at NHH. Alt
 
 The exam was a 2,5 day exam at the end of December, in which a task was handed out individually at 09:00 on a monday, and was due at 14:15 the following wednesday. I really liked this format, which allowed me to be "stuck" at some parts and still prevail.
 
+Exam Grade: **A**
+
+[Link to my exam in this course](https://github.com/sander-ed/nhh-course-help/tree/main/MASTER/BAN400/exam-H22-A)
+
 ### Review Summary
 
 **Review Score:** ${\textbf{9/10}}$
@@ -108,7 +113,7 @@ This course dives relatively deep into real world use-cases for optimization, an
 
 **Rating:** ${\color{#bf0000}VERY HIGH}$
 
-Let's adress the elephant in the room. Yes, the amount of coursework needed to complete this course are is very high, if not more. The three weeks you spend solving the exams for this course are gruelling, and you will feel like you understand around 20% of everything you do during this time. When people say that the BAN profile is a heavy major, they are most likely referring to this course. On a positive note, you will feel an extreme sense of accomplishment when you deliver the third exam in this course, which personally made me feel like I could take on the world. If you want to get a better grasp of the type of work you will be doing, take a look [here](https://github.com/sander-ed/nhh-course-help/tree/main/MASTER/BAN402/exam-H22-A).
+Let's adress the elephant in the room. Yes, the amount of coursework needed to complete this course are is very high, if not more. The three weeks you spend solving the exams for this course are gruelling, and you will feel like you understand around 20% of everything you do during this time. When people say that the BAN profile is a heavy major, they are most likely referring to this course. On a positive note, you will feel an extreme sense of accomplishment when you deliver the third exam in this course, which personally made me feel like I could take on the world. If you want to get a better grasp of the type of work you will be doing, take at [my exam answer](https://github.com/sander-ed/nhh-course-help/tree/main/MASTER/BAN402/exam-H22-A) from this course.
 
 ### Difficulty
 
@@ -134,6 +139,10 @@ The professor in this course was _[Mario Guajardo](https://www.nhh.no/en/employe
 
 The exam was split into three parts in groups of two. You could change partners during the course, but it was reccomended that you kept the same partner throughout. The first exam was from 15.09.2022 to 23.09.2022, the second exam was from 11.10.2022 to 19.10.2022 and the third exam was 01.11.2022 to 09.11.2022. The second exam was by far the most difficult, so don't make my mistake of being the group leader of Video at the SL Bergen Challange and being admitted to the hospital during this second exam🙃
 The exams were not graded individually, but together after the last exam, which led to a lot of tension, as you would have no idea of how well the exams went throughout the semester.
+
+Exam Grade: **A**
+
+[Link to my exam in this course](https://github.com/sander-ed/nhh-course-help/tree/main/MASTER/BAN402/exam-H22-A)
 
 ### Review Summary
 
@@ -187,6 +196,10 @@ The lectures was not bad, although they were nothing to write home about. I foun
 
 The exam consisted of a teo parts, which were to be completed in 7 days. The groups had 3-4 people in them. The first and main part of the exam was to write a report based on a set of tasks, with quite specific requirements for completion. The second part consisted of making a presentation which were to be presented orally the week after the exam.
 
+Exam Grade: **A**
+
+[Link to my exam in this course](https://github.com/sander-ed/nhh-course-help/tree/main/MASTER/BAN432/exam-H22-A)
+
 ### Review Summary
 
 **Review Score:** ${\textbf{7/10}}$
@@ -201,7 +214,7 @@ Overall, the course was useful in my progress as a programmer and made we quite 
 
 ## **[BUS401E](https://www.nhh.no/en/courses/strategic-profitability-analysis/) - Strategic Profitability Analysis**
 
-This course is based around a fairly simple business decision of: _What price should we take for this item or service?_. The course is divided into the three parts:
+This course is structured around a fairly simple business decision of: _What price should we take for this item or service?_. The course is divided into the three parts:
 
 - Strategic Analysis (Profit)
 - Costing Analysis (Cost)
@@ -243,6 +256,10 @@ I have not taken a course at NHH with such an inspiring professor as _[Joel Berg
 **Group Exam:** No
 
 The exam is very similar in structure to the BED-courses at the NHH bachelor, with a certain set of tasks which vary little from year to year. I found the form of the exam to be kind of difficult to re-adapt to after having had a lot of group and report based exams.
+
+Exam Grade: **B**
+
+[Link to my my exam in this course](https://github.com/sander-ed/nhh-course-help/tree/main/MASTER/BUS401E/exam-H22-B)
 
 ### Review Summary
 
@@ -296,6 +313,10 @@ The lectures are very important if you want to grasp most of the concepts, but i
 
 The exam was an 8-hour individual home exam, with two tasks consisting of many smaller tasks. We were assigned to analyze a dataset containing churn data from an insurance company. I really liked the exam, as it was sufficiently challenging while also providing interesting use-cases for the topics covered in the course. The exam was a clear highlight of the course.
 
+Exam Grade: **A**
+
+[Link to my exam in this course](https://github.com/sander-ed/nhh-course-help/tree/main/MASTER/BAN404/exam-V23-A)
+
 ### Review Summary
 
 **Review Score:** ${\textbf{4/10}}$
@@ -348,12 +369,70 @@ The lecture material from this course was a clear highlight, as it took great in
 
 The exam was an 8 hour individual home exam, in which you had to replicate a currency exchange dashboard from _[Norges Bank](https://www.norges-bank.no/tema/Statistikk/Valutakurser/)_ using Dash and their API. The exam was graded stricly, as many of my co-students felt that they had handed in a "perfect" answer but did not get an A. This is also reflected in the grade distribution.
 
+Exam Grade: **A**
+
+[Link to my exam in this course](https://github.com/sander-ed/nhh-course-help/tree/main/MASTER/BAN438/BAN438-Exam-A)
+
 ### Review Summary
 
 **Review Score:** ${\textbf{6/10}}$
 
-All in all, the course was fun and was curriculum became the foundation on some of my personal projects which I made in the weeks after this exam, which could be considered a positive. However, I believe there are more courses with which teaches more useful skills than the ones taught in this course, which is why the score is lower than some other courses. All in all, I would recommend this course if you want to get better at Python and find creating visualizations fun and rewarding.
+All in all, the course was fun and the curriculum became the foundation of some of my personal projects which I made in the weeks after this exam, which could be considered a positive. However, I believe there are more courses with which teaches more useful skills than the ones taught in this course, which is why the score is lower than some other courses. All in all, I would recommend this course if you want to get better at Python and find creating visualizations fun and rewarding.
 
 ### **BAN438 Grade Distribution Spring 2023**
 
-![BUS401E Grade Distribution](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Master-Course-Reviews/assets/images/ban438-grade-dist.jpg)
+![BAN438 Grade Distribution](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Master-Course-Reviews/assets/images/ban438-grade-dist.jpg)
+
+## **[STR459](https://www.nhh.no/en/courses/artificial-intelligence-and-robotics/) - Artificial Intelligence and Robotics**
+
+This course aims to give an introduction into various applications of AI and Machine Learning models. The course introduces the student to basic data wrangling in Python, some descriptive statistics and various ML models from the SKLearn package in Python. In addition to this there are some applications of Microsoft Azure and other cloud computing services where machine learning is applied to data such as images. This part of the course is very small however, and should be considered as a course where Python is the main tool used to conduct data analysis.
+
+### Learning Outcome
+
+**Rating:** ${\color{#1d9908}MEDIUM}$
+
+The course offers a wide array of possible approaches, as the lectures vary in approaches to learning techniques, and the exam is in the form of a project freely chosen by the individual groups. This makes the spread in possible learning outcomes to be very wide, as I for example did not touch much of the actual machine learning parts of the course, and focused on writing the report and programming the descriptive statistics part of the project. A major upside of this course is that the is has some overlap with BAN404, which made me get a better understanding of the curriculum in that course than I would otherwise, which bumps this course rating up to a medium in learning outcome.
+
+### Coursework Amount
+
+**Rating:** ${\color{#e87910}HIGH}$
+
+There was no mandatory coursework except from the exam, which was handed out in march, and was due in april (45 days). My group made some poor choices in distributing the workload over the course of this period, and most of the project was therefore made during the last couple of days of the exam. The reasoning behind putting the coursework amount to high is that even though the exam can be completed in a somewhat timely manner, it took some very long days and a lit of trial and error to get successfull results, which made the amount of work feel quite large at times. If you distribute the load across the allocated 45 days however, the courseload amount could potential be put at a medium.
+
+### Difficulty
+
+**Rating:** ${\color{#1d9908}MEDIUM}$
+
+ALthough the difficulty can be discussed in the same manner as the coursework amount, I would classify it at a medium, as the toughest parts of the course can become quite complicated quite fast, as one really needs to get a solid understanding of several machine learning models, how to use them in a practical setting and interpret the results in a way which relates to an actual business decision.
+
+### Required Code Knowledge
+
+**Rating:** ${\color{#1d9908}MEDIUM}$
+
+The amount of programming experience needed for this course is set to a medium, mostly because some members of a group should be somewhat comfortable in Python, either having taken BAN436 or having had some previous experience. Other than this, all the key programming concepts in the course is gone through either at seminars or in the lectures. One thing to note is that 95% of the students which took this course in the Spring of 2023 were BAN majors, which might tip the scale in other directions other semesters where this might not be the case.
+
+### Lecture Quality
+
+**Rating:** ${\color{#e87910}HIGH}$
+
+The lectures were interesting and they went quite in-depth on some of the machine learning topics. The guest lectures were the highlight of this course, as the guests were highly distinguished in their field and provided great insight into the real world applications of AI and Machine Learning. The seminars could be improved a bit, as they often boiled down to doing a couple of tasks with a TA present then leaving without much interaction.
+
+### Exam
+
+**Group Exam:** Yes
+
+The exam, as explained earlier, consisted of a creating a project chosen by the groups individually. This involved finding a dataset, and defining a couple of end goals which were the foundations of the analysis in the exam. It was tough choosing a task a first, but when we settled on our final idea it became much easier to work on the project.
+
+Exam Grade: **A**
+
+[Link to my exam in this course](https://github.com/sander-ed/nhh-course-help/tree/main/MASTER/STR459/exam-V23-A)
+
+### Review Summary
+
+**Rating:** ${\textbf{7/10}}$
+
+This course was interesting to work on, and I believe that the curriculum has a plethora of transferrable skills within the BAN major, and it was here that I really learned how to write a good descriptive statistics section of a report. Other than the self-imposed strict time limit on the exam, I felt like this course was a nice experience overall, and I would recommend it to pretty much anyone at the NHH masters level if you are interested in learning more about Machine Learning.
+
+### **STR459 Grade Distribution Spring 2023**
+
+![STR459 Grade Distribution](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Master-Course-Reviews/assets/images/str459-grade-dist.jpg)
