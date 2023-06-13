@@ -300,7 +300,7 @@ The exam was an 8-hour individual home exam, with two tasks consisting of many s
 
 **Review Score:** ${\textbf{4/10}}$
 
-Although I warmed up to the course in the last three weeks before my exam, I did not feel like the course fit in with the otherwise high quality courses in the BAN profile. It is not a bad course by any means, and you learn a lot of useful tools which are heavily used in data science. On the other hand, I feel that this course is a major waste of potential of what could be the most interesting course in the BAN major. I hope this is changed down the line, but at the moment I would not reccomend anyone other than BAN majors to take this course.
+Although I warmed up to the course in the last three weeks before my exam, I did not feel like the course fit in with the otherwise high quality courses in the BAN profile. It is not a bad course by any means, and you learn a lot of useful tools which are heavily used in data science. On the other hand, I feel that this course is a major waste of potential of what could be the most interesting course in the BAN major. I hope this is changed down the line, but at the moment I would not recommend anyone other than BAN majors to take this course.
 
 ### **BAN404 Grade Distribution Spring 2023**
 
@@ -310,4 +310,50 @@ Although I warmed up to the course in the last three weeks before my exam, I did
 
 ## **[BAN438](https://www.nhh.no/en/courses/application-development-in-python/) - Application Development in Python**
 
-This course
+The goal of this course is relatively simple; create a visually pleasing and useful dashboard application which can be used to visualize a set of data. The main tool used for the course is Python (in the form of Jupyter Notebooks) and the Dash library. You learn how to import data by API, wrangle it with pandas, and deploy it in a web app created only with Python code. By taking the course you will also get some basic insight into the structure of a HTML website and tools such as Bootstrap, which can help in creating good looking dashboards for a potential end user.
+
+### Learning Outcome
+
+**Rating:** ${\color{#1d9908}MEDIUM}$
+
+Although the course curriculum contains many useful skills and tools which are transferrable to other courses, I felt as though this was an "end-point" rather than a starting point for these skills. I used skills learned in other courses to excel in this course, not the other way around. This fact, combined with the fact that even though you get a good grasp of Python, the dash application is not very transferrable if you do not find it interesting enough to start creating you own custom websites with the knowledge aquired in HTML structuring.
+
+### Coursework Amount
+
+**Rating:** ${\color{#1d9908}MEDIUM}$
+
+In order to get course approval, you needed to hand in one dash application prototype around the middle of the semester. I found this to be quite complicated, because I had not worked enough on the course before this mandatory assignment. This assignment was also given during the NHH Symposium, which did not help with my attention to the coursework. Overall, I would say that the coursework amount was very small, but the tasks which were given took some time to get the hang of.
+
+### Difficulty
+
+**Rating:** ${\color{#e87910}HIGH}$
+
+Most parts of the curriculum felt very easy to get a grasp of when coming from a BAN major background, but having had no previous experience with HTML, I found that some aspects of the Dash library was difficult to master. The main issue which I believe many struggled with was the callback functions in Dash. These emulate the syntax of actual HTML, which makes sense given that you are creating a web app. On the other hand, it felt very unnatural to retrieve and output data based on classes and HTML components instead of variables, and I would highly recommend that if you take this course, that you spend some time in the middle of the semester to get a solid grasp on this concept. I only got the hang of it around 4-5 days before the exam, which was not ideal.
+
+### Required Code Knowledge
+
+**Rating:** ${\color{#1d9908}MEDIUM}$
+
+Previous experience in Python and HTML will help you a great deal in this course, although it is by no means mandatory. BAN436 was offered when I took this course, which acted as a introduction to Python in general, which was very useful in order to get me in the right headspace after not having coded in Python since my first semester at the bachelor level at NHH. I would reccomend BAN436 for nearly all students at NHH, but especially BAN students.
+
+### Lecture Quality
+
+**Rating:** ${\color{#e87910}HIGH}$
+
+The lecture material from this course was a clear highlight, as it took great inspiration from the interactive learning in BAN400. Although the lectures themselves was not very inspiring to say the least, the notebooks which the professor went through was very good, and I found it more efficient and useful to just work my way through the notebooks on my own, as it even contains small tasks which has to be completed throughout the notebooks.
+
+### Exam
+
+**Group Exam:** No
+
+The exam was an 8 hour individual home exam, in which you had to replicate a currency exchange dashboard from _[Norges Bank](https://www.norges-bank.no/tema/Statistikk/Valutakurser/)_ using Dash and their API. The exam was graded stricly, as many of my co-students felt that they had handed in a "perfect" answer but did not get an A. This is also reflected in the grade distribution.
+
+### Review Summary
+
+**Review Score:** ${\textbf{6/10}}$
+
+All in all, the course was fun and was curriculum became the foundation on some of my personal projects which I made in the weeks after this exam, which could be considered a positive. However, I believe there are more courses with which teaches more useful skills than the ones taught in this course, which is why the score is lower than some other courses. All in all, I would recommend this course if you want to get better at Python and find creating visualizations fun and rewarding.
+
+### **BAN438 Grade Distribution Spring 2023**
+
+![BUS401E Grade Distribution](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Master-Course-Reviews/assets/images/ban438-grade-dist.jpg)
