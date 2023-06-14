@@ -4,6 +4,6 @@ Choosing your major can be a daunting task, especially considering the wide arra
 
 Goals:
 - Course Reviews
-- Learning R
-- Learning Python
+- Learning R (interactive)
+- Learning Python (interactive)
 - A answers to exams
