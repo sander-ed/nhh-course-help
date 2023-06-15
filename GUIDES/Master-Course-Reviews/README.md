@@ -114,7 +114,7 @@ This course dives relatively deep into real world use-cases for optimization, an
 
 **Rating:** ${\color{#bf0000}VERY HIGH}$
 
-Let's address the elephant in the room. Yes, the amount of coursework needed to complete this course are is very high, if not more. The three weeks you spend solving the exams for this course are gruelling, and you will feel like you understand around 20% of everything you do during this time. When people say that the BAN profile is a heavy major, they are most likely referring to this course. On a positive note, you will feel an extreme sense of accomplishment when you deliver the third exam in this course, which personally made me feel like I could take on the world. If you want to get a better grasp of the type of work you will be doing, take at [my exam answer](https://github.com/sander-ed/nhh-course-help/tree/main/MASTER/BAN402/exam-H22-A) from this course.
+Let's address the elephant in the room. Yes, the amount of coursework needed to complete this course are is very high, if not more. The three weeks you spend solving the exams for this course are gruelling, and you will feel like you understand around 20% of everything you do during this time. When people say that the BAN profile is a heavy major, they are most likely referring to this course. On a positive note, you will feel an extreme sense of accomplishment when you deliver the third exam in this course, which personally made me feel like I could take on the world. If you want to get a better grasp of the type of work you will be doing, take a look at [my exam answer](https://github.com/sander-ed/nhh-course-help/tree/main/MASTER/BAN402/exam-H22-A) from this course.
 
 ### Difficulty
 
