@@ -1,0 +1,18 @@
+---
+title: "Task 2 Solution Proposal"
+author: "Sander Eide Dahling"
+date: "2023-06-18"
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
+classoption: a4paper
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Task 2 Solution Proposal
+
+First of all, we need to load the relevant libraries used in these tasks. 

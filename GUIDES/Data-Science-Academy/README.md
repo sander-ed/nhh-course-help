@@ -12,4 +12,14 @@ This section is dedicated to creating some tasks which can be completed in order
 
 [The R Training Tasks](Link)
 
+## Links to the individual tasks:
+
+[Task 1 - Top Universities Dataset](https://github.com/sander-ed/nhh-course-help/tree/main/GUIDES/Data-Science-Academy/R-Training-Tasks/Task1-Top-Unis)
+
+- Difficulty: Low
+- Task Type: Data Summarization
+- Topics: Dplyr (Filter, Mutate, Pipes)
+
+[Task 2 - Premier League Fixtures 23/24]()
+
 # R Learning Resources
