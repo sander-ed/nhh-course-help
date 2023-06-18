@@ -6,13 +6,18 @@ Transitioning to the Business Analytics major at NHH marked a significant turnin
 
 The goal of this section is to provide some guidelines as to how one can improve ones programming skills, provide some tasks which can be used for practice, list some great resources for learning and finally give some tips heading into an eventual exam.
 
+# R Learning Resources
+
+- [Link to Cheat Sheets for Data Science](https://github.com/sander-ed/nhh-course-help/tree/main/GUIDES/Data-Science-Academy/R-Learning-Resources/Cheat-Sheets)
+- [Link to useful Online Resources to learn R](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Data-Science-Academy/R-Learning-Resources/Learning-Platforms/README.md)
+
 # R Training Tasks
 
 This section is dedicated to creating some tasks which can be completed in order to get better at programming and data science in general. I would recommend that you try to solve the tasks yourself, and then look at my proposed solutions to the tasks. Some of the tasks might seem easy, some might seem hard. Either way, I believe that you will find yourself getting better for each solved task (as long as you don't rely too heavily on ChatGPT😅)
 
 [The R Training Tasks](https://github.com/sander-ed/nhh-course-help/tree/main/GUIDES/Data-Science-Academy/R-Training-Tasks)
 
-## Links to the individual tasks:
+## Links to the individual tasks: (WORK IN PROGRESS)
 
 [Task 1 - Top Universities Dataset](https://github.com/sander-ed/nhh-course-help/tree/main/GUIDES/Data-Science-Academy/R-Training-Tasks/Task1-Top-Unis)
 
@@ -25,5 +30,3 @@ This section is dedicated to creating some tasks which can be completed in order
 - Difficulty: Low
 - Task Type: Wide to Long formatting
 - Topics: Tidyr, Dplyr
-
-# R Learning Resources
