@@ -382,7 +382,91 @@ setwd(current_path)</code></pre>
 <strong>C:/dir/git/nhh-course-help/GUIDES/Data-Science-Academy/R-Training-Tasks/Task1-Top-Unis/[solution]</strong>.
 This might not look the same to you, especially if you are on a Mac.</p>
 <p>With the working directory set up correctly, we can start by loading
-in the data. The data used for this task is a data set gathered from <a href="https://www.kaggle.com/datasets/drahulsingh/top-largest-universities">Kaggle</a>.</p>
+in the data. The data used for this task is a data set gathered from <a href="https://www.kaggle.com/datasets/drahulsingh/top-largest-universities">Kaggle</a>.
+If you are unable to download the data set from this link, you can find
+the data in the “data” folder in the <a href="https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Data-Science-Academy/R-Training-Tasks/Task1-Top-Unis/data/Top-Largest-Universities.csv">Task1</a>
+folder.</p>
+<pre class="r"><code># Importing the data using the read_csv() function from readr
+
+df &lt;- read_csv(&quot;../data/Top-Largest-Universities.csv&quot;)
+
+# Objective 1
+df_1 &lt;- df %&gt;%
+  filter(`Distance / In-Person` == &quot;In-Person&quot;)
+
+# Completed Objective 1
+head(df_1)</code></pre>
+<pre><code>## # A tibble: 6 × 8
+##    Rank Institution              Locat…¹ Conti…² Founded Affil…³ Dista…⁴ Enrol…⁵
+##   &lt;dbl&gt; &lt;chr&gt;                    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;
+## 1     2  California Community C… Califo… North … 1967    Public  In-Per… 2133846
+## 2     3  National University, B… Gazipu… Asia    1992    Public  In-Per… 2097182
+## 3     6  Islamic Azad University Iran    Asia    1982    Private In-Per… 1000000
+## 4    10  National Technological… Mexico  North … 1948 a… Public  In-Per…  620000
+## 5    11  State University of Ne… New Yo… North … 1948    Public  In-Per…  606232
+## 6    12  Tribhuvan University    Kirtip… Asia    1959    Public  In-Per…  604437
+## # … with abbreviated variable names ¹​Location, ²​Continent, ³​Affiliation,
+## #   ⁴​`Distance / In-Person`, ⁵​Enrollment</code></pre>
+<pre class="r"><code># Objective 2
+
+# Here we make use of pipes and dplyr in order to summarise the data frame by Continent, and compute the mean of the enrollment for each continent. Lastly we use the arrange function in dplyr to sort the newly created column in descending order.
+
+df_2 &lt;- df_1 %&gt;% 
+  group_by(Continent) %&gt;% 
+  summarise(average_enrollment = mean(Enrollment)) %&gt;% 
+  arrange(desc(average_enrollment))
+
+# Completed Objective 2
+df_2</code></pre>
+<pre><code>## # A tibble: 5 × 2
+##   Continent     average_enrollment
+##   &lt;chr&gt;                      &lt;dbl&gt;
+## 1 Asia                     432233.
+## 2 North America            324739.
+## 3 Africa                   213600 
+## 4 South America            197179 
+## 5 Europe                   124482.</code></pre>
+<pre class="r"><code># Objective 3
+
+# Here we need to re-use some of the code from the previous task and make some changes to the summarise function.
+
+df_3 &lt;- df_1 %&gt;% 
+  group_by(Continent) %&gt;% 
+  summarise(average_enrollment = mean(Enrollment),
+            number_of_institutions = n()) %&gt;% 
+  arrange(desc(average_enrollment))
+
+# Completed Objective 3
+df_3</code></pre>
+<pre><code>## # A tibble: 5 × 3
+##   Continent     average_enrollment number_of_institutions
+##   &lt;chr&gt;                      &lt;dbl&gt;                  &lt;int&gt;
+## 1 Asia                     432233.                     21
+## 2 North America            324739.                     27
+## 3 Africa                   213600                       2
+## 4 South America            197179                       4
+## 5 Europe                   124482.                      5</code></pre>
+<pre class="r"><code># Objective 4
+
+# Our starting position is once again the data frame df_1, where we need to create a new summarisation function in order to calculate a percentage.
+
+# Creating a copy of the data frame, and add a new column
+df_4 &lt;- df_1 %&gt;% 
+  mutate(PrivateDummy = ifelse(Affiliation == &quot;Private&quot;, 1, 0)) %&gt;% 
+  group_by(Continent) %&gt;% 
+  summarise(private_percentage = mean(PrivateDummy)) %&gt;% 
+  arrange(desc(private_percentage))
+  
+# Completed Objective 4  
+df_4</code></pre>
+<pre><code>## # A tibble: 5 × 2
+##   Continent     private_percentage
+##   &lt;chr&gt;                      &lt;dbl&gt;
+## 1 South America             0.25  
+## 2 Asia                      0.143 
+## 3 North America             0.0370
+## 4 Africa                    0     
+## 5 Europe                    0</code></pre>
 </div>
 
 

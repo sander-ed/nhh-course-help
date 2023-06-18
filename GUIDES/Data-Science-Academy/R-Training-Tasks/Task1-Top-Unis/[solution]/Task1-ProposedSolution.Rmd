@@ -33,6 +33,63 @@ setwd(current_path)
 
 In my example, the working directory will be set to **`r current_path`**. This might not look the same to you, especially if you are on a Mac.
 
-With the working directory set up correctly, we can start by loading in the data. The data used for this task is a data set gathered from [Kaggle](https://www.kaggle.com/datasets/drahulsingh/top-largest-universities). If you are unable to download the data set from this link, you can find the data in the "data" folder in the Task1 folder. 
+With the working directory set up correctly, we can start by loading in the data. The data used for this task is a data set gathered from [Kaggle](https://www.kaggle.com/datasets/drahulsingh/top-largest-universities). If you are unable to download the data set from this link, you can find the data in the "data" folder in the [Task1](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Data-Science-Academy/R-Training-Tasks/Task1-Top-Unis/data/Top-Largest-Universities.csv) folder. 
+
+```{r}
+# Importing the data using the read_csv() function from readr
+
+df <- read_csv("../data/Top-Largest-Universities.csv")
+
+# Objective 1
+df_1 <- df %>%
+  filter(`Distance / In-Person` == "In-Person")
+
+# Completed Objective 1
+head(df_1)
+```
+
+```{r}
+# Objective 2
+
+# Here we make use of pipes and dplyr in order to summarise the data frame by Continent, and compute the mean of the enrollment for each continent. Lastly we use the arrange function in dplyr to sort the newly created column in descending order.
+
+df_2 <- df_1 %>% 
+  group_by(Continent) %>% 
+  summarise(average_enrollment = mean(Enrollment)) %>% 
+  arrange(desc(average_enrollment))
+
+# Completed Objective 2
+df_2
+```
+```{r}
+# Objective 3
+
+# Here we need to re-use some of the code from the previous task and make some changes to the summarise function.
+
+df_3 <- df_1 %>% 
+  group_by(Continent) %>% 
+  summarise(average_enrollment = mean(Enrollment),
+            number_of_institutions = n()) %>% 
+  arrange(desc(average_enrollment))
+
+# Completed Objective 3
+df_3
+```
+
+```{r}
+# Objective 4
+
+# Our starting position is once again the data frame df_1, where we need to create a new summarisation function in order to calculate a percentage.
+
+# Creating a copy of the data frame, and add a new column
+df_4 <- df_1 %>% 
+  mutate(PrivateDummy = ifelse(Affiliation == "Private", 1, 0)) %>% 
+  group_by(Continent) %>% 
+  summarise(private_percentage = mean(PrivateDummy)) %>% 
+  arrange(desc(private_percentage))
+  
+# Completed Objective 4  
+df_4
+```
 
 
