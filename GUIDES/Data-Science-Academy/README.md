@@ -15,8 +15,6 @@ The goal of this section is to provide some guidelines as to how one can improve
 
 This section is dedicated to creating some tasks which can be completed in order to get better at programming and data science in general. I would recommend that you try to solve the tasks yourself, and then look at my proposed solutions to the tasks. Some of the tasks might seem easy, some might seem hard. Either way, I believe that you will find yourself getting better for each solved task (as long as you don't rely too heavily on ChatGPT😅)
 
-[The R Training Tasks](https://github.com/sander-ed/nhh-course-help/tree/main/GUIDES/Data-Science-Academy/R-Training-Tasks)
-
 ## Links to the individual tasks: (WORK IN PROGRESS)
 
 [Task 1 - Top Universities Dataset](https://github.com/sander-ed/nhh-course-help/tree/main/GUIDES/Data-Science-Academy/R-Training-Tasks/Task1-Top-Unis)
