@@ -3,9 +3,9 @@ title: "Task 1 Solution Proposal"
 author: "Sander Eide Dahling"
 date: "2023-06-18"
 output:
-  html_document: default
-  word_document: default
   pdf_document: default
+  word_document: default
+  html_document: default
 classoption: a4paper
 ---
 
