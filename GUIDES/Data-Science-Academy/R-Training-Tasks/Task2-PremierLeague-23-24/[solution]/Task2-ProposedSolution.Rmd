@@ -14,5 +14,76 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 # Task 2 Solution Proposal
+First we need to import all relevant packages to the memory of R. I will make use of the Tidyverse in this task, as it is relatively simple. We will specifically use tidyr and dplyr
 
-First of all, we need to load the relevant libraries used in these tasks. 
+```{r, message = FALSE}
+# Loading relevant libraries into memory
+library(tidyverse)
+```
+
+Before loading in the data, you need to make sure that the working directory of the program is the same as the location of the file. I make sure this is the case by running this code:
+
+```{r}
+# Getting the current path of the source file
+current_path = dirname(rstudioapi::getActiveDocumentContext()$path)
+
+# Then you are able to set the working directory as this file path
+#setwd(current_path)
+```
+
+In my example, the working directory will be set to **`r current_path`**. This might not look the same to you, especially if you are on a Mac.
+
+With the working directory set up correctly, we can start by loading in the data. The data used for this task is a data set gathered from [Kaggle](https://www.kaggle.com/datasets/ethanmitten/premier-league-fixtures-202324). If you are unable to download the data set from this link, you can find the data in the "data" folder in the [Task2](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Data-Science-Academy/R-Training-Tasks/Task2-PremierLeague-23-24/data/FPL_Schedule2324.csv) folder. 
+
+```{r}
+# Loading in the data set
+
+df <- read_csv("../data/FPL_Schedule2324.csv")
+
+head(df)
+```
+
+Here we can see that the data is in the wide format. According to Objective 1, we must make the format "longer".
+
+```{r}
+# Use the tidyr function "pivot_longer" and specify which columns to convert to long format
+df_long <- df %>% 
+  pivot_longer(cols = "GW1":"GW38")
+
+# Completed Objective 1
+head(df_long)
+```
+
+```{r}
+# Changing the names of the columns to make them more readable
+
+df_renamed <- df_long %>% 
+  rename(team = Team,
+         game_week = name,
+         opponent = value)
+
+# Completed Objective 2
+df_renamed
+```
+
+```{r}
+# Using the filter function to only choose a specific set of observations
+df_last_day <- df_renamed %>% 
+  filter(game_week == "GW38",
+         team %in% c("Arsenal", "Liverpool", "Man City"))
+
+# Completed Objective 3
+df_last_day
+```
+
+
+
+
+
+
+
+
+
+
+
+

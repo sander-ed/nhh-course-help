@@ -1,4 +1,4 @@
-# Premier League Fixtures 23/24 Season Dataset
+# Task 2 - Premier League Fixtures 23/24 Season
 
 In this task you will make use of a data set which contains all the Premier League Fixtures for the 2023/2024 season.
 
@@ -8,7 +8,6 @@ In order to complete this task, you must complete four objectives in order. Thes
 
 Objectives:
 
-- **Objective 1:** Remove observations where "Distance/In-person" is not equal to "In-Person"
-- **Objective 2:** Show the average number of students enrolled based on the continent of the Institutions, and sort from high to low.
-- **Objective 3:** Expand the previous table, where you also show the number of observed Institutions from each continent
-- **Objective 4:** Create a new table where the private institution percentage of the total is shown per continent
+- **Objective 1:** Convert the data frame from wide to long format.
+- **Objective 2:** Change the names of the columns to be more readable
+- **Objective 3:** Game Week 38 is the last game of the season. Find the last games of the season for Manchester City, Arsenal and Liverpool (as they are some of the favorites to win)
