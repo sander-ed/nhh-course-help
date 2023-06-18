@@ -1,0 +1,38 @@
+---
+title: "Task 1 Solution Proposal"
+author: "Sander Eide Dahling"
+date: "2023-06-18"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+classoption: a4paper
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Task 1 Solution Proposal
+First we need to import all relevant packages to the memory of R. I will make use of the Tidyverse in this task, as it is relatively simple.
+
+```{r, message = FALSE}
+# Loading relevant libraries into memory
+library(tidyverse)
+```
+
+Before loading in the data, you need to make sure that the working directory of the program is the same as the location of the file. I make sure this is the case by running this code:
+
+```{r}
+# Getting the current path of the source file
+current_path = dirname(rstudioapi::getActiveDocumentContext()$path)
+
+# Then you are able to set the working directory as this file path
+setwd(current_path)
+```
+
+In my example, the working directory will be set to **`r current_path`**. This might not look the same to you, especially if you are on a Mac.
+
+With the working directory set up correctly, we can start by loading in the data. The data used for this task is a data set gathered from [Kaggle](https://www.kaggle.com/datasets/drahulsingh/top-largest-universities). If you are unable to download the data set from this link, you can find the data in the "data" folder in the Task1 folder. 
+
+
