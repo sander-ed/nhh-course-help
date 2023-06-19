@@ -23,6 +23,11 @@ The categories are divided into different scores, on a range from ${\color{#5ae3
 
 This scale will be used to grade the various aspects of each course. The scores of the courses are weighed against each other. If a course has ${\color{#5ae342}LOW}$ **Coursework Amount**, it does not mean that is has no coursework, just that is is low compared to the other possible courses which has been rated. The final review score is based upon my personal preference, and how much I enjoyed taking the course.
 
+Note that there are other great resources which can be used to find reviews and grade distributions of all master courses at NHH! These are:
+
+- [Emnekompasset](https://emnekompasset.nhhs.no/), which can be used to find course reviews
+- [Karakterer](https://karakterer.nhhs.no/), where you can find grade distributions for each course at NHH
+
 The courses I have taken at the masters level at NHH are the following:
 
 ## Course Ratings
