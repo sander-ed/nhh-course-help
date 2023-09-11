@@ -1,0 +1,6 @@
+	sumsquare_error	aic	bic	kl_div	ks_statistic	ks_pvalue
+erlang	35.9296	237.2751	-3060.7098	inf	0.0851	0.0
+gamma	35.9312	237.2662	-3060.6672	inf	0.0851	0.0
+beta	36.187	239.8326	-3047.1282	inf	0.0846	0.0
+norm	37.2468	224.1967	-3033.6075	inf	0.0938	0.0
+expon	228.4592	62.5032	-1323.2011	inf	0.4096	0.0

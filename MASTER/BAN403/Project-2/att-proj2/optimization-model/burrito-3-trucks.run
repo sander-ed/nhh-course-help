@@ -1,0 +1,17 @@
+reset;
+
+model burrito-3-trucks.mod;
+data burrito.dat;
+option solver gurobi;
+option gurobi_options 'outlev=1';
+option show_stats 1;
+solve;
+
+display profit, y, x, z > burrito-3-truck-output.txt;
+display profit, y, x, z;
+
+for {i in I, j in J} {
+    if z[i,j] > 0 then { 
+        printf "Demand from building %s to truck in %s: %g\n", i, j, z[i,j];
+    }
+}

@@ -1,0 +1,23 @@
+set I := I1 , I2, I3, I4 , I5; # Buildings
+set J := J1, J2, J3, J4, J5, J6, J7, J8 ,J9, J10; # Truck locations
+
+param d := #demand for customer i
+I1	29
+I2	28
+I3	36
+I4	22
+I5	24
+;
+
+param c #travel distance from customer i to truck j
+	:J1	J2	J3	J4	J5	J6	J7	J8	J9	J10 :=
+I1	16	11	16	4	3	10	7	4	15	14
+I2	7	12	5	11	14	1	12	7	10	3
+I3	6	11	4	20	23	10	21	16	17	6
+I4	15	14	15	3	4	9	2	5	8	13
+I5	9	14	5	21	24	11	22	17	18	7
+;
+
+param f := 1000; # fixed cost that Guroble has to pay for placing a truck at a potential location
+param r := 100; # revenue per burrito sold
+param k := 40; # ingredient cost per burrito sold
