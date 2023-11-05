@@ -15,7 +15,7 @@ If you press the "Fork" button on this repository, you will be able to create yo
 - New Reviews of masters courses
 - New learning resources you have found
 
-## Step 2: Create anew branch to work on
+## Step 2: Create a new branch to work on
 
 Now you can create a new branch to work on, and the name of this branch should be something other than _main_.
 
