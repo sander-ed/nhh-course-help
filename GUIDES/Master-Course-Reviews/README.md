@@ -32,18 +32,18 @@ The courses I have taken at the masters level at NHH are the following:
 
 ## Course Ratings
 
-| Course  | Learning Outcome               | Coursework Amount              | Difficulty                     | Required Code Knowledge     | Lecture Quality                | Group Exam         | Review Score        |
-| :------ | :----------------------------- | :----------------------------- | :----------------------------- | :-------------------------- | :----------------------------- | :----------------- | :------------------ |
-| BAN400  | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$    | $${\color{#5ae342}LOW}$$    | $${\color{#e01010}VERY HIGH}$$ | $${\textbf{No}}$$  | $${\textbf{9/10}}$$ |
-| BAN402  | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
-| BAN432  | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
-| BUS401E | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$       | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$    | $${\color{#e01010}VERY HIGH}$$ | $${\textbf{No}}$$  | $${\textbf{8/10}}$$ |
-| BAN404  | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$       | $${\color{#e87910}HIGH}$$      | $${\color{#e87910}HIGH}$$   | $${\color{#5ae342}LOW}$$       | $${\textbf{No}}$$  | $${\textbf{4/10}}$$ |
-| BAN438  | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$    | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$ | $${\color{#e87910}HIGH}$$      | $${\textbf{No}}$$  | $${\textbf{6/10}}$$ |
-| STR459  | $${\color{#1d9908}MEDIUM}$$    | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$ | $${\color{#e87910}HIGH}$$      | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
-| BAN403  | $${\color{#1d9908}MEDIUM}$$    | $${\color{#e87910}HIGH}$$      | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$ | $${\color{#5ae342}LOW}$$       | $${\textbf{Yes}}$$ | $${\textbf{3/10}}$$ |
-| ENE452  | $${\color{#5ae342}LOW}$$       | $${\color{#5ae342}LOW}$$       | $${\color{#5ae342}LOW}$$       | $${\color{#5ae342}LOW}$$    | $${\color{#e87910}HIGH}$$      | $${\textbf{No}}$$  | $${\textbf{5/10}}$$ |
-| BANTHE  | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$    | $${\color{#e87910}HIGH}$$   | $${\color{#8c8c8c}invalid}$$   | $${\textbf{Yes}}$$ | $${\textbf{8/10}}$$ |
+| Course  | Learning Outcome               | Coursework Amount              | Difficulty                     | Required Code Knowledge             | Lecture Quality                     | Group Exam         | Review Score        |
+| :------ | :----------------------------- | :----------------------------- | :----------------------------- | :---------------------------------- | :---------------------------------- | :----------------- | :------------------ |
+| BAN400  | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$    | $${\color{#5ae342}LOW}$$            | $${\color{#e01010}VERY HIGH}$$      | $${\textbf{No}}$$  | $${\textbf{9/10}}$$ |
+| BAN402  | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$         | $${\color{#1d9908}MEDIUM}$$         | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
+| BAN432  | $${\color{#e87910}HIGH}$$      | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$         | $${\color{#1d9908}MEDIUM}$$         | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
+| BUS401E | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$       | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$            | $${\color{#e01010}VERY HIGH}$$      | $${\textbf{No}}$$  | $${\textbf{8/10}}$$ |
+| BAN404  | $${\color{#e87910}HIGH}$$      | $${\color{#5ae342}LOW}$$       | $${\color{#e87910}HIGH}$$      | $${\color{#e87910}HIGH}$$           | $${\color{#5ae342}LOW}$$            | $${\textbf{No}}$$  | $${\textbf{4/10}}$$ |
+| BAN438  | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$    | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$         | $${\color{#e87910}HIGH}$$           | $${\textbf{No}}$$  | $${\textbf{6/10}}$$ |
+| STR459  | $${\color{#1d9908}MEDIUM}$$    | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$         | $${\color{#e87910}HIGH}$$           | $${\textbf{Yes}}$$ | $${\textbf{7/10}}$$ |
+| BAN403  | $${\color{#1d9908}MEDIUM}$$    | $${\color{#e87910}HIGH}$$      | $${\color{#e87910}HIGH}$$      | $${\color{#1d9908}MEDIUM}$$         | $${\color{#5ae342}LOW}$$            | $${\textbf{Yes}}$$ | $${\textbf{3/10}}$$ |
+| ENE452  | $${\color{#5ae342}LOW}$$       | $${\color{#5ae342}LOW}$$       | $${\color{#5ae342}LOW}$$       | $${\color{#8c8c8c}Not Applicable}$$ | $${\color{#e87910}HIGH}$$           | $${\textbf{No}}$$  | $${\textbf{5/10}}$$ |
+| BANTHE  | $${\color{#e01010}VERY HIGH}$$ | $${\color{#1d9908}MEDIUM}$$    | $${\color{#1d9908}MEDIUM}$$    | $${\color{#e87910}HIGH}$$           | $${\color{#8c8c8c}Not Applicable}$$ | $${\textbf{Yes}}$$ | $${\textbf{8/10}}$$ |
 
 This layout is inspired by Marit Helenes masterfagsguide ([Part I](https://marithelene.org/2020/08/09/den-store-masterfag-guiden-del-1/), [Part II](https://marithelene.org/2020/08/17/den-store-masterfag-guiden-del-2/), [Part III](https://marithelene.org/2021/01/25/den-store-masterfag-guiden-del-3/)), which is a great resource for choosing BUS and FIE courses.
 
