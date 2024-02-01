@@ -31,3 +31,7 @@ Their responses were a game-changer. From there, I managed to get a firm grip on
 From that point, I made a promise to myself to help the "next wave" of students. I wanted to make their journey a bit easier. My plan was to share my own experiences, write up course reviews, and give a heads-up on which courses might be worth a look. Just one year ago, I knew nothing about any of this. The lack of information almost made me pass up the BAN major, which would have changed my life at NHH completely.
 
 So, I've put together this repository, hoping it will help others. If I can make the major-selection process even a bit easier for just one student, I'll feel like I've done my job. The help I got was invaluable, and I believe it's my turn to help out in return.
+
+## Course Overview
+
+![Course Overview](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Master-Course-Reviews/output/course-overview-img.jpg)
