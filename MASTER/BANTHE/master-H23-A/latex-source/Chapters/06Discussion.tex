@@ -1,0 +1,158 @@
+% ---- Discussion ----
+\label{chap:discussion}
+
+%In the following section, we will discuss the economic and financial implications of our findings, thereby contributing to a comprehensive understanding of the broader impact of our research. Furthermore, it is crucial to acknowledge the limitations inherent in our study, providing a transparent assessment of its boundaries. This discussion extends beyond the present findings, as we outline avenues for further research, identifying areas that warrant additional exploration and investigation. 
+
+% ---- Implications of Findings ----
+
+% Poeng:
+% - Det er mer synlig å endre target price (bloomberg, finansavisen, DN) enn å endre måten man
+%   skriver om selskapet i en rapport
+% - Manage har ikke engang tilgang til rapportene, og dette vet nok analytikerne.
+% - Et annet poeng er at analytikerne har 12-måneders perspektiv, som betyr at de også vegrer seg for å gjøre
+%   forhastede endringer i target price (de vil ikke bli for reaktiv til markedet og er obs på dette selv)
+
+% De fleste variablene fra Xgboost følger en lineær trend
+
+% Har en relativt høy RMSE. Ligger faktorer utenfor modellen vår vi ikke klarer å kontrollere for. Modellen er bedre som et inferensverktøy enn prediksjonsverktøy. Relativt høy RMSE
+
+% Om de er biased og ikke har noe empirisk støtte på at de slår markedet, så operere de egentlig en scam. Gambling hus i profesjonell form. Kan påvirke småsparere som kanskje stoler blindt på proffe
+
+% Knytte sentimentet til behavioral aspektet ved rapportene. Tallene får de ikke gjort mye med. DCF påvirkes også av egne antakelser, f.eks. vekstrate, noe som kan påvirkes av behavioral aspektet
+
+% Konkludere med at return er viktig, men at vi ikke kan helt skille på akkurat hvilken return metric som er sterkest. 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%% STRUKTUR %%%%%%%%%
+
+    % Target Ratio Lag - Sticky
+    
+    % Technical indicators not significant when controlling for return
+
+    % Return seems to be more explanatory. Link to intuitive measures, how they think etc.
+
+    % XGBoost. 3m return har faktisk like mye å si som leverage og p/E ratio. Kule resultater! Sentiment 1 lag fanger kanskje opp en del av effekten til p/e og de andre effektene
+
+    % Naturlig å forvente noe positivt sentiment om de skal rapportere hva som har skjedd
+
+    % Analysere sentimentet og distribusjonen
+
+    % RMSE: relativt høy, noe vi forventet. Kan brukes til inferens, men forsiktig med prediktive formål. 
+
+    % Overordnet: hvordan de tenker, kan det ha noe å si? Påpek at return er den som forklarer mest av alt, selv mer enn sentiment_1lag
+
+% Do short-term price trends affect the sentiment portrayed in equity research reports from Norwegian investment banks on the Oslo Stock Exchange?
+
+%However, Buxbaum et al. \parencite*{buxbaum2019target} find that stock analysts suffer from optimism bias, making their target prices inaccurate while demonstrating a clear preference for buy recommendations compared to sell recommendations. 
+
+\subsection{Sticky Sentiment and Target Prices}
+
+%Notably, , as documented by Bonini et al. \parencite*{bonini2010target}.
+%considering its significance in capturing public attention
+
+Model 6 of Table \ref{tab:reganalystind} reveals a strong effect of the lagged target ratio, explaining 78.9\% of the variation in the current target ratio. This finding underscores the sticky nature of the target ratio, aligning with the insights presented by Bonini et al. \parencite*{bonini2010target}. Similarly, we find a strong dependency between the lagged textual sentiment and current sentiment in Model 1 of Table \ref{tab:reganalystind}. However, this effect is notably weaker compared to the lagged target ratio, confirming our belief that target prices are more sticky than sentiment, providing a more accurate estimate of their opinions on a given stock at time \textit{t}. 
+
+Altering the target price can be seen as a more drastic measure as it is very visible. Customers are notified about the change in target price, and newspapers might write an article about the change, making the change seem more drastic. Given that an ERR on a company usually is written by the same analyst in an investment bank, a change in target price implies a modification of beliefs from the previous report, suggesting a prior error in judgment or the release of important unanticipated information. Analysts are to a larger extent held accountable for changes in target price rather than changes in textual sentiment, potentially causing analysts to be more reluctant to change their target price, evidently causing stickiness in target prices. 
+
+%However, it is crucial to exercise caution in interpreting the results, as the regression coefficients appear somewhat anomalous, with most coefficients displaying a negative trend, except for the highly positive target ratio lag. This anomaly raises concerns about the appropriateness of this regression model for target ratio prediction. Consequently,
+
+The key takeaway is that textual sentiment is less sticky relative to target prices. This prompts a deeper investigation into sentiment analysis, a domain where expressions may be more reflective of analysts' opinions at a given time. This brings us back to our research question of whether short-term price trends impact the textual sentiment in ERRs. 
+
+\subsection{Implications of Findings}
+
+In Model 1 presented in Table \ref{tab:reganalystind}, it was observed that the utilization of the technical indicator MACD did not produce a statistically significant impact on the sentiment expressed in ERRs, consistent with the expectations under the weak form EMH. This result can be attributed to the nature of the MACD, which is based on the most recent 26 trading days, whereas the reports primarily focus on projecting performance over the subsequent year. This suggests a possible indication that analysts may be unbiased and adhere to the weak form of the EMH, thereby questioning the efficacy of technical analysis as outlined by Fama \& Blume \parencite*{fama1966filter} and Jensen \& Bennington \parencite*{jensen1970random}.
+
+However, a notable discovery emerged in the form of a statistically significant coefficient for the 3-month return and RSI. This finding aligns with the research of Fong \parencite*{fong2014trend}, providing support for the potential trend-chasing bias arising from extrapolating short-term growth. Initially unexpected under the weak form EMH, the trend metrics imply that analyst sentiment may be influenced by short-term price trends, corroborating the findings of Bonini et al. \parencite*{bonini2010target}. While this result alone does not necessarily challenge the EMH, it does raise inquiries about the potential implications of investment recommendations and target price assessments. Assuming the weak-form EMH holds, this result is in line with Clarkson et al. \parencite*{clarkson2015target} and Buxbaum et al. \parencite*{buxbaum2019target}, suggesting that analysts may be susceptible to an optimism bias in bull-runs influenced by short term returns and trend-chasing bias.
+
+As presented in Section \ref{sec:implicitbiaserr}, Shefrin \& Belotti \parencite*{shefrin2007behavioral} documents a difference in behavior amongst professional analysts and individual investors, succumbing to the gamblers' fallacy and hot-hand fallacy, respectively. However, we find that professional analysts coincide with individual investors, falling for the hot-hand fallacy. This is documented through the variable importance results from the XGBoost model, presented in Figure \ref{fig:varImp}, showing RSI, MACD, and the 3-month return as some of the most influential factors on sentiment. Interestingly, this finding indicates that professional analysts do not behave differently than individual non-professional investors, coinciding with the findings of Bodnaruk \& Simonov \parencite*{bodnaruk2015financial} and Hon-Snir et al. \parencite*{hon2012stock}. 
+
+% Betyr resultatene våres at de er mer negative ved negative trender? Da skiller våre resultater seg her, det kan være kult
+
+The trend indicator based on the shortest time frame, RSI, explains more of the variance in sentiment compared to the MACD, implying \textit{recency bias}, supporting the findings of Shefrin \& Belotti \parencite*{shefrin2007behavioral}. These findings illustrate how the human mind tends to oversimplify complex situations, succumbing to the psychological tendency to exaggerate the significance of recent events. Whether confronted with positive or negative news, people naturally assume that it will directly translate into improved or worsened performance in the subsequent year. Yet, they may overlook the EMH assertion that stock prices have already adjusted based on the information, potentially exaggerating the significance of news or price trends in their recommendations. This potential bias underscores the need for further exploration into the decision-making processes of equity analysts and their susceptibility to short-term market fluctuations in shaping recommendations and target price assessments.
+
+On the other hand, it is important to recognize that following a strong or negative performance leading up to a report, it is natural to expect a positive or negative sentiment, respectively. This is expected because ERRs discuss recent events in their report, thus affecting the sentiment score. However, under the EMH, the stock price already reflects the given information, rendering the subsequent price movement unpredictable and resembling a \textit{random walk}. Consequently, this should result in a more neutral tone in the analysis, reflecting the uncertainty of the next price move and yielding an overall more neutral sentiment. Our research findings reveal a notably positive and statistically significant coefficient for the 3-month return. This suggests that analysts may suffer from optimism bias or trend-chasing bias, that they do not believe the weak form EMH holds, or they use less sophisticated models as explained through the findings of Clarkson et al. \parencite*{clarkson2015target} and Gleason et al. \parencite*{gleason2013valuation}.
+
+Analysing the sentiment scores across financial reports from Carnegie, DNB, and Pareto reveals patterns providing insights into their reporting practices. Carnegie, the reference group in Table \ref{tab:reganalystind}, systematically exhibits a more positive sentiment compared to DNB Markets and Pareto Securities. This finding implies that Carnegie either have a different reporting standard or tendencies towards optimism bias. The utilization of DNB and Pareto as control variables further illuminates the systematic differences in sentiment, emphasizing the need to consider varying reporting standards among these entities. %To further understand these differences, examining the sentiment distribution underscores the distinct characteristics of each institution. 
+Pareto's long-tailed distribution encompassing both very negative and very positive sentiments, detailed in Figure \ref{fig:sentdist}, contrasts with DNB's conservative stance. Notably, even with the recognition of the Loughran-McDonald dictionary's strong tendency to classify words as negative, Carnegie consistently exhibits a positive sentiment score. This finding, reflected in their sentiment score distribution, underscores the distinctiveness of Carnegie's reporting style. In summary, this analysis does not only highlight systematic differences in sentiment across the investment banks, but also variations in reporting standards, potentially revealing a higher likelihood of optimism bias within Carnegie.
+
+%In terms of inference, the impact of return on sentiment becomes evident. Model 1 in Table \ref{tab:reganalystind} underscores that the three-month return is among the most influential factors on sentiment. This highlights the significance of short-term returns on ERR sentiment, even surpassing the stickiness in beliefs represented through the sentiment lag. Understanding these dynamics is crucial for comprehending the factors shaping analyst opinions. Notably, we observe that both sticky behavior and short-term returns exert a noteworthy influence, indicating that even professional analysts suffer from two major biases. 
+
+According to Shefrin \& Belotti \parencite*{shefrin2007behavioral}, we would expect our trend indicators to have a negative coefficient, due to the excessive faith in mean reversion. However, we find the opposite. Shefrin referred to professional investors and analysts succumbing to the gamblers' fallacy, but we find that the analysts tend to become similar to individual investors and suffer from the hot-hand fallacy instead. This finding is intriguing as it portrays professionals as no different from individual non-professionals, supporting Bodnaruk \& Simonov \parencite*{bodnaruk2015financial} and Hon-Snir et al. \parencite*{hon2012stock}. Note that the MACD is not significant, and the RSI is close to 0. This result would imply that the analysts are unbiased and adhere to the weak-form EMH. 
+
+The XGBoost model returned \textit{RETURN\_3M}, \textit{RSI}, and \textit{MACD} as some of the most important variables in explaining sentiment, presented in Figure \ref{fig:varImp}. Under the weak-form EMH, the trend indicators should not impact a target price forecast. However, the XGBoost results imply that the 3-month simple return, RSI, and MACD are more important in shaping sentiment than traditional valuation techniques and firm-specific factors. Although the relationship between textual sentiment and target ratio tested in Table \ref{tab:regtpmetrics} is modest, the relationship between trend indicators and textual sentiment in ERRs is evident, potentially revealing trend-chasing bias in Norwegian equity research. 
+
+As shown in Figure \ref{fig:reccomendationstime}, the majority of buy recommendations, relative to hold and sell, is evident. This is the same finding Buxbaum et al. \parencite*{buxbaum2019target} documented, a clear preference and overweight of buy recommendations amongst stock analysts, signalling optimism bias. However, trend-chasing bias cannot be identified through this discovery alone. 
+
+%Buxbaum et al. \parencite*{buxbaum2019target} find that stock analysts suffer from optimism bias, making their target prices inaccurate while demonstrating a clear preference for buy recommendations compared to sell recommendations.
+
+So far, we have discussed the implications of our findings given that the EMH holds. However, as mentioned in Section \ref{sec:emh}, markets do not seem to exhibit efficiency in the short term \parencite*{naseer2015efficient}. This fact may alter our discussion, as analysts might consider behavioral biases and market inefficiencies as part of their valuation techniques, referring to Pareto Securities' statement on behavioral technical analyses, presented in Section \ref{sec:ERR}. As discussed, we find that sentiment in ERRs follows trends, either contradicting the EMH or supporting bias in analyst forecasts. One explanation we have not discussed yet is the possibility that analysts use momentum as input, adhering to the findings of Shefrin \& Belotti \parencite*{shefrin2007behavioral}; Winners tend to follow winners and losers tend to follow losers. 
+
+% Gambler's fallacy, hot-hand fallacy. Winners minus losers, are they using behavioral biases to predict returns?
+
+% Raise an important point --> Markets are not efficient in the short term. Thus, we cannot say whether the analysts are biased or whether they are exploiting existing biases
+
+\subsection{Financial and Economic Implications}
+
+% Disclaimer: står mye i disclaimer som kan være viktig å få frem. De tør ikke å stå ansvarlig for det, de fraskriver alt ansvar
+
+%In light of the present findings, it becomes evident that a comprehensive understanding of the subject matter is crucial for shaping the trajectory of future research in financial markets.
+
+%Fong \parencite*{fong2014trend} explains how behavioral biases, such as \textit{trend-chasing bias}, make individuals treat the stock markets as a casino, gambling money. 
+
+
+Stating that analysts are biased and that their performance is based on luck rather than skill entails significant implications and must not be taken lightly. The assumption of trend-chasing bias in ERRs suggests that the financial landscape may inadvertently mirror institutionalized gambling, as explained through the gambling analogy of Fong \parencite*{fong2014trend} in Section \ref{sec:implicitbiaserr}. This analogy emphasizes the potential consequences for less informed investors. Customers are putting their savings at risk based on the opinions of equity research analysts, who have no prerequisite of beating the market under the assumption of bias. This assumption becomes increasingly important when discussing investment management, where professionals receive a portion of the funds for their service. If they do not have any prerequisite to outperform the market, it could be viewed as morally wrong to take fees for a service rooted in luck rather than skill.
+
+Although this thesis refrains from drawing parallels to institutionalized gambling, we find tendencies of trend-chasing bias in their sentiment. The importance of further research on analyst bias and the potential ramifications cannot be overstated. 
+
+\subsection{Limitations}
+
+% Vanskelig å direkte si at de er biased fordi sentiment forklarer ikke hele bildet. Sentiment og hva de faktisk anbefaler er ikke 1:1. Dermed kan vi bare lete etter hint og retning, men ikke dra noen kausal tolkning.
+
+% Kanskje ikke helt representabelt for hele Oslo Børs. Har ingen små volatile selskaper. Kun de 25 største. 
+
+% Vi kan si representabelt for alle store investeringsbanker, men kanskje ikke for nisjebanker som Fearnley securities osv
+
+% Vi sier ingenting om det er sterkere reaksjoner på negative returns/trender enn positive returns. Loss aversion o.l.
+
+% Grunnleggende assumption for trend må kanskje kommenteres
+
+% However, some of our is only true under the assumption that 
+
+Our findings fall short of causal inference regarding bias in analyst forecasts. Textual sentiment depends on many unobservable variables, making it likely that the model suffers from OVB, causing endogeneity issues. Throughout the discussion, we have assumed that the sentiment score accurately identifies the attitude towards a stock, as described under Section \ref{Sec:SentTarget}. Some of the interpretations related to the EMH are only valid under this assumption. Even though we find a dependency between the sentiment and target ratio, stronger empirical evidence is needed to support the assumption. %Thus, we cannot with certainty describe the financial and economic application of our findings.
+
+In acknowledging the limitations of our study, it is important to highlight the omission of distinctions between negative and positive trends. Extensive literature indicates that analyst behavior differs during bull and bear markets \parencite{hanna2020news, kim2007behavior}. Additionally, research suggests a propensity among analysts to defer downgrades while potentially expediting upgrades \parencite{ho2018modelling}. The lack of a nuanced exploration into how positive and negative trends may cause different biases and have a different impact on the sentiment constraints our analysis. Recognizing and incorporating such nuances could enhance the depth and accuracy of our findings.
+
+While examining the OLS and XGBoost model in Chapter \ref{chap:Prediction}, a relatively high RMSE was revealed, aligning with our expectations given the inherent complexity of predicting sentiment. While the models serve as valuable tools for inference and understanding the factors influencing sentiment in ERRs, caution is advised against relying on them for predictive purposes. Recognizing the challenges in forecasting sentiment, we emphasize the utility of our models for insightful analysis rather than predictions.
+
+%Despite the limitations, this study provides valuable insights for further research into the intricate dynamics of sentiment and bias in equity research. 
+
+\subsection{Further Research}
+% Poeng:
+% - For fremtidige undersøkelser kan sentiment være et like godt om ikke bedre mål på hvordan analytikerne blir
+%   påvirket av eksterne faktorer, da det er mer volatilt enn prisforholdet mellom TP og aksjekurs i dag
+
+% I literature review nevner vi en kilde som sier at det er positiv korrelasjon mellom target price og investor sentiment. Vi bør finne noe på dette og si om vi finner samme findings eller ikke
+
+% Negativ korrelasjon mellom P/E og sentiment bør forventes alt annet like --> Fordi høy P/E kan ses på som dyrt, og lav P/E som billig, alt annet like
+
+To advance our research, further refinement of our model is imperative. The complexities inherent in capturing all potential effects on sentiment demand a comprehensive approach that considers variables beyond those initially examined. 
+
+In our thesis, we have identified factors influencing the ERR sentiment. Going further, exploring whether sentiment serves as a reliable predictor of bias is of interest. We recommend building upon our findings to understand whether sentiment can be used to detect bias in target price forecasts, as measured by Das et al. \parencite*{das1998earnings}, shown in Equation \ref{eq:bias} where \textit{1y} denotes one year and target price is defined as \(\hat{P}_{a,t}\).
+\begin{equation}\label{eq:bias}
+    BIAS=\frac{\hat{P}_{a,t}-P_{t+1y}}{P_{t+1y}}
+\end{equation}
+
+In this thesis, we have solely focused on bias among professional analysts. We recommend performing similar research for non-professional investors to understand whether they behave differently from professional analysts, aiming to seek if the findings of Bodnaruk \& Simonov \parencite*{bodnaruk2015financial} and Hon-Snir et al. \parencite*{hon2012stock} applies to the OSE. 
+
+Additionally, exploring the impact of sentiment on financial markets presents a compelling avenue for research, examining whether sentiment fluctuations contribute to market dynamics. Finally, we acknowledge a third dimension overlooked in our study, the companies covered. Delving into this aspect could unveil potential discrepancies or unique patterns tied to specific entities, enhancing the depth and applicability of our findings.
+
+
+

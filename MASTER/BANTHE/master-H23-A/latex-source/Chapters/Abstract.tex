@@ -1,0 +1,37 @@
+%\lipsum[1-2] % dummy text
+
+% The purpose of this thesis
+% This paper presents
+
+%Usually an abstract includes the following.
+
+%A brief introduction to the topic that you're investigating.
+%Explanation of why the topic is important in your field/s.
+%Statement about what the gap is in the research.
+%Your research question/s / aim/s.
+%An indication of your research methods and approach.
+%Your key message.
+%A summary of your key findings.
+%An explanation of why your  findings and key message contribute to the field/s. 
+%In other words, an abstract  includes points covering these questions. 
+
+%What is your paper about?
+%Why is it important?
+%How did you do it?
+%What did you find?
+%Why are your findings important?
+
+%The purpose of this thesis is to explore whether trend-chasing bias can be revealed in Norwegian equity research reports on the Oslo Stock Exchange through sentiment analysis. 
+
+This thesis employs XGBoost and linear regression to reveal whether short-term stock price trends can explain the variance in textual sentiment in Norwegian equity research reports covering the Oslo Stock Exchange, investigating whether trend-chasing bias is present in equity research. The thesis is based on 2,350 equity research reports from the past 5 years covering the 25 largest companies by market capitalization listed on the Oslo Stock Exchange, published by Carnegie, DNB Markets, and Pareto Securities. 
+
+We present empirical evidence demonstrating an enhancement in the predictive efficacy of our model with the integration of short-term stock price trend indicators. Specifically, the incorporation of these indicators resulted in a 2.2\% increase in the linear regression model's explanatory power compared to our reference model. The full model can account for 44.7\% of the variance in textual sentiment. Further, the XGBoost model improves predictive accuracy over the linear model and returns the lagged sentiment, investment bank, financial leverage, and RSI to be the most important variables explaining sentiment, chronologically ordered by variable importance. The 3-month simple return and MACD prove to be similar in variable importance with traditional valuation metrics such as the P/E ratio and firm size. Thus, we find that stock price trend indicators improve the models capacity to explain the sentiment of an equity research report.
+
+However, our findings cannot state that the given dependency is due to trend-chasing bias in Norwegian equity research. The textual sentiment is determined by numerous unobservable variables, making it likely that our model suffers from omitted variable bias, thus causing endogeneity issues. Further, we cannot determine if a change in textual sentiment is attributable to a measurable change in the perception of a company, or the fact that the reports summarize and relay market information. %While our model provides valuable insight into factors affecting the sentiment in equity research reports, caution is advised regarding causal interpretation.  
+
+%remains a relatively unexplored area. 
+%Equity research analysts provide buy/hold/sell recommendations for stocks with a coherent target price, but literature finds empirical support for the existence of systematic biases in these projections. One of the most profound biases in financial forecasting is  The purpose of this thesis is to apply sentiment analysis on Norwegian equity research reports with the intent of revealing any inherent bias. 
+
+\par\vspace*{\fill} % Moves keywords to the bottom of the page
+\textbf{\textit{Keywords --}} Equity Research, Target Price, Textual Sentiment, Trend-Chasing Bias % Add all the keywords associated with your thesis here
+

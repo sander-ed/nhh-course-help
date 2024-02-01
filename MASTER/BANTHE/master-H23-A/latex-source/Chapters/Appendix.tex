@@ -1,0 +1,61 @@
+\section{Table Summary of Final Dataset} \label{appendix:finaldata}
+
+\begin{table}[H] \centering 
+  \caption{Summary Table of Model Dataset} 
+  \label{tab:finalmodeldata} 
+  \resizebox{\textwidth}{!}{
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]
+\toprule \\[-1.8ex] 
+\textbf{Statistic} & \multicolumn{1}{c}{\textbf{N}} & \multicolumn{1}{c}{\textbf{Mean}} & \multicolumn{1}{c}{\textbf{St. Dev.}} & \multicolumn{1}{c}{\textbf{Min}} & \multicolumn{1}{c}{\textbf{Max}} \\ 
+\hline \\[-1.8ex] 
+sentiment & 2,230 & $-$0.143 & 0.310 & $-$1.000 & 1.000 \\ 
+target\_ratio & 2,230 & 0.320 & 0.261 & $-$0.359 & 1.690 \\ 
+sentiment\_1lag & 2,230 & $-$0.141 & 0.313 & $-$1.000 & 1.000 \\ 
+target\_ratio\_1lag & 2,230 & 0.326 & 0.265 & $-$0.359 & 1.690 \\ 
+market\_cap (NOKm) & 2,230 & 118,537 & 167,784 & 3,802 & 1,289,717 \\ 
+time\_on\_OSE & 2,230 & 17.014 & 5.665 & 0.405 & 23.650 \\ 
+dividend & 2,230 & 0.114 & 0.318 & 0 & 1 \\ 
+pe\_ratio & 2,230 & 44.160 & 98.973 & 1.953 & 1,288.444 \\ 
+financial\_leverage & 2,230 & 4.525 & 5.256 & $-$1.000 & 29.074 \\ 
+volatility & 2,230 & 0.330 & 0.160 & 0.087 & 1.545 \\ 
+VIX & 2,230 & 21.511 & 8.225 & 10.160 & 76.450 \\ 
+RETURN\_3M & 2,230 & 0.018 & 0.167 & $-$0.597 & 0.813 \\ 
+MACD & 2,230 & 0.020 & 1.973 & $-$14.264 & 13.485 \\ 
+RSI & 2,230 & 51.326 & 12.929 & 7.890 & 88.049 \\ 
+\bottomrule \\[-1.8ex] 
+\end{tabular} 
+}
+\end{table} 
+
+
+\section{Assumption of Linearity} \label{appendix:linearity}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=1\textwidth]{Images/trend_against_sentiment}
+    \caption{Scatterplots of Stock Trend Indicators Against Textual Sentiment Score}
+    \label{fig:linearity}
+\end{figure}
+
+\clearpage
+
+\section{Correlation Matrix} \label{appendix:corrplot}
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=1.2\textwidth]{Images/corr_plot}
+    \caption{Pearson's Correlation Matrix for Model Data}
+    \label{fig:corr_plot}
+\end{figure}
+
+\clearpage
+
+\section{Assumption of Zero Conditional Mean} \label{appendix:zeroconmean}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=1\textwidth]{Images/residuals_vs_fitted}
+    \caption{Scatterplots of Residuals Against Fitted Values for Model 1 to 4}
+    \label{fig:zeroconmean}
+\end{figure}
+
+

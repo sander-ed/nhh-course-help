@@ -1,0 +1,273 @@
+% ---- Literature Review ----
+
+\subsection{Introducing Equity Research Reports}
+\label{sec:ERR}
+
+Equity research reports (ERR) provided by sell-side analysts establish price targets and buy/hold/sell recommendations for stocks, with the frequency of publication ranging from once to several times annually per covered company. Within an ERR, analysts discuss the potential of a given security and justify a price target, facilitating textual data reflecting the subjective opinions of analysts. Investment banks often have equity research departments. We refer to the analyst companies who make ERRs as \textit{investment banks} throughout the thesis, but be aware that investment banking and equity research differ.
+
+Put simply, analysts provide buy recommendations for companies they believe will perform well and sell recommendations for those expected to underperform. However, there is no universal standardized ranking system for recommendations, leading to discrepancies in interpretation. %Investment banks have individual policies for labeling a stock as a buy, hold, or sell. 
+What one investment bank categorizes as a \textit{buy} may be considered a \textit{hold} by another, highlighting the subjective nature of ERRs. Due to these discrepancies, investment banks are obliged to define their recommendation structure in every ERR, usually under a \textit{Disclaimer} section. %This subjectivity underscores the importance of due diligence and considering multiple sources before making investment decisions. 
+Table \ref{tab:master} illustrates the recommendation structure employed by the investment banks within our dataset (Carnegie, \cite*{carnegie}; DNB Markets, \cite*{dnb}; Pareto Securities, \cite*{pareto}). 
+%This information can retrieved from the \textit{Disclaimer} section in their reports, and can be found in all ERRs.}.
+
+Analysts employ a multifaceted approach while establishing price targets and associated recommendations. Their methodology encompasses several valuation techniques, including cash flow analysis and multiples to assess a security's intrinsic worth. Moreover, as explicitly stated in Pareto Securities' ERRs, analysts may integrate "behavioral technical analyses of underlying market movements" (Pareto Securities, \cite*{paretoAdevinta}, p. 4). This valuation technique incorporates both behavioral and subjective opinions into the analytical process, which, while insightful, also facilitates potential bias in their recommendations.
+%The stock is trading close to its target price and is fairly valued
+\begin{table}[!h]
+    \centering
+    \footnotesize % Reduce font size
+    \setlength{\tabcolsep}{4pt} % Reduce column separation
+    
+    \begin{subtable}{\textwidth}
+        \begin{tabularx}{\linewidth}{ll}
+            \toprule
+            \textbf{Rec.} & \textbf{Definition} \\ 
+            \midrule
+            Buy & Upside of at least 10\% to the target price and with an attractive risk/reward profile \\
+            Hold & Neutral risk/reward profile or the stock is trading relatively near its target price \\ 
+            Sell & Unattractive risk/reward ratio as the stock is trading above its target price \\
+            \bottomrule
+        \end{tabularx}
+        \caption{Carnegie}
+        \label{subtab:carnegie}
+    \end{subtable}
+
+    \begin{subtable}{\textwidth}
+        \begin{tabularx}{\linewidth}{ll}
+            \toprule
+            \textbf{Rec.} & \textbf{Definition} \\ 
+            \midrule
+            Buy & Expected return greater than 10\% within 12 months \\
+            Hold & Expected return between 0 and 10\% within 12 months \\ 
+            Sell & Expected negative return within 12 months \\
+            \bottomrule
+        \end{tabularx}
+        \caption{DNB Markets}
+        \label{subtab:dnb}
+    \end{subtable}
+
+    \begin{subtable}{\textwidth}
+        \begin{tabularx}{\linewidth}{ll}
+            \toprule
+            \textbf{Rec.} & \textbf{Definition} \\ 
+            \midrule
+            Buy & Expects total return to exceed 10\% over the next 12 months \\
+            Hold & Expects total return to be between -10\% and 10\% over the next 12 months \\ 
+            Sell & Expects total return to be negative by more than 10\% over the next 12 months \\
+            \bottomrule
+        \end{tabularx}
+        \caption{Pareto Securities}
+        \label{subtab:pareto}
+    \end{subtable}
+
+    \caption{Recommendation Structure}
+    \label{tab:master}
+\end{table}
+
+There is no universal reporting standard for ERRs, causing each investment bank to have its own tailored format. Reports are usually crafted in a word processing software and exported to PDF. While this choice of format helps maintain the visual integrity of the report, it can present challenges when attempting to extract data from the document. 
+
+  %This particular aspect underscores the importance for analysts and investors to carefully navigate and interpret the content of ERRs, emphasizing the need for robust analytical skills in their evaluation.
+
+ERRs can be obtained from both primary and secondary sources. Primary sources include investment banks and independent research providers, which often produce in-depth reports on specific companies or sectors for their clients. These reports are distributed to individual clients and institutional investors, such as hedge funds and mutual funds. Most ERRs are behind paywalls and financial institutions offer access to their reports through subscription services or proprietary platforms such as Bloomberg and Capital IQ. Secondary sources include financial news outlets, specialized financial websites, and online databases. A plethora of articles referring to a change in the target price of a security can be found in newspapers such as \textit{Dagens Næringsliv} and \textit{Finansavisen}. However, these sources may only provide summaries or excerpts of ERRs, not the full reports justifying their recommendation. %It is important to note that while some reports are publicly available, others may require a subscription or a direct relationship with the producing institution for access. 
+
+ERRs can be distributed as a traditional sell-side analysis or as commissioned research. Naturally, there have been concerns regarding the impartiality of commissioned reports \parencite{gunvaldsen2021difference}, which the EU directive MiFID II tries to mitigate through investor transparency, requiring unbundling of the payments related to the research (Shearman \& Sterling, \cite*{shearmanMiFIDUpdate}). We will solely focus on traditional sell-side analysis in this thesis. 
+
+%Since the directive's inception in 2019, commissioned research has increased \textbf{(KILDE)}, 
+
+\subsection{Literature Review}
+\label{sec:LitReview}
+
+\subsubsection{Implicit Bias in Equity Research} % Thank you ChatGPT :)
+\label{sec:implicitbiaserr}
+
+%må ha noe om bias kan avdekkes i sentiment
+
+Professional investors and equity research analysts have incentives to perform well and make accurate forecasts \parencite{chevalier1997risk}. However, Buxbaum et al. \parencite*{buxbaum2019target} find that stock analysts suffer from optimism bias, making their target prices inaccurate while demonstrating a clear preference for buy recommendations compared to sell recommendations. Bradshaw et al. \parencite*{bradshaw2013sell} found that 38\% of target price predictions are met at the end of a 12-month forecast horizon, concluding that analysts, at best, have limited abilities to furnish accurate forecasts. The same study found that analysts on average expected a return rate 15\% above the actual return with a target price forecast error averaging at 45\%. This can partly be explained by the use of valuation heuristics instead of sophisticated models \parencite{gleason2013valuation}. 
+
+Assuming target prices accurately reflect the intrinsic value of a stock, we should expect the target price to detect over- and underpricing in the market, consequently being negatively correlated with the market sentiment (\cite{buxbaum2019target}). However, Clarkson et al. \parencite*{clarkson2015target} find a positive correlation between target prices and market sentiment, suggesting that analysts are biased. In their empirical study, they discuss optimism bias and the use of less sophisticated valuation methods as two potential explanations for the result.
+
+On the other hand, studies have found evidence supporting analysts and institutional investors outperforming the market on a risk-adjusted basis, concluding that it is a result of skill and not luck \parencite{bhootra2015mutual}. This result holds even when accounting for transaction costs with abnormal returns of 20 to 26 basis points relative to a representable benchmark, as documented by Puckett \& Yan \parencite*{puckett2011interim}. 
+
+While some analysts seem to outperform the market, Bonini et al. \parencite*{bonini2010target} suggest that the accuracy of target price forecasts is limited and tainted by systematic biases. According to their findings, prediction errors exhibit "consistency, autocorrelation, non-mean reversion", and can be "substantial" (\cite{bonini2010target}, p. 2), reaching up to 36.6\%. Moreover, forecasting errors tend to escalate with the size of the firm and the predicted growth in stock prices. It was further identified that momentum and forecasting accuracy exhibit a negative correlation, implying that price trends introduce more bias in stock forecasting. %Analysts are rarely held accountable, nor measured, on their accuracy \textbf{(KILDE)}. The lack of performance monitoring can cause market participants to obtain a misleading understanding of analysts’ behavior \parencite{bonini2010target}. 
+
+According to Shefrin \& Belotti \parencite*{shefrin2007behavioral}, investors' expectations for future returns on the S\&P 500 are dependent on the returns the previous year. This contradicts rational behavior as the previous year's return has limited predictive power for the subsequent year's returns. Shefrin explains this result through both individual and professional investors suffering from \textit{recency bias}, albeit in distinct ways. Individual investors often fall prey to the \textit{hot-hand fallacy}, erroneously assuming that past success guarantees future gains, while professional investors succumb to the \textit{gamblers' fallacy} and the \textit{law of small numbers}. They tend to place excessive faith in \textit{mean reversion}, the idea that historical returns gravitate towards the long-term average. However, this tendency may not hold in the short term. Intriguingly, the target prices in this study suggest a belief in short-term reversals. After a year of positive returns, professionals are inclined to anticipate a subsequent year of negative returns, aligning with the gambler's fallacy as they aim to conform to the long-term mean. Fong \parencite*{fong2014trend} explains how behavioral biases, such as \textit{trend-chasing bias}, make individuals treat the stock markets as a casino. 
+
+Nofer \parencite*{nofer2015crowds} found that following the recommendations from a large group of members in stock prediction communities on the internet yielded a trading strategy that outperformed institutional investors, making the \textit{wisdom of crowds} better than professional recommendations. This result is emphasized by the study of Bodnaruk \& Simonov \parencite*{bodnaruk2015financial} and Hon-Snir et al. \parencite*{hon2012stock} suggesting that financial expertise provides limited value, stating that they find no evidence of analysts outperforming or exhibiting lower behavioral biases than individual non-professional investors. 
+
+%\subsubsection{Motivation}
+%The prevalence of biases among financial analysts is well-documented in existing literature, yet the underlying cause remains a relatively unexplored area. This study delves into the intriguing subject of analyst bias, with a focus on the sentiment portrayed in their reports. Our investigation aims to unravel the roots of bias through the latter. We propose examining whether bias stems from analysts extrapolating short-term returns to unsustainable long-term growth rates. Additionally, we aim to discern if valuable information in their sentiment is not initially observable, providing a nuanced understanding of analyst bias in ERRs.
+
+\subsubsection{Sentiment Analysis in a Financial Context}
+
+% Har det empirisk støtte?
+
+% Fordeler, ulemper?
+
+% Spennende funn?
+
+% Har det blitt funnet bias gjennom sentiment?
+
+Textual analysis is a field of study which aims to extract information from human generated textual data. Analyzing textual sentiment is a common way of decoding the general attitude of a given text based on the context and word choice used to convey information in a textual format \parencite{pang2008opinion}. Sentiment analysis within finance leverages natural language processing techniques to assess the textual tone of financial data, news, and social media content \parencite{towardsdatascienceEvolvedFinancial}. By analyzing textual sentiment, investors and financial institutions can make informed decisions about their investments. Positive sentiments often indicate confidence in a particular asset or market, while negative sentiments may signal caution or skepticism. Sentiment analysis challenges the efficient market hypothesis by suggesting that sentiment holds information about future market movements, potentially leading to short-term deviations from full market efficiency \parencite{chowdhury2014news}. 
+
+Sentiment analysis has become an attractive research field within natural language processing \parencite{cui2023survey}, but whether sentiment analysis is useful in financial markets is not evident. On one hand, the literature finds evidence of sentiment analysis-based models outperforming the market \parencite{nguyen2015sentiment, }, while on the other hand, we find literature referring to sentiment analysis as "virtually useless in financial forecasting" (\cite{lai2023sentiment}, p. 2). %Even though Lai acknowledges a correlation between sentiment and stock market performance, she argues that the absence of a causal link entails that the observed correlation is unsustainable. 
+On the contrary, studies advocate for sentiment analysis as an informative tool within finance. Kearney \& Liu (\cite*{kearney2014textual}, p. 3) emphasize sentiment analysis as an "increasingly important approach" for behavioral finance and revealing inherent bias in stock forecasting, necessitating the need for further research utilizing sentiment analysis.  
+
+%but is challenging to utilize due to domain-specific language and the unavailability of large data sets \parencite{mishev2020evaluation}.
+
+\subsubsection{Detecting Stock Market Trends}
+
+%\textcolor{red}{Markets are not efficient. Winners can follow winners for a while, not mean reversion short term}
+
+Price trends can be used as part of an investment strategy, but there is no standardized method to depict a price trend \parencite{investopediaIdentifyingMarket}. An intuitive way of depicting a trend is visual inspection. While visual inspection is useful, its efficacy diminishes for research purposes. Consequently, technical analysis emerges as a noteworthy approach. Research shows that visual inspection is inferior to technical analysis, arguing that technical analysis can capture small nuances indiscernible to the naked eye \parencite{hojem1988empirical}. Technical analysis is a trading strategy based on studying statistical trends from price and volume data. Advocates of technical analysis believe that information about the future is embedded in price trends, utilizing this to predict price movements \parencite{investopediaTechnicalAnalysis}. 
+
+Various technical indicators exist, including the average directional index, Bollinger Bands, and simple moving averages. However, among the most prominent indicators are the Moving Average Convergence Divergence (MACD) and the Relative Strength Index (RSI) \parencite{chong2008technical, frade2019technical}. Since the inception of the RSI and MACD in the late 1970s, it has become popular amongst traders and analysts \parencite{chong2014revisiting}. Despite its adoption, the indicators have received limited scholarly scrutiny, resulting in inadequate literature assessing their reliability \parencite{ulku2013drivers}. However, this is related to their predictive power, not their ability to define established trends.
+
+Over the years, extensive literature has assessed the profitability of technical analysis. A comprehensive literature review conducted in 2004 revealed that approximately 63\% of the examined studies presented corroborative findings affirming technical analysis' capacity to yield a positive \textit{alpha}, while around 26\% reported a negative \textit{alpha} \parencite{park2004profitability}, which is a portfolio's performance compared to a representable benchmark \parencite{investopediaAlphaWhat}. The remaining 11\% of the studies did not yield statistically significant outcomes. However, despite the predominantly positive outcome, the paper also critiques some of the methodological approaches used, ultimately advocating for further research addressing the deficiencies in testing to provide any conclusive evidence regarding its profitability. 
+
+Han et al. (\cite*{han2013new}, p. 3) assessed technical analysis' profitability relative to the capital asset pricing model and the Fama-French three-factor model, revealing abnormal returns of "great economic importance". However, such strategies necessitate frequent transactions. Upon factoring in the associated trading costs, Bessembinder and Chan \parencite*{bessembinder1998market} observed an incongruity: the inferred break-even cost was lower than the transaction costs prevalent in the market. This disjunction makes it economically unviable to obtain a consistent alpha. This is in line with the vast literature on technical analysis, exemplified by the seminal works of Fama and Blume \parencite*{fama1966filter} and Jensen and Benington \parencite*{jensen1970random}, which arrived at the consensus that technical analysis does not provide substantive utility. 
+
+%FORKLAR FORSKJELLEN PÅ DET VI VIL GJØRE OG VANLIG TEKNISK ANALYSE
+
+% ---- Theory ----
+\subsection{Theory}
+
+\subsubsection{Efficient Market Hypothesis}
+\label{sec:emh}
+
+In 1965, Paul Samuelson and Eugene Fama released one of the most essential hypotheses in financial literature, the efficient market hypothesis (EMH). The EMH argues that the price of a security reflects all information, entailing that no trading strategies can generate a consistent alpha \parencite{jones2008efficient}. New information is quickly incorporated into the market, making the next price move unpredictable, acting as a \textit{random walk}. %The concept of a random walk is a term loosely employed in the finance literature to describe a price trajectory characterized by subsequent price alterations that are stochastic deviations from prior values, making today's price change independent of yesterday’s change \parencite{malkiel2003efficient}. 
+
+The EMH refers to three forms of strength: weak, semi-strong, and strong form. The weak form posits that the stock price reflects historical price data, consequently invalidating technical analysis' efficacy under the weak form EMH (\cite{hudson1996note}). If the semi-strong form holds, the utility of fundamental analysis is invalidated, as this form suggests that all publicly available information is already reflected in the stock price. Accordingly, investors can only derive abnormal returns from information not readily accessible to the public \parencite{investopediaWeakStrong}. The strong form asserts that neither public nor insider information can be exploited to generate profits, positing that the current stock prices accurately reflect the true value of all stocks. 
+
+Extensive research offers empirical evidence of the EMH being violated in the short term \parencite{naseer2015efficient}, documenting a "clear, strong, persistent, well-documented momentum effect" in returns (\cite{shefrin2007behavioral}, p. 7). The core of technical and fundamental analysis is to find deviations from the weak and semi-strong form EMH, respectively, and exploit that information to make consistent profits \parencite{teall2022financial}.
+
+\subsubsection{Behavioral Biases}
+\textit{The hot-hand fallacy} is a cognitive bias that involves the mistaken belief that a person who has experienced success with a random event, is more likely to continue that success in subsequent attempts \parencite{gilovich1985hot}. This fallacy suggests a perception of streaks or patterns in random sequences where, in reality, each event is independent of the previous ones. The hot-hand fallacy can thus be compared to \textit{trend-chasing bias}, which is when investors believe past returns can predict future returns \parencite{fong2014trend}. %This prerequisite that stock returns follows a \textit{random walk}.
+
+The \textit{gambler's fallacy} is the mistaken belief that prior independent events in random processes impact future outcomes \parencite{investopediaGamblersFallacy}. If a coin repeatedly lands on heads, an incorrect assumption is that tails are now more likely. Connected to this fallacy is the \textit{law of small numbers} bias \parencite{tversky1971belief}, assuming that sample observations should conform to broader statistical probabilities. These fallacies reveal the human tendency to misjudge probabilities and seek patterns where they may not exist. 
+
+\textit{Recency bias} is the tendency to overemphasize recent events relative to older events, assuming that current conditions persist \parencite{lee2008analysis, tversky1973availability}. This bias can cause overreactions to short-term fluctuations and suboptimal decisions. 
+
+\textit{Optimism bias} is the tendency to overestimate positive events and underestimate negative events \parencite{scribbrWhatOptimism}. Optimism bias is well-documented in behavioral finance. Investors affected by optimism bias may believe that their investment portfolios are less susceptible to losses than objective assessments would suggest, potentially resulting in riskier financial decisions.
+
+\subsubsection{Trend Indicators}
+
+The MACD is a trend-following momentum indicator (\cite{investopediaMACDIndicator}) utilizing exponential moving averages (EMA). The indicator consists of the \textit{MACD line} and the \textit{signal line}, studying their relationship. The MACD line is given by the difference between the 26-period EMA and the 12-period EMA, while the signal line is the 9-period EMA of the MACD line (\cite{chong2014revisiting}). In a trending market, the faster 12-period EMA is more responsive to price changes compared to the 26-period EMA (\cite{forbesDemystifyingMACD}), consequently entailing fluctuations. A buy indication occurs when the MACD line exceeds the signal line, and vice versa. The EMA of window length N is calculated accordingly with Chong et al. \parencite*{chong2014revisiting}, shown in Equation \ref{eq:EMA}.
+\begin{equation}\label{eq:EMA}
+    {EMA}_t(N)=\left[\frac{2}{N}*(P_t-{EMA}_{t-1}(N))\right]+{EMA}_{t-1}(N)
+\end{equation}
+%In our analysis we calculate the difference between the MACD line and the signal line, using it as a short-term trend indicator. We interpret a positive difference (MACD > Signal) as a negative short-term trend because it indicates an oversold security. Conversely, a negative difference (MACD < Signal) is interpreted as a positive short-term trend.
+The RSI is another prominent movement oscillator used to detect price trends (\cite{forbesWhatRelative}). The indicator created by J. Welles Wilder measures both the speed and rate of changes in the price of a security on a scale from 0 to 100. In Wilder’s traditional model, an RSI above 70 is used as an overbought signal, while an RSI below 30 indicates that the security is trading below its intrinsic value. A higher RSI indicates a stronger positive trend, while lower RSI values suggest the opposite. Utilizing the recent 14 trading days' average gains and losses, the RSI can be calculated accordingly with Equation \ref{eq:RSI}. 
+\begin{equation}\label{eq:RSI}
+    RSI=100-\left[\frac{100}{1+\left(\frac{Average\:Gain\:last\:14\:days}{Average\:Loss\:last\:14\:days}\right)}\right]
+\end{equation}
+
+A simple, yet popular metric for depicting a trend, is \textit{simple returns}. Simple returns provide a straightforward measure of the overall performance. By utilizing uncomplicated metrics, we tap into an approach aligning with the cognitive tendencies of mental shortcuts, allowing for a more instinctive interpretation of trends. Simple returns at time \(t\) are given by Equation \ref{eq:SR}, where $P_t$ is the stock price at time \textit{t} and \(D_{t-1,\:t}\) is defined as total dividends paid out from \(t-1\) to \(t\).
+\begin{equation}\label{eq:SR}
+    r_t=\frac{(P_t-P_{t-1})+D_{t-1,\:t}}{P_{t-1}}
+\end{equation}
+
+\subsubsection{Machine Learning}
+Machine Learning (ML), a subset of artificial intelligence, is a powerful tool for analyzing and interpreting complex datasets. It is particularly useful when uncovering patterns or relationships within data, such as investigating whether the sentiment of ERRs is influenced by market trends. In the context of ML, we often deal with a quantitative response \(Y\) and a set of predictors \(X_1, X_2, ..., X_p\). The relationship between \(Y\) and \(X\) is expressed as \(Y=f(X)+\epsilon\), where \(f\) is an unknown function that represents the systematic information \(X\) provides about \(Y\), and \(\epsilon\) is a random error term \parencite{witten2013introduction}. This simple model provides the framework upon which most ML techniques are built.
+
+Estimating the function \(f\) is crucial for two primary reasons: prediction and inference. For prediction, we use known inputs \(X\) to estimate an output \(Y\), even when \(Y\) is not easily obtainable. This process often treats the estimated function \(\hat{f}\) as a black box, focusing on its accuracy in predicting \(Y\). For example, if \(X\) represents market trends and \(Y\) represents analyst sentiment, we could predict how sentiment might change based on observable market conditions \parencite{witten2013introduction}.
+
+Inference, on the other hand, is about understanding the relationship between \(Y\) and \(X\). Here, the exact form of \(\hat{f}\) tells us how different predictors are associated with the response. This is particularly important in our scenario, as we want to understand which aspects of market trends significantly influence ERR sentiment \parencite{witten2013introduction}.
+
+ML approaches to estimating \(f\) can be broadly categorized into parametric and non-parametric methods (\cite{cox2006principles}; Witten \& James \cite*{witten2013introduction}). Parametric methods, such as Ordinary Least Squares (OLS) assume a specific form for \(f\), such as a linear relationship, which simplifies the problem of estimating a set of coefficients. Non-parametric methods, Such as Extreme Gradient Boosting (XGBoost) do not make explicit assumptions about the form of \(f\), offering more flexibility at the cost of increased computational complexity.
+
+In this study, we utilize the OLS method due to its interpretability and minimal computational requirements, alongside an XGBoost model known for its proficiency in handling complex, non-linear relationships. This approach allows us to conduct a comparative evaluation of the models, focusing on their performance relative to their complexity and ease of interpretation.
+
+
+% \subsubsection{Model Validity}
+
+% ---- Models ---- 
+% IMPORTANT: WHY!!!! THESE MODELS
+\subsection{Models}
+
+\subsubsection{Linear Regression}
+Linear regression is a supervised ML model, which is primarily used for predicting a quantitative response. It is based on the assumption of a linear relationship between the dependent variable \(Y\) and one or more independent variables \(X\). In its simplest form, known as simple linear regression, the model predicts \(Y\) as a linear function of a single predictor variable \(X\), expressed as \(Y = \beta_0 + \beta_1X + \epsilon\), where \(\beta_0\) is the intercept, \(\beta_1\) is the slope coefficient, and \(\epsilon\) represents the error term (\cite{freedman2009statistical}).
+
+OLS is the most common method used to estimate the coefficients \(\beta_0\) and \(\beta_1\) in linear regression. The OLS approach minimizes the sum of the squared differences between the observed values of \(Y\) and the values predicted by the linear model. This method yields unbiased, consistent, and efficient estimates under the classical linear regression assumptions, which include linearity, independence, homoscedasticity, and normality of the error terms (\cite{book:econometricswatson}).
+
+The strength and significance of the relationship between the variables are assessed using various statistical tests and metrics, such as the R-squared and \textit{p}-value\footnote{These metrics are discussed in Section \ref{sec:modelperformance}.}. Linear regression is extensively used in various fields due to its simplicity and interpretability. However, its application is limited to situations where a linear relationship is a reasonable assumption. In cases where this assumption does not hold, other methods such as non-parametric models may be more appropriate.
+
+
+\subsubsection{Extreme Gradient Boosting}
+
+XGBoost is a refined implementation of gradient boosted trees, conceptualized by Chen \& Guestrin \parencite*{Chen:2016:XST:2939672.2939785}. It employs a non-parametric approach, known as gradient tree boosting, to sequentially construct decision trees aimed at correcting the residuals of previous trees \parencite{witten2013introduction}. This process enhances the model's accuracy by focusing on unexplained variances from existing trees. It essentially combines the predictive power of a set of weak learners, namely regression trees, into a strong predictive model, which is called boosting (\cite{SUTTON2005303}).
+
+Initially, predictions for each observation are the mean of the response variables, with uniform weight distribution. These weights are dynamically adjusted in subsequent iterations, increasing for observations with larger prediction errors, thus directing the model's attention to these data points. XGBoost's iterative refinement of accuracy is shown in Equation \ref{eq:xgboostfirst}
+\begin{equation}
+\label{eq:xgboostfirst}
+\hat{y}_i^{(t)} = \hat{y}_i^{(t-1)} + \eta \cdot f_t(x_i)
+\end{equation}
+
+where $\hat{y}_i^{(t)}$ denotes the prediction at iteration $t$, $f_t(x_i)$ is the prediction of the new tree, and $\eta$ represents the learning rate \parencite{Chen:2016:XST:2939672.2939785}.
+
+A unique aspect of XGBoost is the integration of a regularized learning objective \(\mathcal{L}(\phi)\), shown in Equation \ref{eq:xgboostfull}, encompassing a differentiable loss function $l(\hat{y}_i, y_i)$, which assesses the model's predictive accuracy, and a regularization term $\Omega(f)$ to penalize model complexity. 
+\begin{equation}
+\label{eq:xgboostfull}
+    \mathcal{L}(\phi) = \sum_{i} l(\hat{y}_i, y_i) + \sum_{k} \Omega(f_k)
+\end{equation}
+\begin{equation}
+\label{eq:xgboostreg}
+    where \: \Omega(f) = \gamma T + \frac{1}{2} \lambda \| w \|^2
+\end{equation}
+The regularization term $\Omega(f)$, detailed in Equation \ref{eq:xgboostreg}, is a penalty on the number of leaves in a tree, represented by $T$, modulated by the $\gamma$ parameter, and an L2 regularization term on the leaf weights, controlled by $\lambda$ \parencite{Chen:2016:XST:2939672.2939785}. This term penalizes the complexity of the model by discouraging large leaf weights and an excessive number of leaves, maintaining a balance between model complexity and generalization ability.
+
+
+\subsubsection{Hyperparameter Tuning in XGBoost} \label{sec:hyptuningxgboost}
+
+The effectiveness of the XGBoost algorithm relies on the fine-tuning of its hyperparameters, a process essential for achieving the right balance between model accuracy and complexity. Tuning is crucial to prevent overfitting and underfitting, ensuring the model generalizes well to new data \parencite{Chen:2016:XST:2939672.2939785}. Essential to this process is the estimation of predictive loss, \(\mathcal{L}(\phi)\), as outlined in Equation \ref{eq:xgboostfull}. This estimation, a second-degree approximation of the model's residuals, is fundamental when evaluating and adjusting the algorithm's performance.
+
+\clearpage
+
+An iterative testing of parameters is conducted during each tuning phase \parencite{witten2013introduction}. Key among these is the \textit{nrounds} (T) parameter, which determines the maximum number of trees in the model's ensemble. The optimal combination of parameters is identified by minimizing this loss function, thereby enhancing predictive accuracy. The Gamma (\(\gamma\)) parameter is pivotal in controlling the growth of these trees, setting a threshold for the minimum improvement in loss required for additional tree growth, thus preventing overcomplexity and overfitting.
+
+The structure and composition of the trees are influenced by several parameters \parencite{witten2013introduction}. The \textit{max\_depth} parameter, for instance, regulates the depth of the trees. While deeper trees can model more complex patterns, they also risk overfitting; shallower trees, on the other hand, might be too simplistic and underfit. The \textit{colsample\_bytree} parameter determines the fraction of features sampled for each tree, influencing the diversity of feature selection. The \textit{subsample} parameter determines which fraction of the training data to use in constructing each tree, affecting the model's exposure to data patterns. The \textit{min\_child\_weight} parameter determines a threshold for when to stop splitting the trees into further child nodes, which is crucial for determining the decision-making depth of each tree.
+
+Lastly, the learning rate (\(\lambda)\) is a critical hyperparameter that influences the sequential addition of trees to the model using L2 regularization (\cite{cortes2012l2}). A lower learning rate ensures that each new tree has a smaller impact, leading to a more robust model. This necessitates a larger number of trees (T), highlighting the trade-off between model complexity and computational efficiency \parencite{witten2013introduction}. This comprehensive tuning approach, encompassing a range of hyperparameters shown in Table \ref{tab:xgboost-hyperparameters}, is instrumental in optimizing the XGBoost algorithm \parencite{xgboostdochyp}.
+
+\begin{table}[H]
+\centering
+%\small % Reduce font size
+%\setlength{\tabcolsep}{30pt} % Reduce column separation
+%\resizebox{\textwidth}{!}{%
+\caption{XGBoost Hyperparameters Description}
+\begin{tabular}{l@{\hspace{5em}}l}
+\toprule
+\textbf{Hyperparameter} & \textbf{Description} \\
+\hline
+eta & Learning rate of the algorithm \\
+gamma & Threshold for further splitting a tree leaf node. \\
+max\_depth & Maximum tree depth \\
+min\_child\_weight & Splitting threshold for each tree node \\
+subsample & Subsample ratio of the training instances \\
+colsample\_bytree & Subsample ratio of columns \\
+nrounds & Number of decision trees \\
+\bottomrule
+\end{tabular}%}
+\label{tab:xgboost-hyperparameters}
+\end{table}
+
+%\begin{table}[H]
+%\centering
+%\normalsize
+%\caption{XGBoost Hyperparameters Description}
+%\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll@{}}
+%\hline
+%\textbf{Hyperparameter} & \textbf{Description} \\
+%\hline
+%nrounds & The number of trees \\
+%max\_depth & Maximum depth of a tree \\
+%eta & Model learning rate \\
+%subsample & Training set sample per tree \\
+%gamma & Complexity cost \\
+%min\_child\_weight & Minimum sum of instance weight in child \\
+%colsample\_bytree & Subsample ratio of columns \\
+%\hline
+%\end{tabular*}%}
+%\label{tab:xgboost-hyperparameters-test}
+%\end{table}
+
+% ---- Research Questions ----
+% \subsection{Research Questions}

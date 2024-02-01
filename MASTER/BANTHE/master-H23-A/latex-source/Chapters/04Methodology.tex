@@ -1,0 +1,192 @@
+% ---- Method ----
+%Description of section
+
+
+% ---- Textual Data Analysis ----
+
+\subsection{Textual Data Analysis}
+
+\subsubsection{Textual Data Processing}
+During our data cleaning phase, all words were converted to lowercase to standardize the textual data. This uniformity ensures the reduction of potential discrepancies that might arise from capitalizations. To further refine the dataset and emphasize meaningful content, common stop-words were removed. This step is pivotal in minimizing noise and allowing a focus on the more context-specific words present in the reports. Additionally, any superfluous white space and punctuation were eliminated to streamline the data.
+
+These reports make use of tables to a great extent, which are filled with text and numerical data. To maintain our emphasis on textual analysis, all numbers were excluded from the dataset. Financial terminologies, such as \textit{EBITDA}, which often serve as column or row names in tables, found their context disrupted due to the removal of surrounding numbers. While such cleaning steps inevitably impact basic metrics like word count, a more profound implication emerges in sentiment analysis. Specifically, the removal of numbers can distort the perceived relationship between words. Words that were originally separated by a series of numbers might now appear adjacent, leading to potential misinterpretations as a bigram or a coherent sentence. Such alterations can introduce inaccuracies when conducting bigram or sentence-level sentiment analysis, as the modified structure might not truly represent the original context in the raw textual data. 
+
+In addressing the challenges posed by the extensive use of tables and financial terminologies in the reports, the Bag-of-Words (BoW) model was employed for sentiment analysis. This model, known for its simplicity and efficiency, was particularly suitable given the altered context of words post-data cleaning. BoW's focus on word frequency allowed for a fundamental understanding of the textual content within the reports. Despite its limitations in capturing linguistic nuances, BoW's decent accuracy and ease of implementation made it a valuable tool in this context, ensuring meaningful sentiment analysis amidst the altered textual structure.
+
+\subsubsection{Dictionaries}
+\label{sec:dict}
+
+In the domain of financial text analysis, the selection of an appropriate sentiment dictionary is crucial for obtaining accurate and contextually relevant sentiment scores from textual data. In this area, a sentiment dictionary is defined as a compendium of words each tagged with a designated sentiment value. The choice of dictionary significantly impacts the outcomes of sentiment analysis.
+
+Among available options, the Loughran and McDonald Sentiment Dictionary is well-suited for financial text analysis. This dictionary is distinctively designed for financial discourse, capturing the unique terminologies and nuances inherent in this field, as highlighted by Loughran \& McDonald \parencite*{loughran2011liability}. This specialization contrasts with general-purpose linguistic dictionaries, such as the General Inquirer (GI) and DICTION, which may inaccurately interpret the sentiment of financial terms. For example, terms typically perceived as neutral or positive in a financial context, such as 'tax' and 'liability', are often incorrectly labeled as negative in these general dictionaries (\cite{li2010information}). This mislabeling can distort sentiment analysis, compromising the reliability of the research.
+
+The Loughran and McDonald dictionary is also notable for its detailed sentiment categorization, encompassing seven distinct sentiment types. This granularity facilitates a more nuanced sentiment analysis. In our study, we focus on the dictionary's allocation of words to positive and negative sentiments, as these are most aligned with our research objectives. However, it is important to note that the dictionary contains a disproportionate number of negative words (2,345) compared to positive words (347). This imbalance could potentially introduce a skew in the sentiment analysis results, leaning more toward negative interpretations. This aspect is carefully considered in our analysis to ensure a balanced and accurate representation of sentiment in financial texts.
+
+\subsubsection{Tokenization Process}
+
+In the tokenization process of our textual data analysis, a critical step was converting the reports into document-term matrices (DTM). This transformation is essential for quantitative analysis, as it converts textual content into a structured format suitable for computational methods. A mathematical formulation of this matrix is presented in Equation \ref{form:DTM}, where \(x_{i,p}\) represents the term frequency of term \(n_p\) in report \(q_i\). In this matrix, \(i\) is defined as the index of a given report, and \(p\) is defined as the index of the term. The DTM is therefore defined as a matrix of \([n_p \times q_i]\). As our dataset contains 2,319 reports and 31,517 unique terms, our matrix has the dimensions of \([2319 \times 31517]\).
+\begin{equation}
+    \label{form:DTM}
+    \centering
+    DTM\textit{}
+    =
+    \begin{bmatrix}
+        x_{1,1} & x_{1,2} & x_{1,3} & \dots  & x_{1,p} \\
+        x_{2,1} & x_{2,2} & x_{2,3} & \dots  & x_{2,p} \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        x_{i,1} & x_{i,2} & x_{i,3} & \dots  & x_{i,p}
+    \end{bmatrix}
+\end{equation}
+
+Our approach does not include \textit{lemmatization}, a common practice in text processing where words are reduced to their base or dictionary form. This decision was guided by the use of the Loughran and McDonald sentiment dictionary, which already accounts for various grammatical endings to the word stem \parencite{loughran2011liability}. As this dictionary is tailored for financial texts, it includes different forms of words relevant to our analysis. This aspect means that our methodology, though it bypasses the lemmatization step, does not lose the precision or depth often attributed to this process.
+
+
+
+
+
+
+
+
+
+% ---- Financial Inference and Prediction ----
+
+\subsection{Model Data}
+
+\subsubsection{Data Cleaning \& Processing}
+
+Preparing the data for further analysis involves encoding numeric values accurately, removing missing values, and either eliminating strings or converting them into categorical factors. These preprocessing steps resulted in a reduction of the dataset by 3.8\%. Consequently, our refined model dataset now comprises 2,230 observations. Some missing values (NAs) were created in the lagged variables, specifically in the lagged sentiment. Although we chose to exclude these observations, it is presumed that because of the lagged nature of the variable, the dataset retains a considerable amount of the information initially derived from the removed reports.
+
+\subsubsection{Data Partitioning}
+% LOOCV for OLS model, K-fold cross-validation for XGBoost. Use the full models for inference, but RMSE for inference
+% See James et al. s210 for mer informasjon
+
+Cross-validation (CV) is essential in ML and statistical modeling for ensuring model robustness and generalizability. It combats overfitting by assessing model performance on unseen data, providing a realistic measure of predictive accuracy. This process is vital in contexts with limited or varying data, as it confirms that the model's conclusions are not mere artifacts of specific datasets. Overall, CV enhances the credibility and reliability of model findings, making it a fundamental step in model evaluation. The difference in various CV techniques usually stems from the trade-off between estimation uncertainty and computational time.
+
+The CV method chosen for our linear regression model is a \textit{Leave-One-Out Cross-Validation} (LOOCV) approach. This CV approach is computationally intensive, yet offers low bias even when the sample size is relatively small. LOOCV creates two subsets of the complete set of data of length \(n\), where one subset contains a single observation \((x_1, y_2)\) and the other contains the rest of the observations \({(x_2, y_2), ... , (x_n, y_n)}\) \parencite{witten2013introduction}. The statistical learning model is then trained on \(n-1\) observations, which are consequently used to predict \(\hat{y}_1\) for the left-out observation. These steps are repeated \(n\) times, where the resulting performance metrics are aggregate measures of \textit{testMSE}\footnote{\textit{RMSE} is presented in Equation \ref{form:RMSE}.} and \(R^2\). A visual representation of the subsetting procedure is shown in Figure \ref{fig:loocv}.
+
+\begin{figure}[h]
+        \centering
+        \includesvg[width=1\textwidth]{Images/loocv}
+        \caption{Schematic of LOOCV}
+        \label{fig:loocv}
+    \end{figure} \newpage
+
+While developing the XGBoost model, a \textit{k}-fold cross-validation (k-CV) method was employed to validate its performance. Unlike the computationally intensive LOOCV, k-CV strikes a balance between computational efficiency and the reliability of the validation process. This CV method is particularly suitable for larger datasets or more computationally intensive ML models, although this is dependent on the chosen value for \textit{k}, as a k-CV with \(k = n\) is equivalent to a LOOCV method. This CV method can be applied to a dataset with \textit{n} observations by dividing the data into subsets of size \(\frac{n}{k}\). The training of the model is conducted \textit{k} times, where each instance uses \(k-1\) subsets, or folds, for the training purpose. The last fold is reserved for validation.
+
+Specifically, if the dataset is divided into \textit{k} folds, then each iteration, \((k-1)\cdot \frac{n}{k}\) observations are used for training, and the remaining \(\frac{n}{k}\) observations are used for validation. This process is sequentially repeated until each fold has been used once as the validation data \parencite{witten2013introduction}. This approach is particularly advantageous in the context of an XGBoost model, which can be sensitive to the structure of the training data. By rotating the validation set through the entire dataset, k-CV ensures a representative measure of a model's performance across the whole set of data.
+
+\begin{figure}[H]
+        \centering
+        \includesvg[width=1\textwidth]{Images/k-fold-cv}
+        \caption{Schematic of \textit{k}-Fold CV}
+        \label{fig:kfold}
+    \end{figure}
+
+Moreover, the choice of \textit{k} is an important consideration in k-fold CV. A higher value of 
+\textit{k} generally results in a more accurate estimate of the model's performance at the cost of increased computational burden. Common choices for \textit{k} include 5 or 10, balancing the trade-off between computational efficiency and validation accuracy. A graphical illustration of the k-fold cross-validation process, showcasing the division of data into folds and the rotation of these folds through the training and validation phases, is presented in Figure \ref{fig:kfold}. The number of folds for the XGBoost model was set at \(k = 5\).
+
+
+\subsubsection{Data Balancing}
+% Stratisfied K-fold is an option
+Data balancing is a critical process in ML that involves adjusting the distribution of different classes in a dataset to prevent model bias. When a dataset is imbalanced, the model may become overly attuned to the majority class, leading to poor generalization and predictive performance on under-represented classes \parencite{app12083928}. By ensuring a balanced distribution, data balancing helps in creating more robust ML models.
+
+In this particular set of data, the challenge of imbalance can be more pronounced due to the temporal nature and potential autocorrelation within the data. In dealing with these kinds of panel data, it is important to consider how a random subset of an imbalanced dataset could lead to bias in the predictions of an ML model trained on the subset. The distribution of our dataset with respect to the \textit{analyst} column is shown in Table \ref{tab:analystcount}. 
+
+%\begin{table}[H]
+%        \centering
+%        \begin{tabular}{@{}cccc@{}}
+%        \toprule
+%        Investment Bank & Carnegie & DNB Markets & Pareto Securities \\ \midrule
+%        N       & 675      & 911 & 626    \\ \bottomrule
+%        \end{tabular}
+%        \caption{Observations by Investment Bank}
+%        \label{tab:analystcount}
+%\end{table}
+
+\begin{table}[ht]
+    \centering
+    \small % Adjust the font size
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}cccc@{}}
+        \toprule
+        \textbf{Investment Bank }
+        & \textbf{Carnegie} & \textbf{DNB Markets} & \textbf{Pareto Securities} \\
+        %\midrule
+        \textbf{N} & 675 & 911 & 626 \\
+        \bottomrule
+    \end{tabular*}
+    \caption{Observations by Investment Bank}
+    \label{tab:analystcount}
+\end{table}
+In analyzing the distribution among these analysts, it is observed that while there is no extreme skewness necessitating up- or downsampling, the disparity is noteworthy. Consequently, we employed a variation of the k-CV sampling technique in the form of the stratified k-CV method. This approach guarantees that each analyst segment of the panel data retains a proportionate representation of the various classes. Such a methodical sampling strategy is essential to maintain the integrity and reliability of the data analysis, ensuring that the sample accurately reflects the population's characteristics across different time intervals. This enhances the validity of any inferential statistics derived from the dataset, as it mitigates the risk of sampling bias and improves the generalizability of the findings.
+
+% ---- Model Performance ----
+
+\subsection{Model Performance}
+
+\subsubsection{Assessing Predictive Accuracy and Inference}
+\label{sec:modelperformance}
+
+% RMSE and R^2 for Predictive Accuracy
+% Explain their shortcomings as well! R^2 is for example automatically higher for more explanatory variables
+
+In order to address the dual objective of our modeling approach, encompassing both inferential analysis and evaluation of predictive performance, it is imperative to delineate the specific metrics employed for assessing the performance of the models. %in both of these areas.
+
+When discussing inference in our OLS models, we will use a \textit{p}-value significance threshold of 5\%. \textit{R-squared} (\(R^2\)) is a metric used in regression analysis to represent the proportion of variance observed in the dependent variable explained by the independent variables \parencite{casella2002}. \(R^2\) values range from 0 to 1, where higher values indicate a better fit for the model. This coefficient is used to assess the explanatory power of a model, helping to determine how well it captures the underlying patterns in the data.
+
+A notable weakness of \(R^2\) is its tendency to increase with the addition of more variables to the model, regardless of whether those variables are truly relevant or meaningful. This can lead to overfitting, where the model becomes overly complex and starts capturing noise rather than the underlying trend in the data. Consequently, an inflated \(R^2\) might give a misleading impression of model effectiveness. To address this, adjusted \(R^2\) is often used as it adjusts for the number of variables in the model, providing a more accurate reflection of its explanatory power for models with a different number of predictors.
+
+% variable importance
+In XGBoost models, the focus of analysis shifts to various metrics, different from those used in OLS models. For instance, OLS models emphasize the \(R^2\) and \textit{p}-value, but XGBoost, as a gradient boosting method, utilizes alternative indicators. A key metric in XGBoost is the feature importance score. This score is pivotal for understanding each feature's role and impact within the model. It reveals the usefulness and value of each feature in building the model's boosted decision trees. The importance score of a feature is determined by assessing how significantly it enhances the model's performance metrics, such as accuracy or purity when included in the trees \parencite{Chen:2016:XST:2939672.2939785}. However, it is important to note that feature importance in XGBoost is typically leveraged for enhancing the predictive capability of the model, rather than for inferential purposes. It essentially serves as a measure to identify and utilize the most influential variables for creating the most effective predictive model.
+
+To evaluate how accurately our models can predict outcomes, we will use %a statistical tool known as 
+the \textit{Root Mean Square Error} (RMSE). RMSE calculates the average difference between our predicted values and the actual observed values. By squaring these differences, RMSE ensures that all errors contribute positively to the overall measure. RMSE ranges from zero to infinity, indicating no error to maximum error, respectively. An important aspect of RMSE is that its value changes in proportion to the magnitude of the data it measures. For instance, an RMSE of 0.25 in our analysis implies that the average prediction error of our model is 0.25 units away from the actual sentiment scores. %This measurement helps us understand the typical level of error in our predictions. 
+RMSE is calculated as shown in Equation \ref{form:RMSE}
+\vspace{-3pt}
+\begin{equation}
+    RMSE = \sqrt{\sum_{i=1}^{n} \frac{(\hat{y}_i - y_i)^2}{n} }
+    \label{form:RMSE}
+\end{equation}
+\vspace{-1pt}
+where \(\hat{y}_1, \hat{y}_2, ..., \hat{y}_i\) are the predicted values of a dependent variable %from a model,
+and \(y_1, y_2, ... , y_n\) are observed dependent values in a dataset. The number of observations is defined as \(n\).
+
+% ---- XGBOOST Hyperparameter Tuning ----
+
+\subsubsection{Hyperparameter Tuning}
+
+The hyperparameters of the XGBoost model were tuned using the grid search algorithm, which expands all possible variations of a set of hyperparameters into a large grid matrix. This expansion is done without taking the effect of each parameter on the model into consideration, which makes it a computationally demanding tuning algorithm \parencite{alibrahim2021hyperparameter}. The model is trained on each set of parameters in this expanded grid and the tune which minimizes the loss function presented in Section \ref{sec:hyptuningxgboost} is chosen as the best tune. There are alternatives to the grid search approach, such as random search which only runs the model on a small but representative sample of the full grid, which is necessary for larger models. Running this hyperparameter tuning algorithm on our data produces the set of optimal parameters for our specific model, which is found in Table \ref{tab:xgbParams}.
+
+\vspace{-4pt}
+\begin{table}[H]
+\centering
+\caption{XGBoost Tuned Hyperparameters}
+\label{tab:xgbParams}
+\begin{tabular}{l@{\hspace{5em}}c}
+  \toprule
+ \textbf{Hyperparameter} & \textbf{Value} \\ 
+  \hline
+nrounds & 200 \\ 
+  max\_depth & 7 \\ 
+  eta & 0.05 \\ 
+  gamma & 0.2 \\ 
+  colsample\_bytree & 0.5 \\ 
+  min\_child\_weight & 3 \\ 
+  subsample & 0.7 \\ 
+   \bottomrule
+\end{tabular}
+\end{table}
+
+
+%\subsubsection{Internal \& External Validity}
+% Here we need to talk about Bias and Variance!!
+
+
+
+
+
+% Unsure whether or not to include this
+%\subsection{Ethical Consideration}
+%This study adheres to ethical guidelines regarding data collection and usage. Privacy and confidentiality of analysts' personal information will be strictly maintained. Additionally, any biases inherent in the data or model predictions will be acknowledged and addressed transparently in the interpretation of results. It is imperative to consider the potential implications of our findings, emphasizing the importance of avoiding any facilitation of unethical conduct or market manipulation. ERR's are usually behind a paywall or meant to be exclusive to the banks' customers. In order to guarantee the requisite permissions and rights for accessing and analyzing the ERR's, we will be diligent in respecting the terms of use associated with the data. This ensures that our research is conducted with the utmost integrity and within the bounds of legal and ethical frameworks.
+
+% As we do not use a random sample of the population, but a stratified version of subsampling, it might not be representative of the "whole" population of analysts. We have therefore prioritized making a better fit for the data we have at hand at the cost of the general ability to predict sentiment, as we will use logic to draw inferences for the whole population instead of creating a model that is able to do this.
+

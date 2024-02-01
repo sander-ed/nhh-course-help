@@ -1,0 +1,11 @@
+% ---- Conclusion ----
+
+This thesis has explored the impact of short-term stock price trends on the textual sentiment in Norwegian equity research reports on the Oslo Stock Exchange, discerning whether Norwegian investment banks succumb to trend-chasing bias.
+
+The OLS model revealed that the trend indicators, while controlling for firm-specific differences, can explain 2.2\% more of the variance in textual sentiment compared to the models without the trend indicators, making our full model exhibit an explanatory power of 44.7\%. The short-term trend indicators prove to be at least as important as fundamental metrics about the company under scrutiny. This finding suggests that trend-chasing bias is just as important as some traditional valuation techniques in shaping sentiment. 
+
+We find that the 3-month simple return, RSI, and MACD are important to explain variance in the sentiment of equity research reports through the XGBoost model, returning RSI as the fourth most important variable. These findings suggest that trend indicators has a measurable effect on textual sentiment. The most important variable proves to be the lagged sentiment value, emphasizing the stickiness inherent in sentiment, albeit lower than stickiness in target prices. Further, we note discrepancies in textual sentiment between the investment banks, which can be explained by either differences in reporting standards, differing likelihood of trend-chasing bias, or the fact that market inefficiencies are accounted for in their projections. 
+
+Despite these results, our findings do not provide any causal inference of trend-chasing bias being present in Norwegian equity research. Detecting bias through sentiment is an intricate topic, and it is hard to distinguish whether the results of our analysis are due to the presence of bias or whether the analysts do not believe in the weak form efficient market hypothesis in the short run, thus accounting for market inefficiencies in their projections. We have a small subsample of investment banks, which might not be representative of the population. Thus, we advise caution when extrapolating the results to the entire population of investment banks. Nevertheless, our implementation of sentiment analysis in studies relating to bias in equity research could serve as a valuable tool in subsequent research endeavours.
+
+
