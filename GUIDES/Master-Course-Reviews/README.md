@@ -446,3 +446,15 @@ This course was interesting to work on, and I believe that the curriculum has a 
 ### **STR459 Grade Distribution Spring 2023**
 
 ![STR459 Grade Distribution](https://github.com/sander-ed/nhh-course-help/blob/main/GUIDES/Master-Course-Reviews/assets/images/str459-grade-dist.jpg)
+
+## **[BAN403](https://www.nhh.no/en/courses/simulation-of-business-processes/) - Simulation of Business Processes**
+
+Review Coming Soon...!
+
+## **[ENE452](https://www.nhh.no/en/courses/seminar-climate-change-and-ethical-challenges/) - Seminar: Climate Change and Ethical Challenges**
+
+Review Coming Soon...!
+
+## **[BANTHE](https://www.nhh.no/en/for-students/masters-thesis/) - Thesis in Business Analytics**
+
+Review Coming Soon...!
