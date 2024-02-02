@@ -1,0 +1,31 @@
+1.    Definition and understanding of the problem (8 pts)
+
+2.    Goals and Objective (10 pts)
+
+3.    Determining Data Requirements and Availability and input data analysis (5 pts)
+
+The analysis of the data should not end with assumptions. You may justify your choices for the distribution but must be done properly and supported by the numerical analysis.
+
+Why is the erlang considered in the text but not listed in the table?
+
+What was the process to normalize the data to have a mean 1 for the walking speeds?  what are the empirical and theoretical grounds referred here: " Normal-, gamma-and erlang distributions are more plausible based on empirical and theoretical ground".
+
+4.    Developing Assumptions about the Problem (3 pts)
+
+This is not properly addressed. There is a mix of input analysis and assumptions. That shows that the candidates failed to properly address the elements that need to be consider to build the model. For example, is it valid to assume identical workers?
+
+5.    Determining Desired Outputs (5 pts)
+
+This is never explicitly and properly addressed.
+
+6.    Building the Simulation Model (30 pts)
+
+Why is it said that the service times were modeled with an exponential when that was not the conclusion of the input analysis? The implementation actually uses Gamma.
+
+7.    Output analysis and recommendations (7 pts)
+
+There is not stability issue here. The pool of customers is assumed to be finite.
+
+What are the grounds for choosing 30 days?
+
+The analysis is all based on averages, and it does not include a proper statistical approach.
