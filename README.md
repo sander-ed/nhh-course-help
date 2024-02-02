@@ -18,7 +18,7 @@ The repository is divided into three parts:
   - Answers to some exams I have taken at the bachelor level at NHH
   - Other handed in assignments and templates used in the courses
 
-## How to contribute?
+## How to Contribute
 
 You can contribute to this repository by following the steps laid out in [this](https://github.com/sander-ed/nhh-course-help/blob/main/How-To-Contribute.md) document!
 
