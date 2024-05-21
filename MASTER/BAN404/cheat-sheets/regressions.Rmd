@@ -1,0 +1,44 @@
+---
+title: "Regressions"
+output: html_document
+date: "2023-05-13"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Regressions with squared variables
+These regressions
+
+```{r}
+data(Smarket, package = "ISLR")
+
+xdata <- Smarket
+
+# ----
+sq.fit <- lm(I(Today^2) ~ I(Lag1^2), data = xdata)
+summary(sq.fit)
+```
+
+# Bootstrapping Linear Regressions
+```{r}
+# Define a function to extract the coefficient of interest
+volcoef=function(xdata,index) lm(I(Today^2)~I(Lag1^2), data=xdata[index,])$coefficients[2]
+
+# Above: Function to compute statistic that should be bootstraped
+boot.volcoef=boot(Smarket,volcoef,R=1000) # Boostrap statistic
+boot.volcoef # Print result
+```
+
+
+# Logistic Regressions
+```{r}
+# Confusion Matrix Classifier
+prob_tree <- predict(tree, newdata = test)
+pred_tree <- ifelse(prob_tree[,2] > 0.5, "MM", "CH")
+
+confusion_matrix_tree <- table(test$Purchase, pred_tree)
+kable(prop.table(confusion_matrix_tree, margin = 2), digits = 3)
+```
+

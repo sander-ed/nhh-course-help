@@ -1,0 +1,158 @@
+---
+title: "Decision Trees Cheat Sheet"
+output: html_document
+author: Sander Eide Dahling
+date: "2023-05-10"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## Setup
+```{r}
+# Setup ----
+data(Computers, package = "Ecdat")
+
+# Splitting the data 50/50 into a training and test set
+n <- nrow(Computers)
+ntrain <- floor(n/2)
+ind <- sample(1:n, ntrain)
+
+train <- Computers[ind,]
+test <- Computers[-ind,]
+
+rm(Computers)
+```
+
+## Simple Decision Tree
+```{r}
+library(tree)
+
+simple.tree <- tree(price~., data=train)
+
+{
+plot(simple.tree)
+text(simple.tree, digits=3, cex = 0.9)
+title("Simple Decision Tree for Computers")
+}
+```
+
+### Regression trees 
+In order to create a decision tree, we need to divide the predictor space spanned by
+$X_1, ..., X_p$ into $J$ non-overlapping regions, $R_1, ..., R_J$. In layman terms, the
+region which engulfs the observations are carved up into prediction regions which minimizes
+RSS. The optimal regions are defined by which carving minimizes the RSS formula given below.
+
+$$RSS=\sum_{j=1}^J \sum_{i \in R_j}(y_i - \hat{y}R_j)^2$$
+
+
+### Pruning of trees
+A large tree might fit well to the training data but fail to
+predict the test data - overfitting!
+
+Step 1: Grow a large tree $T_0$
+
+Step 2: Use complexity pruning to minimize:
+$$ g(T) = \sum_{m=1}^{|T|} \sum_{x_i \in R_m}(y_i - \hat{y}R_m)^2+\alpha |T| $$
+where T is a tree that is a cut version of $T_0$
+and $\alpha |T|$ is penalizing the large trees. If two trees has identical RSS,
+the smallest tree is chosen. Alpha can be determined by cross validation.
+
+```{r}
+# tree=tree(logSalary~Years+Hits,data=Hitters,mincut=10)
+# cv=cv.tree(tree)
+# plot(cv$size,cv$dev,type="b")
+# 
+# # The result here shows that 4 is the best option (from the plot)
+# 
+# pruned.tree=prune.tree(tree,best=4)
+```
+
+
+### Classification Trees
+Since RSS can not be used for classification problems, this measure needs to be
+subsituted for something else.
+
+In order to divide the predictor space, we need to let $\hat{p}_{mk}$ be the proportion of observations
+in $R_m$ from class $k$. Then one can find the rectangles $R_1, ..., R_J$ @(Lecture 11, 2023). 
+
+- Classification Error
+$$ E = 1 - \max_k (\hat{p}_{mk})  $$
+- Gini Index
+$$ G = \sum_{k=1}^K \hat{p}_{mk}(1-\hat{p}_{mk})  $$
+- Cross Entropy
+$$ D=-\sum_{k=1}^K \hat{p}_{mk} \log(\hat{p}_{mk}) $$
+The most widely used method for splitting a classification decision tree is the Gini index and Cross Entropy is
+
+
+## Bagged Decision Tree
+```{r}
+library(randomForest)
+
+bag.tree <- randomForest(price~., data=train, mtry=(ncol(train)-1), ntree=100)
+
+# Calculating testMSE and displaying the results
+
+bag.pred <- predict(bag.tree, newdata = test)
+
+mse.bag <- mean((test$price - bag.pred)^2)
+mse.bag
+
+# Variable Importance
+varImpPlot(bag.tree)
+```
+
+Explanation:
+
+**Mtry**: mtry is the number of variables randomly sampled at each split
+Example: If a data frame has 10 column, and a decision tree is made in a variable, with the rest as explanatory variables, 
+then a bagged method samples every explanatory variable for each iteration, which leads us to set mtry as number of columns
+used in the analysis less one (the response variable).
+
+**Variable Importance**: The varImpPlot function in R shows the variable importance of each predictor in a random forest model. The importance can be measured by two criteria: Mean Decrease Accuracy and Mean Decrease Gini. The former is the average decrease in prediction accuracy when a variable is permuted in the out-of-bag samples, while the latter is the average decrease in node impurity when a variable is used for splitting. A higher value of either criterion means that the variable is more important for the model performance.
+
+**Bagging in general**: Bagging is an ensemble learning method that is commonly used to reduce variance within a noisy data set. In bagging, a random sample of data in a training set is selected with replacement—meaning that the individual data points can be chosen more than once. The idea behind bagging is that combining the predictions of many models trained on different subsets of the data will lead to better overall performance than using any single model alone. Bagging can be used with any type of model, but it is particularly effective with decision trees, which tend to have high variance. By training many decision trees on different subsets of the data and averaging their predictions, bagging can help to reduce overfitting and improve the accuracy of predictions.
+
+*Simple:* In bagging, bootstrap samples (a draw, with replacement, of the same size as
+the original sample) are use to fit a model, e.g., a regression tree. A prediction is done by the model
+for each bootstrap sample and the final prediction is computed by averaging all of them.
+
+## Boosted Decision Tree
+Boosting is similar to bagging, but the main difference is that a boosting method chooses a smaller sample
+of explanatory variable for each iteration, and iterates over improving the output which the model classified wrongly.
+The model is therefore iterative, and the predictions is a weighted average of the models created, in comparison to bagging
+which weighs the models it creates equally.
+
+```{r}
+library(gbm)
+
+boost.tree <- gbm(price~. ,data=train, distribution ="gaussian", n.trees=1000, interaction.depth=4, shrinkage=0.01)
+
+boost.pred <- predict(boost.tree, newdata=test, n.trees=1000)
+
+mse.boost <- mean((test$price - boost.pred)^2)
+mse.boost
+```
+
+```{r}
+#boost.tree <- gbm(clm ~ veh_body + agecat + veh_value + exposure, data=train, distribution="bernoulli")
+#
+#boost.pred <- predict(gbm1,type="response")>0.07
+#
+#prop.table(table(training$clm, boost.pred),margin=1)
+```
+
+
+What does the input to the GBM model show:
+**Distribution**: Possible distributions are *gaussian* for squared error (when you want to measure the classification) and
+*bernoulli* distribtuion for logistic regression between 0-1. This is used for classification.
+
+**n.trees**: Integer specifying the total number of trees to fit. This is equivalent to the number of iterations and the number of basis functions in the additive expansion. Default is 100.
+
+**Interaction Depth**: Integer specifying the maximum depth of each tree (i.e., the highest level of variable interactions allowed). A value of 1 implies an additive model, a value of 2 implies a model with up to 2-way interactions, etc. Default is 1.
+
+**Shrinkage**: n the context of GBMs, shrinkage is used for reducing, or shrinking, the impact of each additional fitted base-learner (tree). It reduces the size of incremental steps and thus penalizes the importance of each consecutive iteration1.
+
+The shrinkage parameter is applied to each tree in the expansion. It is also known as the learning rate or step-size reduction. Usually, values between 0.001 and 0.1 work well, but a smaller learning rate typically requires more trees
+

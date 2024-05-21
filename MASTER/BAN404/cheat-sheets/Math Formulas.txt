@@ -1,0 +1,2 @@
+testMSE Latex
+$$ testMSE = \frac{1}{m} \sum_{i=n+1}^{n+m}(y_i -\hat{f}(x_i))  $$

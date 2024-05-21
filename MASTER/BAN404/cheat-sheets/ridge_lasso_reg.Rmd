@@ -1,0 +1,84 @@
+---
+title: "ridge_lasso_reg"
+output: html_document
+date: "2023-05-13"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Task 2
+Libraries
+```{r}
+library(ISLR)
+```
+
+
+```{r}
+xdata=subset(College,select=c("Apps","Accept","Top10perc","Expend"))
+```
+
+## a)
+Per definition of the Ridge Regression, the fit to the trainig data is made
+worse on purpose, as it skews the regression line in favour of a slope
+parameter, which is why I expect it to fit worse to the training data.
+
+With small sample sizes however, a ridge regression tends to have a better fit
+overall with the test data, which is how we measure its performance.
+
+## b)
+In this task I will make a few regressions using OLS, Ridge and LASSO.
+
+```{r}
+library(glmnet)
+
+n <- nrow(xdata)
+ntrain <- floor(n/2)
+ind <- sample(1:n, ntrain)
+
+train <- xdata[ind,]
+test <- xdata[-ind,]
+
+lambda <- c(0.01, 0.1, 1, 10, 100, 1000)
+
+beta_ols=coef(lm(Apps~.,data=train))
+beta_ridge=glmnet(as.matrix(train[,-1]),as.matrix(train[,1]),lambda=lambda[1],alpha=0)$beta
+beta_lasso=glmnet(as.matrix(train[,-1]),as.matrix(train[,1]),lambda=200,alpha=1)$beta
+
+round(beta_ols, 4)
+beta_ridge
+beta_lasso
+```
+
+## c)
+In this task, we will use the `cv.glmnet` in order to find the optimal $\lambda$ value
+for this data set for both Ridge and LASSO.
+
+```{r}
+lambda.ridge <- cv.glmnet(as.matrix(train[,-1]),as.matrix(train[,1]),alpha=0, nfolds = 10)
+lambda.ridge$lambda.min
+
+lambda.lasso <- cv.glmnet(as.matrix(train[,-1]),as.matrix(train[,1]),alpha=1, nfolds = 10)
+lambda.lasso$lambda.min
+```
+
+By default nfold=10 is found by k-fold CV with 10 folds. 10 observations are left out, the model is fitted with a particular on the rest of the data and the testMSE is computed on the 10 observations. This is then repeated for the other folds and the average of the testMSE for the different folds are computed. The with the smallest average testMSE is chosen.
+
+## e)
+```{r}
+n=nrow(xdata)
+ind=sample(1:n,size=floor(n/2))
+train=xdata[ind,]
+test=xdata[-ind,]
+Xtrain=as.matrix(xdata[ind,-1])
+Xtest=as.matrix(xdata[-ind,-1])
+ytrain=as.matrix(xdata[ind,1])
+ytest=as.matrix(xdata[-ind,1])
+ridge=glmnet(Xtrain,ytrain,alpha=0,lambda=lambda.ridge$lambda.min)
+pred_ridge=predict(ridge,newx=Xtest)
+pred_ols=predict(lm(Apps~.,data=train),newdata=test)
+mean((ytest-pred_ridge)^2)
+
+mean((ytest-pred_ols)^2)
+```
